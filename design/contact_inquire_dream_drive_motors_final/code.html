@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#232323",
+                    "on-background": "#F5F5F5",
+                    "on-surface": "#F5F5F5",
+                    "outline-variant": "#3D3D3D",
+                    "tertiary-container": "#2A2A2A",
+                    "secondary-container": "#2A2A2A",
+                    "primary-fixed-dim": "#D4AF37",
+                    "on-secondary-fixed": "#121212",
+                    "primary-fixed": "#E5C158",
+                    "on-surface-variant": "#A8A8A8",
+                    "surface-container-low": "#1A1A1A",
+                    "on-tertiary": "#121212",
+                    "surface-dim": "#0F0F0F",
+                    "tertiary-fixed-dim": "#D4AF37",
+                    "primary": "#D4AF37",
+                    "on-tertiary-fixed-variant": "#8C7323",
+                    "surface-container": "#1E1E1E",
+                    "on-secondary": "#F5F5F5",
+                    "inverse-primary": "#5C4A10",
+                    "error-container": "#8C1D18",
+                    "surface-bright": "#2C2C2C",
+                    "on-secondary-container": "#D4AF37",
+                    "tertiary": "#D4AF37",
+                    "surface-tint": "#D4AF37",
+                    "on-secondary-fixed-variant": "#5C4A10",
+                    "on-primary-fixed": "#121212",
+                    "on-tertiary-fixed": "#121212",
+                    "tertiary-fixed": "#E5C158",
+                    "secondary-fixed-dim": "#D4AF37",
+                    "surface-container-highest": "#2D2D2D",
+                    "on-primary-container": "#121212",
+                    "surface": "#121212",
+                    "outline": "#4D4D4D",
+                    "primary-container": "#D4AF37",
+                    "background": "#121212",
+                    "inverse-surface": "#F5F5F5",
+                    "on-primary": "#121212",
+                    "surface-variant": "#1E1E1E",
+                    "on-error-container": "#F9DEDC",
+                    "secondary-fixed": "#F5F5F5",
+                    "secondary": "#D4AF37",
+                    "inverse-on-surface": "#121212",
+                    "surface-container-lowest": "#0A0A0A",
+                    "on-error": "#FFFFFF",
+                    "on-tertiary-container": "#F5F5F5",
+                    "on-primary-fixed-variant": "#5C4A10",
+                    "error": "#F2B8B5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0rem",
+                    "lg": "0rem",
+                    "xl": "0rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body { background-color: #121212; color: #F5F5F5; font-family: 'Manrope', sans-serif; }
+      .font-newsreader { font-family: 'Newsreader', serif; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+      .glass-effect { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+      input, textarea { border-radius: 0 !important; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#121212]/80 backdrop-blur-xl flex justify-between items-center px-8 md:px-12 py-5 border-b border-white/5">
+<div class="text-xl md:text-2xl font-newsreader italic text-primary tracking-tight">Dream Drive Motors</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="font-body text-[10px] uppercase tracking-[0.25em] text-on-surface/60 hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="font-body text-[10px] uppercase tracking-[0.25em] text-on-surface/60 hover:text-primary transition-colors" href="#">Bespoke</a>
+<a class="font-body text-[10px] uppercase tracking-[0.25em] text-on-surface/60 hover:text-primary transition-colors" href="#">Heritage</a>
+<a class="font-body text-[10px] uppercase tracking-[0.25em] text-on-surface/60 hover:text-primary transition-colors" href="#">Concierge</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-on-surface/80 cursor-pointer hover:text-primary transition-all text-xl">calendar_today</span>
+<span class="material-symbols-outlined text-on-surface/80 cursor-pointer hover:text-primary transition-all text-xl">person</span>
+<button class="bg-primary text-on-primary px-7 py-2.5 font-body text-[10px] uppercase tracking-[0.2em] hover:bg-white transition-all font-bold">Inquire</button>
+</div>
+</nav>
+<!-- Sidebar -->
+<aside class="hidden lg:flex h-full w-72 fixed left-0 border-r border-white/5 flex-col py-8 z-40 bg-surface-container-lowest pt-32">
+<div class="px-8 mb-12">
+<h3 class="text-primary font-newsreader font-medium text-xl">DDM Concierge</h3>
+<p class="font-body uppercase tracking-[0.15em] text-[0.6rem] text-on-surface-variant mt-1">Exclusive Member Access</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center text-on-surface/50 mx-4 py-3.5 px-6 hover:bg-surface-container transition-all font-body uppercase tracking-[0.15em] text-[0.7rem]" href="#">
+<span class="material-symbols-outlined mr-4 text-lg">directions_car</span> Showroom
+        </a>
+<a class="flex items-center text-on-surface/50 mx-4 py-3.5 px-6 hover:bg-surface-container transition-all font-body uppercase tracking-[0.15em] text-[0.7rem]" href="#">
+<span class="material-symbols-outlined mr-4 text-lg">auto_awesome</span> Private Collection
+        </a>
+<a class="flex items-center text-on-surface/50 mx-4 py-3.5 px-6 hover:bg-surface-container transition-all font-body uppercase tracking-[0.15em] text-[0.7rem]" href="#">
+<span class="material-symbols-outlined mr-4 text-lg">settings</span> Service Center
+        </a>
+<a class="flex items-center text-on-surface/50 mx-4 py-3.5 px-6 hover:bg-surface-container transition-all font-body uppercase tracking-[0.15em] text-[0.7rem]" href="#">
+<span class="material-symbols-outlined mr-4 text-lg">account_balance</span> Financial Suites
+        </a>
+<a class="flex items-center bg-surface-container-high text-primary mx-4 py-3.5 px-6 transition-all font-body uppercase tracking-[0.15em] text-[0.7rem]" href="#">
+<span class="material-symbols-outlined mr-4 text-lg">mail</span> Contact
+        </a>
+</nav>
+<div class="px-8 pt-8 border-t border-white/5">
+<button class="w-full py-4 text-primary text-[0.65rem] font-bold tracking-[0.2em] border border-primary/20 hover:bg-primary/5 transition-all uppercase">Schedule Viewing</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:pl-72 pt-20 min-h-screen">
+<!-- Hero Section -->
+<section class="relative h-[65vh] flex items-center px-8 md:px-12 overflow-hidden border-b border-white/5">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 grayscale contrast-125" data-alt="Detail of a luxury performance vehicle interior with ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRz84nMhqoJq8Nb9QTXqQ9VA8iAkLj4B6olmECUeSkNE_nr7XjyIE4dT2RcnEN2NjJcHebQVamNSN0rw0ZxiEtkDkKttlDMX1A5tphn_nVijENMq1fISnYJARBoifc8T5HiQSOb3cVTN9qrpRt5TNuQWefNve6GhfkcmxSYfHUsxhRZjED9RxlpbsE546FjmYpxQivP232xP_0X4_WxWnoupjNE7ZVYmTzuodsGb-CAhE9j0KIbMVxCcaYMqJpAnNYCDSESXMtkoI"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-4xl">
+<span class="font-body uppercase tracking-[0.4em] text-[0.65rem] text-primary mb-6 block font-bold">The Contact Experience</span>
+<h1 class="text-6xl md:text-8xl font-newsreader italic font-light tracking-tight leading-[0.95]">
+                The Direct Line <br/>to Excellence.
+            </h1>
+</div>
+</section>
+<!-- Form & Content Section -->
+<section class="px-8 md:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-20">
+<!-- Left: Contact Details -->
+<div class="lg:col-span-4 space-y-16">
+<div>
+<h2 class="font-newsreader text-4xl mb-10 font-light">The Baldwin Park Atelier</h2>
+<div class="space-y-10 text-on-surface font-body">
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<address class="not-italic leading-relaxed tracking-wider text-sm text-on-surface/70">
+                            4200 Rivergrade Road<br/>
+                            Baldwin Park, CA 91706
+                        </address>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary">call</span>
+<a class="hover:text-primary transition-colors tracking-[0.15em] text-sm text-on-surface/70" href="tel:6262574368">626-257-4368</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary">mail</span>
+<a class="hover:text-primary transition-colors tracking-[0.15em] text-sm text-on-surface/70" href="mailto:concierge@dreamdrive.com">concierge@dreamdrive.com</a>
+</div>
+</div>
+</div>
+<div class="p-10 bg-surface-container-low border border-white/5 relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-newsreader text-2xl mb-4 font-light">Private Appointments</h3>
+<p class="text-[0.8rem] text-on-surface/50 mb-8 leading-relaxed font-body">Experience our curation firsthand. We offer bespoke private viewings and virtual walkthroughs for our global clientele.</p>
+<button class="text-primary font-bold tracking-[0.25em] text-[0.65rem] flex items-center gap-3 group-hover:gap-5 transition-all uppercase">
+                        Schedule a Viewing <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="aspect-[4/5] overflow-hidden grayscale contrast-125 opacity-40 border border-white/5">
+<img class="w-full h-full object-cover" data-alt="Classic car silhouette in atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvIF3uj_S1AiVu4YzXLzqwHMWMizbFfj5KBrwH2wDg_QlnOX-WcCAt19tcMG-W4GoC_nAqogjm43OxiNhqjCgenZ_rZPfci--CumFnxs7uavuNYtdR_L2vdLfzaXabFzlbqCvnL8sHM5_wJZTFwlYC53i1UAAWZFkDrfvnieHNRr_J3z_4nVE5BIZ3xXNuJopuE5SVp8PXQ_QW1citIHK4DNsnh4oC4ko6Sa0khDOiajNHRFv-EQ1qRvkOhmAsh4GU7i9cyNPn6aE"/>
+</div>
+</div>
+<!-- Right: Inquiry Form -->
+<div class="lg:col-span-8">
+<div class="bg-surface-container-low p-8 md:p-16 border border-white/5">
+<h3 class="font-newsreader text-5xl mb-16 font-light">Submit an Inquiry</h3>
+<form action="#" class="space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="space-y-3 group">
+<label class="font-body uppercase tracking-[0.2em] text-[0.6rem] text-on-surface/40 group-focus-within:text-primary transition-colors font-bold">Full Name</label>
+<input class="w-full bg-surface-container border-none px-6 py-5 focus:ring-1 focus:ring-primary/40 transition-all font-body text-sm placeholder:text-on-surface/20" placeholder="Johnathan Sterling" type="text"/>
+</div>
+<div class="space-y-3 group">
+<label class="font-body uppercase tracking-[0.2em] text-[0.6rem] text-on-surface/40 group-focus-within:text-primary transition-colors font-bold">Email Address</label>
+<input class="w-full bg-surface-container border-none px-6 py-5 focus:ring-1 focus:ring-primary/40 transition-all font-body text-sm placeholder:text-on-surface/20" placeholder="j.sterling@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-6">
+<label class="font-body uppercase tracking-[0.2em] text-[0.6rem] text-on-surface/40 font-bold">Nature of Interest</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<label class="relative flex items-center justify-center py-4 border border-white/10 cursor-pointer hover:bg-white/5 transition-all group">
+<input class="hidden peer" name="interest" type="radio"/>
+<span class="text-[0.6rem] tracking-[0.15em] peer-checked:text-primary peer-checked:bg-white/5 absolute inset-0 flex items-center justify-center text-on-surface/40 font-bold uppercase transition-all">Acquisition</span>
+</label>
+<label class="relative flex items-center justify-center py-4 border border-white/10 cursor-pointer hover:bg-white/5 transition-all group">
+<input class="hidden peer" name="interest" type="radio"/>
+<span class="text-[0.6rem] tracking-[0.15em] peer-checked:text-primary peer-checked:bg-white/5 absolute inset-0 flex items-center justify-center text-on-surface/40 font-bold uppercase transition-all">Leasing</span>
+</label>
+<label class="relative flex items-center justify-center py-4 border border-white/10 cursor-pointer hover:bg-white/5 transition-all group">
+<input class="hidden peer" name="interest" type="radio"/>
+<span class="text-[0.6rem] tracking-[0.15em] peer-checked:text-primary peer-checked:bg-white/5 absolute inset-0 flex items-center justify-center text-on-surface/40 font-bold uppercase transition-all">Bespoke</span>
+</label>
+<label class="relative flex items-center justify-center py-4 border border-white/10 cursor-pointer hover:bg-white/5 transition-all group">
+<input class="hidden peer" name="interest" type="radio"/>
+<span class="text-[0.6rem] tracking-[0.15em] peer-checked:text-primary peer-checked:bg-white/5 absolute inset-0 flex items-center justify-center text-on-surface/40 font-bold uppercase transition-all">General</span>
+</label>
+</div>
+</div>
+<div class="space-y-3 group">
+<label class="font-body uppercase tracking-[0.2em] text-[0.6rem] text-on-surface/40 group-focus-within:text-primary transition-colors font-bold">Message</label>
+<textarea class="w-full bg-surface-container border-none px-6 py-5 focus:ring-1 focus:ring-primary/40 transition-all font-body text-sm placeholder:text-on-surface/20 resize-none" placeholder="How may our concierge assist you today?" rows="6"></textarea>
+</div>
+<div class="pt-8">
+<button class="w-full bg-primary text-on-primary py-6 font-body text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl" type="submit">
+                            Send Inquiry
+                        </button>
+<p class="mt-8 text-[0.55rem] text-on-surface/30 text-center tracking-[0.3em] uppercase font-bold">A concierge representative will respond within 24 hours.</p>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="w-full h-[600px] bg-surface-container-lowest relative overflow-hidden group border-y border-white/5">
+<div class="absolute inset-0 grayscale contrast-125 opacity-30 transition-all duration-1000 scale-105 group-hover:scale-100">
+<img class="w-full h-full object-cover" data-alt="Night aerial city view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJWTFQ57ZtU0bfH0wLAvURRPAtlQM8M1Exov2HlrfESjtNKXQ1IP477furBSdIB_Y1fh7mF0i_bgye5zBQugKNFl4g83TQUGxYUMbov_nunpwRQFx_Am9qo-YwBPtDgmQq7mWrEApDdky9kxcIYcAHxpg0O96pNYuwF6qbzggndbRMXz7weeS7ksK3KsfOofcw8H36tfd4JHCLd1uHXw7IMJsKidZ7wiZh_ySghqYgvV-XWYdpAh-aUxGV9eQyQpkVq8arX7CgigQ"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="p-16 bg-background/95 backdrop-blur-xl border border-primary/20 text-center max-w-sm w-full shadow-2xl relative z-10">
+<span class="material-symbols-outlined text-primary text-5xl mb-6">pin_drop</span>
+<h4 class="font-newsreader text-3xl mb-2 font-light">The Atelier</h4>
+<p class="text-[0.65rem] tracking-[0.4em] uppercase text-on-surface/50 mb-8 font-bold">Baldwin Park, California</p>
+<div class="h-px w-12 bg-primary/40 mx-auto"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-20 px-8 md:px-12 border-t border-white/5 bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
+<div class="space-y-4">
+<div class="text-primary font-newsreader italic text-3xl tracking-tight">Dream Drive Motors</div>
+<p class="text-[0.6rem] tracking-[0.4em] uppercase text-on-surface/30 font-bold">Curators of Automotive Excellence</p>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-6 font-body text-[10px] tracking-[0.25em] uppercase font-bold">
+<a class="text-on-surface/50 hover:text-primary transition-colors" href="#">The Atelier</a>
+<a class="text-on-surface/50 hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-on-surface/50 hover:text-primary transition-colors" href="#">Press</a>
+<a class="text-on-surface/50 hover:text-primary transition-colors" href="#">Legal</a>
+</div>
+<div class="font-body text-[9px] tracking-[0.2em] uppercase text-on-surface/30 font-bold md:text-right">
+                © 2024 DREAM DRIVE MOTORS. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</main>
+</body></html>

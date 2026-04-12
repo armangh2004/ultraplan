@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secure Credit Application | DREAM DRIVE MOTORS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#D4AF37",
+                    "on-primary": "#1c1b1b",
+                    "background": "#131313",
+                    "surface": "#131313",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container": "#201f1f",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-container-highest": "#353534",
+                    "on-surface": "#e5e2e1",
+                    "on-surface-variant": "#d0c5af",
+                    "outline": "#99907c",
+                    "outline-variant": "#4d4635"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e5e2e1; }
+        .font-newsreader { font-family: 'Newsreader', serif; }
+        .serif-italic { font-family: 'Newsreader', serif; font-style: italic; }
+        .tonal-shift { background: linear-gradient(180deg, #131313 0%, #1c1b1b 100%); }
+        .glass-panel { backdrop-filter: blur(20px); background: rgba(53, 53, 52, 0.4); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="bg-[#131313]/90 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-headline italic text-2xl tracking-tighter text-[#D4AF37]" href="#">DDM</a>
+<div class="hidden md:flex gap-8">
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-[10px] tracking-widest uppercase font-bold" href="#">Inventory</a>
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-[10px] tracking-widest uppercase font-bold" href="#">Leasing</a>
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-[10px] tracking-widest uppercase font-bold" href="#">Sell/Trade</a>
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-[10px] tracking-widest uppercase font-bold" href="#">About</a>
+<a class="text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1 font-bold text-[10px] tracking-widest uppercase" href="#">Concierge</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-[#2a2a2a] rounded-md px-4 py-2 border border-outline-variant/15">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[11px] text-on-surface placeholder-on-surface-variant/50 w-48 uppercase tracking-widest" placeholder="Search Inventory" type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#2a2a2a] hover:text-[#D4AF37] transition-all duration-500 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#D4AF37]">calendar_today</span>
+</button>
+<button class="hover:bg-[#2a2a2a] hover:text-[#D4AF37] transition-all duration-500 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#D4AF37]">person</span>
+</button>
+<button class="bg-primary text-on-primary px-8 py-2.5 text-[10px] font-bold uppercase tracking-widest rounded-sm hover:bg-[#c2a032] transition-colors duration-200 shadow-lg shadow-primary/10">
+                        Inquire
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-40 pb-24">
+<!-- Hero Section -->
+<section class="px-12 mb-32 relative max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<span class="font-label text-primary uppercase tracking-[0.4em] text-[10px] font-bold block mb-8">Financial Excellence</span>
+<h1 class="font-headline text-7xl md:text-8xl leading-[1.1] text-on-surface mb-10">
+                        Secure Credit <br/> <span class="serif-italic text-primary">Application</span>
+</h1>
+<p class="font-body text-on-surface-variant text-lg max-w-md leading-relaxed mb-12 font-light">
+                        A bespoke financing journey designed for the discerning individual. Absolute discretion, accelerated processing, and terms as refined as the vehicles we offer.
+                    </p>
+<div class="flex items-center space-x-12">
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label text-[10px] uppercase tracking-[0.2em] font-bold">End-to-End Encryption</span>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-label text-[10px] uppercase tracking-[0.2em] font-bold">60-Second Prequalification</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-[4/5] rounded-sm overflow-hidden shadow-2xl border border-outline-variant/20">
+<img alt="Luxury car interior" class="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd6LzUXDS5-pmH2HefapyCONDMSh1aO1_-jaM2hNz0QGFAho4wKEMpuD98mzVapTrP4Tju75sPCJUA9dmGrH7oiJTywbF3lwyl_4v13XPX72kP0s-jiLHSh6fzUmWUOPoilZ_KOKIsBFZb2kHsVpOf9vY3nqt2ng2GciyiTaW9NE1jLtjZFntMq2XViVgqDVOq5qmDRKOpV5UbSZI941Yly-qM1NwJ9vJxGNw1A-wjyV8Dtq5EIvEfNurQZXh8_wSv2w4BPBhD0sM"/>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-[#201f1f] p-10 rounded-sm shadow-2xl border border-outline-variant/20 max-w-xs">
+<p class="serif-italic text-2xl text-primary mb-3 leading-tight">"Discretion is our hallmark."</p>
+<p class="font-label text-[9px] uppercase tracking-widest text-on-surface-variant font-bold">The DDM Concierge Team</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<section class="px-12 bg-[#1c1b1b] py-32 relative overflow-hidden">
+<!-- Monogram Overlay -->
+<div class="absolute top-0 right-0 opacity-[0.03] select-none pointer-events-none transform translate-x-1/4 -translate-y-1/4">
+<span class="font-headline text-[50rem] italic leading-none">DDM</span>
+</div>
+<div class="max-w-4xl mx-auto relative z-10">
+<div class="text-center mb-20">
+<h2 class="font-headline text-5xl mb-6">Personal Credentials</h2>
+<p class="font-label text-[11px] uppercase tracking-[0.4em] text-primary font-bold">Step 01 of 03 — Identity Verification</p>
+</div>
+<form class="space-y-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+<div class="relative group">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-3 block font-bold transition-colors group-focus-within:text-primary">Legal Full Name</label>
+<input class="w-full bg-[#2a2a2a] border-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-on-surface py-5 px-6 transition-all font-body text-lg placeholder:text-on-surface-variant/30 rounded-t-sm" placeholder="Mr. Sterling Archer" type="text"/>
+</div>
+<div class="relative group">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-3 block font-bold transition-colors group-focus-within:text-primary">Email Address</label>
+<input class="w-full bg-[#2a2a2a] border-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-on-surface py-5 px-6 transition-all font-body text-lg placeholder:text-on-surface-variant/30 rounded-t-sm" placeholder="concierge@ddm.com" type="email"/>
+</div>
+<div class="relative group">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-3 block font-bold transition-colors group-focus-within:text-primary">Phone Identification</label>
+<input class="w-full bg-[#2a2a2a] border-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-on-surface py-5 px-6 transition-all font-body text-lg placeholder:text-on-surface-variant/30 rounded-t-sm" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div class="relative group">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-3 block font-bold transition-colors group-focus-within:text-primary">Preferred Contact Method</label>
+<select class="w-full bg-[#2a2a2a] border-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-on-surface py-5 px-6 transition-all font-body text-lg appearance-none rounded-t-sm cursor-pointer">
+<option>Direct Call</option>
+<option>Encrypted Message</option>
+<option>Email Liaison</option>
+</select>
+</div>
+</div>
+<div class="pt-10">
+<div class="bg-[#2a2a2a] p-16 rounded-sm flex flex-col md:flex-row items-center justify-between gap-12 border-l-4 border-primary shadow-xl">
+<div class="max-w-md text-center md:text-left">
+<h3 class="font-headline text-3xl italic mb-4">Tailored Options</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Selection of bespoke lease and finance structures available upon identity confirmation.</p>
+</div>
+<div class="flex gap-6">
+<div class="px-8 py-5 bg-[#131313] rounded-sm flex items-center space-x-4 border border-outline-variant/20 hover:border-primary/40 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">account_balance</span>
+<span class="font-label text-[10px] uppercase tracking-[0.3em] font-bold">Lease</span>
+</div>
+<div class="px-8 py-5 bg-[#131313] rounded-sm flex items-center space-x-4 border border-outline-variant/20 hover:border-primary/40 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">payments</span>
+<span class="font-label text-[10px] uppercase tracking-[0.3em] font-bold">Finance</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center pt-12">
+<button class="group relative bg-primary text-on-primary px-20 py-6 rounded-sm font-label uppercase tracking-[0.3em] text-[11px] font-bold transition-all hover:bg-[#c2a032] hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] overflow-hidden">
+<span class="relative z-10 flex items-center gap-5">
+                                Proceed to Verification
+                                <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-2">arrow_forward</span>
+</span>
+</button>
+<p class="mt-10 font-label text-[10px] text-on-surface-variant uppercase tracking-[0.2em] flex items-center gap-3 font-bold opacity-70">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                            Secure 256-bit SSL encrypted connection
+                        </p>
+</div>
+</form>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="px-12 py-32 max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2 bg-[#1c1b1b] p-16 rounded-sm flex flex-col justify-between group hover:bg-[#201f1f] transition-all duration-500 border border-outline-variant/10">
+<div>
+<span class="material-symbols-outlined text-5xl text-primary mb-10" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="font-headline text-5xl mb-8 leading-tight">Unrivaled Privacy</h3>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed max-w-xl font-light">We handle only the essential data required for your application. All records are purged following successful completion of your acquisition, unless otherwise requested.</p>
+</div>
+<div class="mt-16 flex items-center text-primary group-hover:gap-6 gap-4 transition-all">
+<span class="font-label text-[11px] uppercase tracking-[0.3em] border-b border-primary pb-1 font-bold">Review Privacy Shield</span>
+<span class="material-symbols-outlined text-lg">north_east</span>
+</div>
+</div>
+<div class="bg-[#2a2a2a] p-16 rounded-sm relative overflow-hidden border border-outline-variant/10 flex flex-col">
+<span class="material-symbols-outlined text-5xl text-primary mb-10">support_agent</span>
+<h3 class="font-headline text-4xl mb-8 italic">24/7 Concierge</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed font-light mb-auto">Dedicated financial advisors available for immediate consultation at any hour, globally.</p>
+<div class="mt-12">
+<span class="serif-italic text-3xl text-primary block tracking-tight">+1 800 DDM-ELITE</span>
+</div>
+</div>
+<div class="bg-[#1c1b1b] p-16 rounded-sm border border-outline-variant/15 hover:border-primary/20 transition-all duration-500">
+<h4 class="font-label text-[11px] uppercase tracking-[0.4em] mb-10 text-primary font-bold">Prestige Perks</h4>
+<ul class="space-y-8 font-body text-base font-light">
+<li class="flex items-center gap-5">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="tracking-wide">Direct line to Underwriting</span>
+</li>
+<li class="flex items-center gap-5">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="tracking-wide">Priority Vehicle Allocation</span>
+</li>
+<li class="flex items-center gap-5">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="tracking-wide">Exclusive DDM Events</span>
+</li>
+</ul>
+</div>
+<div class="md:col-span-2 relative rounded-sm overflow-hidden aspect-[21/9] border border-outline-variant/10 shadow-2xl">
+<img alt="Golden motion lines" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNolwvaa64EEQ8zynZc2h7AefXXNsCPjukNInRvv0s5H3CZO4lcOb2sHHGaKgebuQWiMzCFnkLU-Ki1bYxj8o9aMz5lOYuxm9U2ejfdMKuIxc0sVWYrd2cgCDLavxHNCs6TDsvj0ao5LKketFxUDuiYe85EC-IH6ZsZgTh3OdeP9Y8EMkwmvZqwuwKPfZk8h0BeBlJVQAQliJEgwaeUUCO3ltfHBoZatOjR-AZg8vGo64RvBJyy6NaWNnSl9J0N5ibKAJWolX_YF8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent flex flex-col justify-end p-16">
+<p class="font-headline text-5xl text-on-surface tracking-tight">Experience the Extraordinary.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0e0e0e] border-t border-[#4d4635]/20">
+<div class="flex flex-col md:flex-row justify-between items-start px-12 py-20 w-full max-w-screen-2xl mx-auto gap-16">
+<div class="space-y-8">
+<a class="text-[#D4AF37] font-headline italic text-4xl tracking-tighter" href="#">DREAM DRIVE MOTORS</a>
+<p class="text-[#e5e2e1]/50 text-[10px] tracking-[0.3em] uppercase max-w-xs leading-relaxed font-bold">The gold standard in pre-owned automotive excellence and bespoke financial services.</p>
+<div class="flex gap-6">
+<a class="w-12 h-12 rounded-sm border border-outline-variant/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-500" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-12 h-12 rounded-sm border border-outline-variant/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-500" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-20 gap-y-12">
+<div class="space-y-6">
+<span class="text-[10px] tracking-[0.4em] uppercase text-primary font-bold">Contact</span>
+<ul class="space-y-4">
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">15132 Arrow Hwy Baldwin Park</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">concierge@ddm.com</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">626-257-4368</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<span class="text-[10px] tracking-[0.4em] uppercase text-primary font-bold">Services</span>
+<ul class="space-y-4">
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">Inventory</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">Leasing</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">Sell/Trade</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<span class="text-[10px] tracking-[0.4em] uppercase text-primary font-bold">Legal</span>
+<ul class="space-y-4">
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">Privacy Policy</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-[11px] transition-all duration-500 tracking-wider font-medium" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="px-12 py-10 border-t border-outline-variant/10 text-center">
+<span class="text-[#e5e2e1]/30 text-[10px] tracking-[0.5em] uppercase font-bold">© 2024 DREAM DRIVE MOTORS. CURATED EXCELLENCE.</span>
+</div>
+</footer>
+</body></html>

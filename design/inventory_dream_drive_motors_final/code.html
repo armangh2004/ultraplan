@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Reserve Inventory | Dream Drive Motors</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#D4AF37",
+                    "on-primary": "#131313",
+                    "background": "#0F0F0F",
+                    "surface": "#1A1A1A",
+                    "on-surface": "#E5E2E1",
+                    "on-surface-variant": "#99907c",
+                    "outline": "#4d4635",
+                    "outline-variant": "#2A2A2A",
+                    "surface-container": "#151515",
+                    "surface-container-high": "#202020",
+                    "surface-container-highest": "#2A2A2A"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "2px",
+                    "xl": "4px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #0F0F0F; color: #E5E2E1; }
+        .serif-italic { font-family: 'Newsreader', serif; font-style: italic; }
+        .glass-card { background: rgba(26, 26, 26, 0.4); backdrop-filter: blur(20px); }
+        .monogram-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Newsreader';
+            font-size: 35vw;
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            letter-spacing: -0.05em;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(to bottom, #F1D38E 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<div class="monogram-overlay">DDM</div>
+<!-- Top Navigation Bar -->
+<nav class="bg-background/90 backdrop-blur-md border-b border-white/5 top-0 sticky z-50">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-16">
+<a class="font-['Newsreader'] italic text-3xl tracking-tighter gold-gradient-text" href="#">DDM</a>
+<div class="hidden md:flex gap-10">
+<a class="text-primary border-b border-primary pb-1 font-medium text-[11px] tracking-[0.2em] uppercase" href="#">Inventory</a>
+<a class="text-on-surface/60 hover:text-primary transition-all duration-300 text-[11px] tracking-[0.2em] uppercase" href="#">Leasing</a>
+<a class="text-on-surface/60 hover:text-primary transition-all duration-300 text-[11px] tracking-[0.2em] uppercase" href="#">Sell/Trade</a>
+<a class="text-on-surface/60 hover:text-primary transition-all duration-300 text-[11px] tracking-[0.2em] uppercase" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden lg:flex items-center bg-white/5 rounded-sm px-4 py-2 border border-white/10 group focus-within:border-primary/40 transition-all">
+<span class="material-symbols-outlined text-primary/60 text-lg mr-3 group-focus-within:text-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[11px] text-on-surface placeholder-on-surface/30 w-56 tracking-wider" placeholder="Search Inventory" type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface/80 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="directions_car">directions_car</span>
+</button>
+<button class="text-on-surface/80 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</button>
+<button class="bg-primary text-on-primary px-8 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-300 shadow-lg shadow-primary/10">
+                    Inquire
+                </button>
+</div>
+</div>
+</div>
+</nav>
+<main class="relative z-10 max-w-screen-2xl mx-auto px-12 py-16">
+<!-- Hero Title Section -->
+<header class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-3xl">
+<span class="font-label text-[10px] tracking-[0.3em] uppercase text-primary mb-6 block font-bold">Curated Excellence</span>
+<h1 class="font-headline text-7xl md:text-9xl leading-[0.9] text-on-surface mb-8">The <span class="serif-italic">Reserve</span> <br/><span class="gold-gradient-text">Inventory</span></h1>
+<p class="text-on-surface/60 font-body text-xl leading-relaxed max-w-xl">Explore our strictly vetted selection of high-performance vehicles and luxury grand tourers. Every unit is a masterpiece of engineering.</p>
+</div>
+<div class="flex gap-12 border-l border-white/10 pl-12 h-fit">
+<div class="text-left">
+<p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface/40 mb-2">Available Units</p>
+<p class="font-headline text-6xl text-on-surface leading-none">42</p>
+</div>
+<div class="text-left">
+<p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface/40 mb-2">Showroom Loc.</p>
+<p class="font-headline text-6xl text-on-surface leading-none serif-italic">LAX</p>
+</div>
+</div>
+</header>
+<!-- Dynamic Filter Section -->
+<section class="mb-16 bg-surface-container border border-white/5 p-8 flex flex-wrap gap-12 items-center">
+<div class="flex flex-col gap-3">
+<span class="font-label text-[9px] tracking-[0.2em] uppercase text-on-surface/40 font-bold">Manufacturer</span>
+<div class="flex gap-4">
+<button class="px-6 py-2 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest">All</button>
+<button class="px-6 py-2 bg-white/5 text-on-surface hover:text-primary transition-colors text-[10px] font-bold uppercase tracking-widest border border-white/5">Porsche</button>
+<button class="px-6 py-2 bg-white/5 text-on-surface hover:text-primary transition-colors text-[10px] font-bold uppercase tracking-widest border border-white/5">Ferrari</button>
+<button class="px-6 py-2 bg-white/5 text-on-surface hover:text-primary transition-colors text-[10px] font-bold uppercase tracking-widest border border-white/5">Lamborghini</button>
+</div>
+</div>
+<div class="w-px h-12 bg-white/10 hidden md:block"></div>
+<div class="flex flex-col gap-3">
+<span class="font-label text-[9px] tracking-[0.2em] uppercase text-on-surface/40 font-bold">Body Style</span>
+<div class="flex gap-4">
+<button class="px-6 py-2 bg-white/5 text-on-surface hover:text-primary transition-colors text-[10px] font-bold uppercase tracking-widest border border-white/5">Coupe</button>
+<button class="px-6 py-2 bg-white/5 text-on-surface hover:text-primary transition-colors text-[10px] font-bold uppercase tracking-widest border border-white/5">Convertible</button>
+<button class="px-6 py-2 bg-white/5 text-on-surface hover:text-primary transition-colors text-[10px] font-bold uppercase tracking-widest border border-white/5">SUV</button>
+</div>
+</div>
+<div class="ml-auto flex gap-8">
+<button class="flex items-center gap-3 text-primary font-label text-[10px] tracking-[0.2em] uppercase font-bold border-b border-primary/30 pb-1">
+<span class="material-symbols-outlined text-lg">tune</span> Filter
+            </button>
+<button class="flex items-center gap-3 text-on-surface/60 font-label text-[10px] tracking-[0.2em] uppercase font-bold border-b border-white/10 pb-1 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">swap_vert</span> Sort By
+            </button>
+</div>
+</section>
+<!-- Inventory Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+<!-- Vehicle Card 1 -->
+<article class="group bg-surface border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-700">
+<div class="relative h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="front profile of a sleek charcoal grey Porsche 911 parked in a minimalist concrete showroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFDAG_WxklGT4PXgqoVL0TqhN8CLaYQrx0yyOAnkCUy9hKskGe_ZrbXwOfPoWGm6D3s-YxEGaw1r4V2m1L08l63oN6d37OwzTtQYN2cW9R43xlkiW_JRDUxnBZT2tGHbzzFTmazR4YFl4V2BQ7mRhgjJLp2IhBqBqzyeWKtv9h89BR-WtJAnlXbEd0SXd9nB-IwMxuwr2dXsYlRgnXCg21FYhaG3e3J0gfFlyz4xnVgn10Nh-UjTTq-Gsbtnpv2zvj042xkAzCKns"/>
+<div class="absolute top-6 left-6">
+<span class="bg-primary/90 text-on-primary text-[9px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 shadow-xl">New Arrival</span>
+</div>
+</div>
+<div class="p-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface/40 mb-2">2024 Porsche</p>
+<h3 class="font-headline text-4xl text-on-surface serif-italic">911 GT3 RS</h3>
+</div>
+<button class="text-on-surface/30 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</button>
+</div>
+<div class="flex gap-6 mb-8 border-y border-white/5 py-6">
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">speed</span> 3.2s</div>
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">bolt</span> 518hp</div>
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">settings_input_component</span> RWD</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label text-[9px] tracking-[0.2em] uppercase text-on-surface/40 mb-1 font-bold">Monthly Lease</p>
+<p class="text-3xl font-headline text-primary">$3,450<span class="text-xs font-body italic text-on-surface/40 ml-1">/mo</span></p>
+</div>
+<button class="bg-white/5 hover:bg-primary group/btn p-5 transition-all duration-500 border border-white/5">
+<span class="material-symbols-outlined text-on-surface group-hover/btn:text-on-primary transition-colors">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Vehicle Card 2 -->
+<article class="group bg-surface border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-700">
+<div class="relative h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="side view of a vibrant red Ferrari Roma driving" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG2MCM9ciuVU6jvMVBnRNlfW4kifQS2RBS6CjztM2xulCjl6IoYHU0kmTGzpUwjhzNxBTQPFKO_eKfgFHaPtgjkhCc6bx6Epz8585uYOFiTK1Z3jfxkLtw7JRxsL1zX7KUczi-Pddm3Ibq9wNgzFM_xXAyw2Dc57wvqYT7ng36ywImNzACHyWRGqzZIQ_vkqaWAzN-uKE_2JvG68YncFMj15wuj9j-Wt7kMyuKdq7ZseGgODQtezQHuJMqyorDMuOBxdqJCli58Vw"/>
+</div>
+<div class="p-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface/40 mb-2">2023 Ferrari</p>
+<h3 class="font-headline text-4xl text-on-surface serif-italic">Roma Spider</h3>
+</div>
+<button class="text-on-surface/30 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</button>
+</div>
+<div class="flex gap-6 mb-8 border-y border-white/5 py-6">
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">speed</span> 3.4s</div>
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">bolt</span> 612hp</div>
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">air</span> V8 Biturbo</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label text-[9px] tracking-[0.2em] uppercase text-on-surface/40 mb-1 font-bold">Monthly Lease</p>
+<p class="text-3xl font-headline text-primary">$4,120<span class="text-xs font-body italic text-on-surface/40 ml-1">/mo</span></p>
+</div>
+<button class="bg-white/5 hover:bg-primary group/btn p-5 transition-all duration-500 border border-white/5">
+<span class="material-symbols-outlined text-on-surface group-hover/btn:text-on-primary transition-colors">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Vehicle Card 3 -->
+<article class="group bg-surface border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-700">
+<div class="relative h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="luxury obsidian black Range Rover Autobiography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu5ETpZhnNP6d9fDgiXrlVAgzsnNKuHEeTf0rX9VjHaELosqs40jVcGlxfG1lpdKAryMDpV2xD6_glRsn5ws7ujoaDq2a5drVEtUEJZXhtlBcbFQM-68NFiz6t_-72n-1OJaCoaX8BoQtMgVfAgsdsyUf2nn0jT0zLSguvMeTjOEAzYgjPQdwJS-tSWMQcvNF8XMrhDTkccTlh3fESDFkjARPFhDV3kQoqJDif5CtsurLvrrxlGmgybCn2EgGMJX7Ro6L7aMdmvrs"/>
+<div class="absolute top-6 left-6">
+<span class="bg-white/10 backdrop-blur-md text-on-surface text-[9px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 border border-white/20 shadow-xl">Certified Pre-Owned</span>
+</div>
+</div>
+<div class="p-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface/40 mb-2">2024 Land Rover</p>
+<h3 class="font-headline text-4xl text-on-surface serif-italic">Range Rover SV</h3>
+</div>
+<button class="text-on-surface/30 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</button>
+</div>
+<div class="flex gap-6 mb-8 border-y border-white/5 py-6">
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">airline_seat_recline_extra</span> LWB</div>
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">bolt</span> 606hp</div>
+<div class="flex items-center gap-2 text-on-surface/60 text-[11px] tracking-wide uppercase"><span class="material-symbols-outlined text-primary text-base">terrain</span> AWD</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label text-[9px] tracking-[0.2em] uppercase text-on-surface/40 mb-1 font-bold">Monthly Lease</p>
+<p class="text-3xl font-headline text-primary">$2,890<span class="text-xs font-body italic text-on-surface/40 ml-1">/mo</span></p>
+</div>
+<button class="bg-white/5 hover:bg-primary group/btn p-5 transition-all duration-500 border border-white/5">
+<span class="material-symbols-outlined text-on-surface group-hover/btn:text-on-primary transition-colors">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Curated Collections (Bento Style) -->
+<section class="mt-32">
+<h2 class="font-headline text-5xl mb-12 text-on-surface">Curated <span class="serif-italic gold-gradient-text">Collections</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-8 h-[700px]">
+<div class="md:col-span-2 md:row-span-2 relative overflow-hidden group border border-white/5">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="vintage classic sports cars collection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJnzoG-lMWv5kS6qNuczDeJAp9Lcbuc52YkhmKg5gNLx6HHDyCm26DnSIg3JaNVK8yffi-Lj9wz1wSZZl2zRntwGqd5FKfsB33tUeAiQ8lxxKwMwW8cs78RtypYI1cbQg9nZK1XOnuMV6Gyt_1n1cTZ32u0TR1tQxrF5U_3a-Q_tsjxdXG6PyTctRW6YbtWHmoQePfSZUxqjpl2sKhsm_uMlnAoRnMhoqbmQEwHPQNDhF3B-EM2US9mq_P3yKS8Vfa_CoyfEw-ny8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-12 left-12">
+<p class="font-label text-[10px] tracking-[0.4em] uppercase text-primary mb-4 font-bold">Heritage Selection</p>
+<h4 class="font-headline text-5xl text-on-surface serif-italic">The Classics</h4>
+</div>
+</div>
+<div class="md:col-span-2 md:row-span-1 relative overflow-hidden group border border-white/5">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="close up of electric vehicle charging port" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCESArkuH84LgtmzJk0qQbadAsxKXYSGyNNSmaxJVdZohKhwZmRpo5jzQAPtQwo1qO8BvAMCDK7z9jCSPNKhp1KVdxhEQHL4j1WS0KsvgpjNeZYDoCq5rJkWKg0YDxKuU-C-3p60PhG9EhV_a5aji-J6Id_6zG36byVc_6PHUNgfUYdvDGxI-kwPkPHxRvrDouXOrlRXe_HRdRl_F1b3lXGxPhiudRAsoa1VKsbWiHpTF4L8BRa7oLhO0eH2zez0Ycl7lXiHj3_kp8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<p class="font-label text-[10px] tracking-[0.4em] uppercase text-primary mb-3 font-bold">Modern Era</p>
+<h4 class="font-headline text-3xl text-on-surface serif-italic">Electric Luxury</h4>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 relative overflow-hidden group border border-white/5 bg-surface-container">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="steering wheel and dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYpApBXBaWZb0UbEqoIIxN2KGjJ-Y-dyOkCxO20iM8JMHg-yyvYJypJzDCgFheD9U0gU_vMqeu6FtFQCXajzm6oHPA6Ne7XSED1-iaxTRlyXMhGHfufLVpvDLbNi0AY6q6aeR3rf50lR2OATW8d4wY07jWKyq-AVsiAHpRJxF8bkZ4AII5dW1IRX9duCKE-WTrhdxnmvLzSznde76-T6FO24D4S3OfUxKXgzQluJMWwd1I4TCqb8f-np3n6Rb9J1qUUP_jCLnRKs8"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="text-center">
+<span class="block w-12 h-px bg-primary mx-auto mb-4"></span>
+<h4 class="font-label text-[10px] tracking-[0.4em] uppercase text-on-surface font-bold">Interiors</h4>
+</div>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 relative overflow-hidden group bg-primary p-10 flex flex-col justify-between border border-primary/20">
+<span class="material-symbols-outlined text-5xl text-on-primary">auto_awesome</span>
+<div>
+<h4 class="font-headline text-3xl text-on-primary serif-italic leading-tight mb-3">Bespoke Ordering</h4>
+<p class="text-on-primary/70 text-[11px] font-bold uppercase tracking-widest leading-relaxed">Tailor every stitch to your preference.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-start px-12 py-24 w-full max-w-screen-2xl mx-auto gap-20">
+<div class="max-w-md">
+<a class="gold-gradient-text font-['Newsreader'] italic text-4xl mb-8 block" href="#">DREAM DRIVE MOTORS</a>
+<p class="text-on-surface/40 text-xs tracking-[0.2em] uppercase leading-relaxed mb-10">The gold standard in pre-owned automotive excellence and bespoke financial services.</p>
+<div class="flex gap-6">
+<a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-on-surface/60 hover:border-primary hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+<a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-on-surface/60 hover:border-primary hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-20">
+<div class="space-y-8">
+<span class="text-[10px] tracking-[0.3em] uppercase text-primary font-bold">Contact</span>
+<ul class="space-y-4">
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">15132 Arrow Hwy Baldwin Park</a></li>
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">dreamdrivemotors1@gmail.com</a></li>
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300 font-bold" href="#">626-257-4368</a></li>
+</ul>
+</div>
+<div class="space-y-8">
+<span class="text-[10px] tracking-[0.3em] uppercase text-primary font-bold">Services</span>
+<ul class="space-y-4">
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">Inventory</a></li>
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">Leasing</a></li>
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">Sell/Trade</a></li>
+</ul>
+</div>
+<div class="space-y-8">
+<span class="text-[10px] tracking-[0.3em] uppercase text-primary font-bold">Legal</span>
+<ul class="space-y-4">
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface/40 hover:text-on-surface text-xs transition-colors duration-300" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="px-12 py-12 border-t border-white/5 text-center bg-[#050505]">
+<span class="text-on-surface/20 text-[10px] tracking-[0.4em] uppercase font-medium">© 2024 DREAM DRIVE MOTORS. ALL RIGHTS RESERVED.</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,51 @@
+<h2>Animation & Interaction Level</h2>
+<p class="subtitle">How cinematic should the DDM experience feel? Pick the tier that matches your vision.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Refined & Subtle</h3>
+      <p><strong>Scroll-triggered fade-ins, smooth page transitions, hover states on cards/buttons.</strong></p>
+      <p style="margin-top:8px; opacity:0.6; font-size:13px;">
+        Elements fade and slide in as you scroll. Vehicle cards scale on hover. Navigation has smooth underline animations. Page transitions crossfade. Think: Apple.com product pages.
+      </p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Fast to build</li><li>Performant on all devices</li><li>Timeless, never feels "gimmicky"</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Less "wow factor" on first visit</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Cinematic & Immersive</h3>
+      <p><strong>Everything in A, plus: parallax hero images, staggered reveal sequences, number counters, scroll-linked progress, image reveal animations.</strong></p>
+      <p style="margin-top:8px; opacity:0.6; font-size:13px;">
+        Hero images have parallax depth. Stats animate/count up when scrolled into view. Service cards reveal with staggered delays. Vehicle gallery images have clip-path reveal effects. Sections have scroll-triggered storytelling sequences. Think: Porsche.com or Rolls-Royce configurator.
+      </p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Strong "wow" factor</li><li>Matches luxury brand positioning</li><li>Great storytelling through motion</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More build time</li><li>Needs performance tuning on mobile</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Full Showroom Experience</h3>
+      <p><strong>Everything in B, plus: custom cursor, smooth scroll (Lenis), magnetic buttons, text split animations, scroll-hijacked hero sequences, GSAP-powered timeline animations.</strong></p>
+      <p style="margin-top:8px; opacity:0.6; font-size:13px;">
+        Custom gold cursor that reacts to interactive elements. Smooth locomotive-style scrolling. Headlines split and animate letter-by-letter. Hero sections "pin" and animate through states as you scroll. Magnetic hover effects on buttons. Think: Award-winning agency sites (Awwwards).
+      </p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Maximum impact</li><li>Award-worthy experience</li><li>Unforgettable first impression</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Significantly more build time</li><li>Can hurt mobile UX if not careful</li><li>Accessibility concerns with scroll hijacking</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px;">My recommendation: <strong>B (Cinematic & Immersive)</strong> — it delivers the luxury feel DDM needs without the UX risks of scroll hijacking. We'd use Framer Motion for scroll animations and GSAP for the lease calculator and number counters.</p>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services &amp; Concierge | Dream Drive Motors</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary": "#D4AF37", // True Gold
+                "on-primary": "#131313",
+                "surface": "#0C0C0C", // Deep Charcoal
+                "surface-container": "#151515",
+                "surface-container-low": "#111111",
+                "on-surface": "#F5F5F5",
+                "on-surface-variant": "#A0A0A0",
+                "outline": "#333333",
+                "outline-variant": "#222222"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Newsreader", "serif"],
+                "body": ["Manrope", "sans-serif"],
+                "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .text-glow {
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+        .service-hover-image {
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s ease;
+            transform: scale(1.1);
+            opacity: 0;
+        }
+        .group:hover .service-hover-image {
+            transform: scale(1);
+            opacity: 0.2;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 antialiased">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 w-full z-50 bg-[#0C0C0C]/90 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-12 py-7">
+<div class="text-2xl font-headline font-bold text-primary tracking-tighter uppercase">Dream Drive Motors</div>
+<div class="hidden lg:flex items-center space-x-12">
+<a class="nav-link font-headline italic tracking-tight text-on-surface/70 hover:text-primary transition-all duration-300 text-sm" href="#">Leasing</a>
+<a class="nav-link font-headline italic tracking-tight text-on-surface/70 hover:text-primary transition-all duration-300 text-sm" href="#">Financing</a>
+<a class="nav-link font-headline italic tracking-tight text-on-surface/70 hover:text-primary transition-all duration-300 text-sm" href="#">Credit</a>
+<a class="nav-link font-headline italic tracking-tight text-on-surface/70 hover:text-primary transition-all duration-300 text-sm" href="#">Sell/Trade</a>
+<a class="nav-link font-headline italic tracking-tight text-on-surface/70 hover:text-primary transition-all duration-300 text-sm" href="#">Delivery</a>
+</div>
+<button class="bg-transparent text-primary border border-primary/40 px-8 py-2.5 rounded-sm font-medium text-[10px] uppercase tracking-[0.25em] hover:bg-primary hover:text-on-primary transition-all duration-500">Concierge</button>
+</nav>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative h-[95vh] flex items-center px-12 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<img alt="Luxury interior detail" class="w-full h-full object-cover grayscale-[40%] brightness-75 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY987_pGqbODun7jeqrkyotfW5_z0iPcNKFAagNjeWUA7KlQhrSgl8PrRtAoxRf0NedFn7wflcjrDFkGSWwjZsBBlZ3-wbYYakcb1rVg1rcwu0Sugcaz_2gyME5WponVycM81PB_sIW-9tUZgV-LyIfLIH3LVF8JoYigLC1SaE-EbJ6UbastSP4pRq6toKwM7RG-Uzd2jCjkP-7Z85fuKWiuBvavuwWuMOOF8mPwN50_VijIpjtjZ_Va3VzOuYOrbTP4kezxYKTHw"/>
+</div>
+<div class="relative z-20 max-w-5xl space-y-12 mt-20">
+<div class="space-y-6">
+<span class="font-label text-[10px] uppercase tracking-[0.6em] text-primary/80 block">Established 2024</span>
+<h1 class="text-8xl md:text-[10rem] font-headline italic text-primary leading-[0.85] tracking-tighter text-glow">
+                        The Elite<br/>Concierge
+                    </h1>
+</div>
+<p class="text-xl md:text-2xl text-on-surface-variant font-light max-w-xl leading-relaxed">
+                    A legacy of distinction. Bespoke automotive services tailored for the most discerning collectors and enthusiasts worldwide.
+                </p>
+</div>
+</section>
+<!-- Unified Services Grid Section -->
+<section class="py-48 px-12 max-w-[1600px] mx-auto relative overflow-hidden">
+<div class="mb-32 flex flex-col md:flex-row md:items-end justify-between gap-16 relative z-10">
+<div class="space-y-6">
+<span class="font-label text-[10px] uppercase tracking-[0.5em] text-primary/60 block">Curated Services</span>
+<h2 class="text-7xl md:text-9xl font-headline italic text-on-surface leading-[1.05] tracking-tight">Mastery of the <br/>Automotive Journey</h2>
+</div>
+<p class="text-on-surface-variant/70 max-w-md text-lg font-light leading-relaxed border-l border-primary/30 pl-10 mb-4">
+                    From acquisition to collection management, our comprehensive suite of services ensures every detail of your ownership is executed with absolute precision.
+                </p>
+</div>
+<!-- Cohesive Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1px bg-white/5 relative z-10 border border-white/5">
+<!-- Service 1: Leasing -->
+<div class="group relative h-[520px] overflow-hidden bg-surface-container-low transition-all duration-700">
+<img alt="Modern sports car" class="service-hover-image absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyQH7CcAW5cFZBc8Q1N3DXXukURhStnr3vxcRy2OQ7AekNacr-d6SCIuXo4Ne3gQzst9qoznIa9vOSYIfEou8sXwfUA9xd32-if7ZirRKZROYZkGvg9zbmLZauGJ7hf3YbL_xwINJT6z6Dc0GmHMObg2bUvPWH1FwHQxnhnpjoKKvsPlZekPuLA8P_fQFzZyfvWGELEbunK65PFa6tVFyxHBnQ68818tkBDUhJbLaJMlQeeszkIykdGycH5RE4gQ4fJwSnKqDQ2fk"/>
+<div class="relative z-20 p-14 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl opacity-60">directions_car</span>
+<div class="space-y-8">
+<h3 class="text-5xl font-headline italic text-on-surface group-hover:text-primary transition-colors duration-500">Leasing</h3>
+<p class="text-on-surface-variant/80 font-light leading-relaxed text-base">Drive a new masterpiece every season. Access premier global lender networks for optimal flexibility.</p>
+<a class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-primary pt-6 border-t border-white/10 w-full group-hover:border-primary/40 transition-colors duration-500" href="#">Explore Options <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Service 2: Financing -->
+<div class="group relative h-[520px] overflow-hidden bg-surface-container-low transition-all duration-700">
+<img alt="Luxury car in vault" class="service-hover-image absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC58j4FzVp2j0GAAM1vjMDLJ_eb5-XP-WaGq-m7eycKWmxK2OkdlkW1oeFmj-r8W5cM2kcNqtXPHyxJbnS15WJuExdZdEmb3jSnnSwEc8Jet3Dkf7VSLhWQHykwQamoytACPB7QoDggokOih37iiRkldmB3V6NiiRa0dxIkmXnUIFtc2rex4TrSqJm1vNXUtdQEX2G2sWLuhomtsiY1-g5LhcFZq4h8SnreWNYlExHIrQeNbUZgMRB6JK_XZYVfguMRdBB0wZQLuWE"/>
+<div class="relative z-20 p-14 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl opacity-60">account_balance</span>
+<div class="space-y-8">
+<h3 class="text-5xl font-headline italic text-on-surface group-hover:text-primary transition-colors duration-500">Financing</h3>
+<p class="text-on-surface-variant/80 font-light leading-relaxed text-base">Secure competitive rates through our elite private network, tailored to your unique financial portfolio.</p>
+<a class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-primary pt-6 border-t border-white/10 w-full group-hover:border-primary/40 transition-colors duration-500" href="#">Inquire Rates <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Service 3: Credit -->
+<div class="group relative h-[520px] overflow-hidden bg-surface-container-low transition-all duration-700">
+<div class="service-hover-image absolute inset-0 w-full h-full bg-primary/10"></div>
+<div class="relative z-20 p-14 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl opacity-60">verified_user</span>
+<div class="space-y-8">
+<h3 class="text-5xl font-headline italic text-on-surface group-hover:text-primary transition-colors duration-500">Credit</h3>
+<p class="text-on-surface-variant/80 font-light leading-relaxed text-base">A streamlined, secure process designed for high-net-worth clients. Personalized options within minutes.</p>
+<a class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-primary pt-6 border-t border-white/10 w-full group-hover:border-primary/40 transition-colors duration-500" href="#">Start Process <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Service 4: Sell/Trade -->
+<div class="group relative h-[520px] overflow-hidden bg-surface-container-low transition-all duration-700">
+<img alt="Steering wheel detail" class="service-hover-image absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBALHLdmFhBx4wxH-QvOjZdkBVtaUZm9zXlEQPTnPh7be1OHwyo2HBLOuRuHBha0GxEL71y31X-5Gh-LWml9-wbZw5AgPitf_KkKOIwNxclpFhc-uudS4tTw59Vl9_PuXeq_ZKGVsyNlSnvILRj0n27-djdaXaHH5ksz85Tv9HHK5nYQdUGGfX08aVHQk-6BRGC-_2j319P3TZ51sqAx8ORA64b_LHeZHktLaMJUYNRA0GHZ5KuUR3u3tmk9KfF3CfXjCr6wZXwya4"/>
+<div class="relative z-20 p-14 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl opacity-60">sell</span>
+<div class="space-y-8">
+<h3 class="text-5xl font-headline italic text-on-surface group-hover:text-primary transition-colors duration-500">Sell/Trade</h3>
+<p class="text-on-surface-variant/80 font-light leading-relaxed text-base">Direct acquisition and seamless transitions for rare assets. Fair, transparent valuations applied instantly.</p>
+<a class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-primary pt-6 border-t border-white/10 w-full group-hover:border-primary/40 transition-colors duration-500" href="#">Get Appraisal <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Service 5: Delivery -->
+<div class="group relative h-[520px] overflow-hidden bg-surface-container-low transition-all duration-700">
+<div class="service-hover-image absolute inset-0 w-full h-full bg-primary/10"></div>
+<div class="relative z-20 p-14 h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-3xl opacity-60">local_shipping</span>
+<span class="text-[9px] border border-primary/40 px-3 py-1 text-primary uppercase tracking-[0.2em] font-medium">White Glove</span>
+</div>
+<div class="space-y-8">
+<h3 class="text-5xl font-headline italic text-on-surface group-hover:text-primary transition-colors duration-500">Delivery</h3>
+<p class="text-on-surface-variant/80 font-light leading-relaxed text-base">Excellence delivered to your doorstep. Secure, nationwide transit handled by our specialized logistics team.</p>
+<a class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-primary pt-6 border-t border-white/10 w-full group-hover:border-primary/40 transition-colors duration-500" href="#">Schedule Delivery <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Service 6: Concierge -->
+<div class="group relative h-[520px] overflow-hidden bg-surface-container-low transition-all duration-700">
+<img alt="Modern car aesthetic" class="service-hover-image absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAvmytjGzXv6btYcrkuAh6UnOtZrQDfVGBzEf0hEjbtakZCOeRRr8AHRlP8Bc7PwJyAZzJkv60cREyoUNB0-vxW7AmFtRxNj100JjBmnb-sn_xIX7xwg_9-lyLdVyGW05gzQyPJwZf9CeXjacmTFBff9C2-Y1jZapIT0v7UPx2R9WyUV9Zs9tmammmbhlEqDUi2b2Y3Xq9dAX7Gd9aR2r_bED5Y-_kN1qmVFESLlmpgLq-K9jDNB8DCue_M6T-MNfXWP5KL6_sAI"/>
+<div class="relative z-20 p-14 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl opacity-60">support_agent</span>
+<div class="space-y-8">
+<h3 class="text-5xl font-headline italic text-on-surface group-hover:text-primary transition-colors duration-500">Concierge</h3>
+<p class="text-on-surface-variant/80 font-light leading-relaxed text-base">Our curators oversee every aspect of your automotive life, from sourcing limited editions to collection management.</p>
+<a class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-primary pt-6 border-t border-white/10 w-full group-hover:border-primary/40 transition-colors duration-500" href="#">Meet Your Curator <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bespoke Experience (The Invitation) -->
+<section class="py-56 px-12 bg-[#090909] relative overflow-hidden border-t border-white/5">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-32 relative z-10">
+<div class="flex-1 space-y-14">
+<div class="space-y-6">
+<span class="font-label text-[10px] uppercase tracking-[0.5em] text-primary block">The Inner Circle</span>
+<h2 class="text-8xl md:text-[9rem] font-headline italic text-on-surface leading-[0.9] tracking-tighter">Bespoke<br/>Experience</h2>
+</div>
+<p class="text-xl text-on-surface-variant leading-relaxed font-light max-w-xl">
+                        Our concierge team isn't just about sales—they are curators of a legacy. From sourcing elusive limited editions to managing global logistics, we offer attention that transcends the dealership model.
+                    </p>
+<div class="grid grid-cols-3 gap-16 border-t border-white/10 pt-16">
+<div class="space-y-3">
+<div class="text-5xl font-headline italic text-primary">24/7</div>
+<div class="font-label text-[9px] tracking-[0.3em] text-on-surface-variant/50 uppercase">Availability</div>
+</div>
+<div class="space-y-3">
+<div class="text-5xl font-headline italic text-primary">50+</div>
+<div class="font-label text-[9px] tracking-[0.3em] text-on-surface-variant/50 uppercase">Global Hubs</div>
+</div>
+<div class="space-y-3">
+<div class="text-5xl font-headline italic text-primary">Elite</div>
+<div class="font-label text-[9px] tracking-[0.3em] text-on-surface-variant/50 uppercase">Tier Status</div>
+</div>
+</div>
+<button class="group flex items-center gap-8 text-on-surface hover:text-primary transition-colors duration-500">
+<span class="text-[11px] uppercase tracking-[0.5em] font-medium">Inquire about membership</span>
+<span class="h-[1px] w-24 bg-primary/30 group-hover:w-40 transition-all duration-1000"></span>
+</button>
+</div>
+<div class="flex-1 relative">
+<div class="aspect-[4/5] rounded-sm overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] relative">
+<div class="absolute inset-0 bg-gradient-to-t from-[#090909] via-transparent to-transparent z-10"></div>
+<img alt="Collector lifestyle" class="w-full h-full object-cover grayscale-[20%] brightness-75 transition-transform duration-[3s] hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC58j4FzVp2j0GAAM1vjMDLJ_eb5-XP-WaGq-m7eycKWmxK2OkdlkW1oeFmj-r8W5cM2kcNqtXPHyxJbnS15WJuExdZdEmb3jSnnSwEc8Jet3Dkf7VSLhWQHykwQamoytACPB7QoDggokOih37iiRkldmB3V6NiiRa0dxIkmXnUIFtc2rex4TrSqJm1vNXUtdQEX2G2sWLuhomtsiY1-g5LhcFZq4h8SnreWNYlExHIrQeNbUZgMRB6JK_XZYVfguMRdBB0wZQLuWE"/>
+</div>
+<div class="absolute -bottom-16 -left-16 glass-card p-12 rounded-sm max-w-sm shadow-2xl z-20">
+<span class="material-symbols-outlined text-primary mb-8 text-4xl opacity-50">format_quote</span>
+<p class="text-2xl italic font-headline text-on-surface leading-relaxed">"The attention to detail was beyond anything I've experienced in thirty years of collecting."</p>
+<div class="mt-10 flex items-center gap-6">
+<div class="h-[1px] w-10 bg-primary/40"></div>
+<p class="text-[10px] font-label tracking-[0.4em] text-primary uppercase">Julian Vance, Collector</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-[#080808] border-t border-white/5 pt-32 pb-16 px-12">
+<div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24 mb-32">
+<div class="space-y-10">
+<div class="text-2xl font-headline font-bold text-primary tracking-tighter uppercase">Dream Drive Motors</div>
+<p class="text-on-surface-variant/60 text-[10px] font-light leading-loose max-w-xs uppercase tracking-[0.3em]">
+                    Defining the pinnacle of automotive excellence and concierge mastery since 2024.
+                </p>
+</div>
+<div class="space-y-8">
+<h4 class="font-headline italic text-primary text-base">Navigation</h4>
+<nav class="flex flex-col space-y-4">
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Collections</a>
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Services</a>
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Locations</a>
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Experience</a>
+</nav>
+</div>
+<div class="space-y-8">
+<h4 class="font-headline italic text-primary text-base">Legal</h4>
+<nav class="flex flex-col space-y-4">
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Privacy Policy</a>
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Terms of Service</a>
+<a class="text-on-surface/40 hover:text-primary transition-colors text-[10px] uppercase tracking-[0.25em]" href="#">Cookie Policy</a>
+</nav>
+</div>
+<div class="space-y-8">
+<h4 class="font-headline italic text-primary text-base">Journal</h4>
+<div class="relative group">
+<input class="bg-transparent border-b border-white/10 focus:border-primary focus:ring-0 text-[10px] w-full py-3 px-0 placeholder:text-on-surface-variant/30 transition-all uppercase tracking-[0.3em]" placeholder="EMAIL ADDRESS" type="email"/>
+<button class="absolute right-0 bottom-3 material-symbols-outlined text-on-surface-variant/40 hover:text-primary transition-colors text-lg">arrow_forward</button>
+</div>
+<p class="text-[9px] text-on-surface-variant/40 uppercase tracking-[0.2em] leading-relaxed">Join our private list for exclusive acquisition opportunities.</p>
+</div>
+</div>
+<div class="max-w-[1600px] mx-auto pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="font-body text-[9px] uppercase tracking-[0.3em] text-on-surface-variant/40">© 2024 Dream Drive Motors. The Art of the Drive.</p>
+<div class="flex gap-16">
+<span class="text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/30">Beverly Hills</span>
+<span class="text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/30">Miami</span>
+<span class="text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/30">Dubai</span>
+</div>
+</div>
+</footer>
+</body></html>

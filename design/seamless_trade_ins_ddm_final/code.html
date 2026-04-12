@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sell &amp; Trade | Dream Drive Motors</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#D4AF37",
+                    "on-primary": "#1c1b1b",
+                    "background": "#131313",
+                    "surface": "#131313",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container": "#201f1f",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-container-highest": "#353534",
+                    "on-surface": "#e5e2e1",
+                    "on-surface-variant": "#d0c5af",
+                    "outline": "#99907c",
+                    "outline-variant": "#4d4635"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .tonal-shift {
+            background: linear-gradient(180deg, #131313 0%, #1c1b1b 100%);
+        }
+        .monogram-watermark {
+            font-family: 'Newsreader';
+            font-size: 20vw;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+        .serif-italic { font-family: 'Newsreader', serif; font-style: italic; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="bg-[#131313]/90 backdrop-blur-xl fixed top-0 w-full z-50 tonal-shift shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-['Newsreader'] italic text-2xl tracking-tighter text-[#D4AF37]" href="#">DDM</a>
+<div class="hidden md:flex gap-8">
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-xs tracking-widest uppercase" href="#">Inventory</a>
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-xs tracking-widest uppercase" href="#">Leasing</a>
+<a class="text-[#D4AF37] border-b border-[#D4AF37] pb-1 font-semibold text-xs tracking-widest uppercase" href="#">Sell/Trade</a>
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-xs tracking-widest uppercase" href="#">About</a>
+<a class="text-[#e5e2e1]/70 hover:text-[#D4AF37] transition-all duration-300 text-xs tracking-widest uppercase" href="#">Concierge</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-high rounded-sm px-4 py-2 border border-outline-variant/15">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs text-on-surface placeholder-on-surface-variant w-48" placeholder="Search Inventory" type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#2a2a2a] hover:text-[#D4AF37] transition-all duration-500 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#D4AF37]">calendar_today</span>
+</button>
+<button class="hover:bg-[#2a2a2a] hover:text-[#D4AF37] transition-all duration-500 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#D4AF37]">person</span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-sm hover:scale-[0.98] transition-transform duration-200">
+                        Inquire
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="px-12 mb-32 relative overflow-hidden">
+<div class="absolute top-0 right-0 monogram-watermark text-outline-variant opacity-5 -z-10">DDM</div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-primary block mb-6">Concierge Trade-In Service</span>
+<h1 class="font-headline text-6xl md:text-8xl leading-tight mb-8">
+                        The Perfect <br/>
+<span class="text-primary serif-italic">Transition.</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-xl leading-relaxed font-light mb-12">
+                        Moving between masterpieces should be as effortless as the drive itself. Our Seamless Trade-In program ensures your legacy continues without interruption.
+                    </p>
+<div class="flex items-center gap-8">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-sm font-label uppercase tracking-widest text-xs font-bold shadow-lg shadow-primary/10 hover:brightness-110 transition-all">
+                            Evaluate My Collection
+                        </button>
+<div class="flex flex-col">
+<span class="text-primary font-headline text-2xl italic">Maximum Value</span>
+<span class="font-label text-[10px] uppercase tracking-widest opacity-60">Applied to your next acquisition</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[4/5] rounded-sm overflow-hidden shadow-2xl relative z-10 border border-outline-variant/20">
+<img alt="Modern black supercar in garage" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAwaSRz8C0gBiydlo2Clnb9-csTMYAxIpNMy9UNRdv85XiJCaSI0U9nBWdKqr8o3R0gfqK1QByX5oSLjwx2nsBYgXNoUTPboXVsLJHDNNRf2fzPDUkVi37-hsLYMdOfYkcJRsWCcRV7ti96paQAt1g522KOwa2_D8fpLASdRGdLnUBW0JEYYefDvuwla4wmBpiWnkjoF0J2h4HK6F5GteK2tGmvNI4ml0T65BdsO2nT1D5DcyipqYNbr55qFcrdUukfzKKujYynj8"/>
+</div>
+<div class="absolute -bottom-12 -left-12 w-2/3 aspect-square rounded-sm overflow-hidden shadow-2xl border-4 border-background z-20 hidden md:block">
+<img alt="Vintage silver car polishing" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9lRAUP9tHCiREIyko9dL7dFNgu44fCal4pAhOGg7ghldu22Hb5ubduae3Bg6k6Ny45eWLpzro9z8L8JA7XPMMfdbzcCGP173EPMScqMBHSzMcAEtb6kfnxHKU72t1vT06eWfkWvdwbdqEkh-pB6SvOwNIKlk-urhzHsnuS53R1JggQ0kF1lPXwv5Osrh8wagGG3mhIuOWF7tOjOJKwFzpkEWSP4RQu0olw_xaSZwYhjVi6I4bGIv1nf74cvImbOJ57Kl6S6mBxlQ"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Professional Valuation Section -->
+<section class="bg-surface-container-low py-32 px-12 border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
+<div class="space-y-16">
+<div>
+<h2 class="font-headline text-5xl mb-6">A Legacy <span class="serif-italic text-primary">Reimagined</span></h2>
+<p class="text-on-surface-variant leading-relaxed text-lg font-light">We don't just assess market data; we evaluate the provenance, condition, and soul of your vehicle. Our experts ensure that the value of your current asset is perfectly captured and translated into your next masterpiece.</p>
+</div>
+<div class="grid grid-cols-1 gap-12">
+<div class="group">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 flex items-center justify-center rounded-sm bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl mb-2 text-on-surface">Bespoke Appraisals</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">On-site evaluations by our master technicians, ensuring every nuance of your vehicle is accounted for.</p>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 flex items-center justify-center rounded-sm bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl mb-2 text-on-surface">Portfolio Integration</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Direct application of equity toward your new acquisition, simplifying the transactional complexity of luxury ownership.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-1 rounded-sm shadow-2xl border border-outline-variant/20">
+<div class="bg-surface-container p-10 space-y-8 rounded-sm">
+<h3 class="font-headline text-3xl font-light">Inquire for <span class="serif-italic text-primary">Valuation</span></h3>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Vehicle Identification</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm placeholder:opacity-30" placeholder="Year, Make &amp; Model" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Estimated Mileage</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm placeholder:opacity-30" placeholder="Current Odometer Reading" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Next Masterpiece Interest</label>
+<select class="w-full bg-surface-container-low border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm">
+<option>Select Inventory Category</option>
+<option>Modern Performance</option>
+<option>Vintage Heritage</option>
+<option>Bespoke Commissions</option>
+</select>
+</div>
+<button class="w-full bg-primary text-on-primary py-5 rounded-sm font-label uppercase tracking-widest text-xs font-black mt-4 hover:brightness-110 transition-all active:scale-[0.98]">
+                                    Request Private Consultation
+                                </button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid -->
+<section class="py-32 px-12">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="font-headline text-4xl mb-4 italic">The DDM Standard</h2>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Excellence in every detail</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 glass-panel rounded-sm p-12 flex flex-col justify-end relative overflow-hidden group border border-outline-variant/15">
+<img alt="Interior detail" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700 -z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwBO5fDC8cyas8_AojXKqhBPBPG7jATL2y8p0FswnOJodn4bZoFJnYBbyjPEAS_yy_n32Owawr6tV-k2fNYIPDiusR_v6gwSNLPFIMv-9kbENOeE8Rq-l03s1R3on1c-s7Yb5zN1sE3_57vQl4yeJonsZV8Tjqd5sws6Hn3zf_Zda7wJ-fUV7TVkYpHGwYtQ5_XXL3CX8cJjyMaxy3sRMKAE6G1recI7tf2OCtNf7nb90OSjiXPnRCtyRqIdippnWEV7YteKpyxak"/>
+<h4 class="font-headline text-3xl mb-4 italic text-on-surface">Unrivaled Market Knowledge</h4>
+<p class="text-sm text-on-surface-variant max-w-xs leading-relaxed">Our curators possess deep insights into global auction trends and private sale data to secure your vehicle's true worth.</p>
+</div>
+<div class="md:col-span-2 glass-panel rounded-sm p-8 flex items-center justify-between border border-outline-variant/15">
+<div class="max-w-xs">
+<h4 class="font-headline text-2xl mb-2 italic">Tax Efficiency</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Experience the financial advantages of trading in through DDM, leveraging legislative benefits for collection rotation.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-5xl opacity-30">account_balance</span>
+</div>
+<div class="md:col-span-1 glass-panel rounded-sm p-8 flex flex-col justify-center text-center space-y-4 border border-outline-variant/15">
+<span class="font-headline text-5xl text-primary font-light">24h</span>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Initial Valuation</p>
+</div>
+<div class="md:col-span-1 glass-panel rounded-sm p-8 flex flex-col justify-center text-center space-y-4 border border-outline-variant/15">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Certified Integrity</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial -->
+<section class="py-32 px-12 tonal-shift border-y border-outline-variant/15">
+<div class="max-w-4xl mx-auto text-center">
+<span class="material-symbols-outlined text-primary text-6xl mb-8" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="font-headline text-3xl md:text-5xl italic leading-tight mb-12 text-on-surface">
+                    "Dream Drive Motors understands that a collection is dynamic. They didn't just buy my car; they facilitated the evolution of my passion."
+                </blockquote>
+<cite class="not-italic">
+<span class="font-label text-xs uppercase tracking-widest block text-primary font-bold">Lord Julian Sterling</span>
+<span class="font-label text-[10px] uppercase tracking-widest opacity-40">Private Collector</span>
+</cite>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0e0e0e] border-t border-[#4d4635]/15">
+<div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 w-full max-w-screen-2xl mx-auto gap-8">
+<div class="space-y-6">
+<a class="text-[#D4AF37] font-['Newsreader'] italic text-3xl" href="#">DREAM DRIVE MOTORS</a>
+<p class="text-[#e5e2e1]/60 text-xs tracking-widest uppercase max-w-xs">The gold standard in pre-owned automotive excellence and bespoke financial services.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-4">
+<span class="text-[10px] tracking-widest uppercase text-primary font-bold">Contact</span>
+<ul class="space-y-2">
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">15132 Arrow Hwy Baldwin Park</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">concierge@dreamdrive.com</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">626-257-4368</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<span class="text-[10px] tracking-widest uppercase text-primary font-bold">Services</span>
+<ul class="space-y-2">
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">Inventory</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">Leasing</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">Sell/Trade</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<span class="text-[10px] tracking-widest uppercase text-primary font-bold">Legal</span>
+<ul class="space-y-2">
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">Privacy Policy</a></li>
+<li><a class="text-[#e5e2e1]/60 hover:text-[#D4AF37] text-xs transition-all duration-700" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-outline-variant/10 text-center">
+<span class="text-[#e5e2e1]/30 text-[10px] tracking-widest uppercase">© 2024 DREAM DRIVE MOTORS. CURATED EXCELLENCE.</span>
+</div>
+</footer>
+</body></html>
