@@ -12,15 +12,11 @@ export const metadata: Metadata = {
     "Experience an elite handover ceremony conducted with surgical precision, ensuring your vehicle arrives in showroom-fresh condition.",
 };
 
-// Image URLs from design
-const HERO_BG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDcEEa24-3Xhh63XdV9XwZOy5ot1bIOyWga021UVKpPSSe2u_XoWl_WkyJmVCKgaV5jTIUPVIDjStWOwnekYLHdNFp63l2V8pQqP_WVHVAn-SRWef32ALEK4xblitswdj0cJnb97qSF5mNihOrDWCSgk5bnT3entq7X8rP06O3S-JljZNHsXjMYIeuepC_sIGacweJV23e2cpFYEGj--5IoVaRSh-EpAwzUHMt2Ir8E4LjXlLxMe27PskrZ9Ae7yJyL7lQaYzAkWME";
-const CEREMONY_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAhnLhoc18Z4qkwZ1OCglPjT1Ekn9AhCS3giPQtAvp3YkEteXOwDZ9HvXMV6vExd0ihe-s0wVsrb5SRAg8c6hRXrYrnlryAJI1mlqSIRjg7zMW1XN3zfRpLvTbJEZSAZd9Xy8x5bbj_AjXtDmgBRWWES3msHx9ixMs-7gD2wtYuuyTRT2OC6-7krW7ch4RTgtw7yDofvp25cOiOW2m1Do2dx02blt0FPu6JxIcDOTQog-Q75bkD84oMpeIn56a6tUiLdn1kQf5-W6k";
-const ECOSYSTEM_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD67d8dWIAp2javGtb5nku6JKtnBafW5nWa9mFvUzfU-t6jX6eHoB86fhzxasC2vd5TvApMqOMLzUIUfX1W78WqVUdpkGilXlov6tnSQzYiuK43D43TyV4btO4OYX3sdqGU84s4GWssW5z6xryjEOxZHiWoyax_hBOy_RaMnasLFEOJWAH9SBnkB-y4mMJ5e6xJ_KFGgIwP9GTZuGqP7Vf_VA-JuCeB-1T3P-ruZOwakGMv2-rllakLnstl6CgMiIMNaLT2AZpxsqA";
-const GLOBE_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDujiWH0eXyDv7BnkH17MDO2wU2npHzG9Wj1CgtcLCbYAn-OjGMUczSAsJ2-HM3I5Lux6lrM7aAZeibj_WaUzN_PSGTnTb1u-CjgRZzP2TWkkFUsOwFfmmhW1js6MRmsACSuJW61wsfGTXucoQTucl_tlx5AaI8Fz2k7EcNMFZZqXujNxNPe2tI0sO_VdjIzQb9c_3Oc0aExKRuQ6l2bL7Pvc8eE4Ty0tYHD_3o_O60MKxGvrW2XHrUg2uloa00-_osOshCf_4xph8";
+// Local high-res images
+const HERO_BG = "/images/garage/supercar-showroom.jpg";
+const CEREMONY_IMG = "/images/garage/lambo-aventador.jpg";
+const ECOSYSTEM_IMG = "/images/garage/bmw-ix3.jpg";
+const GLOBE_IMG = "/images/garage/mercedes-rear.jpg";
 
 export default function DeliveryPage() {
   return (
@@ -37,7 +33,7 @@ export default function DeliveryPage() {
             quality={90}
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
@@ -57,7 +53,7 @@ export default function DeliveryPage() {
       </section>
 
       {/* Handover Experience Bento */}
-      <section className="py-40 px-6 md:px-12 bg-surface">
+      <section className="py-40 px-6 md:px-12 bg-black">
         <ScrollReveal className="mb-24">
           <h2 className="text-5xl font-headline italic text-on-surface mb-6">
             The Handover Experience
@@ -67,7 +63,7 @@ export default function DeliveryPage() {
 
         <StaggerReveal className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Main Ceremony Card */}
-          <div className="md:col-span-8 bg-surface-container-low rounded-xl overflow-hidden border border-white/5 group">
+          <div className="md:col-span-8 bg-black rounded-xl overflow-hidden border border-white/5 group">
             <div className="grid md:grid-cols-2 h-full">
               <div className="p-16 flex flex-col justify-center">
                 <span className="material-symbols-outlined text-primary text-5xl mb-8">
@@ -97,7 +93,7 @@ export default function DeliveryPage() {
           </div>
 
           {/* Punctuality Card */}
-          <div className="md:col-span-4 bg-surface-container-high p-16 rounded-xl border border-white/5 flex flex-col justify-between">
+          <div className="md:col-span-4 bg-black p-16 rounded-xl border border-white/5 flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-headline italic mb-6">
                 Absolute Punctuality
@@ -121,7 +117,7 @@ export default function DeliveryPage() {
           </div>
 
           {/* Atmosphere Card */}
-          <div className="md:col-span-4 bg-surface-container-lowest p-16 rounded-xl relative overflow-hidden group border border-white/5">
+          <div className="md:col-span-4 bg-black p-16 rounded-xl relative overflow-hidden group border border-white/5">
             <div className="relative z-10">
               <h3 className="text-2xl font-headline italic mb-6">
                 Controlled Atmosphere
@@ -138,7 +134,7 @@ export default function DeliveryPage() {
           </div>
 
           {/* Ecosystem Card */}
-          <div className="md:col-span-8 bg-surface-container rounded-xl flex flex-col md:flex-row items-center p-12 md:p-16 gap-16 border border-white/5">
+          <div className="md:col-span-8 bg-black rounded-xl flex flex-col md:flex-row items-center p-12 md:p-16 gap-16 border border-white/5">
             <div className="w-full md:w-2/5 relative aspect-video md:aspect-square">
               <Image
                 src={ECOSYSTEM_IMG}
@@ -174,7 +170,7 @@ export default function DeliveryPage() {
       </section>
 
       {/* Sovereign Logistics Section */}
-      <section className="py-40 bg-surface-container-low relative overflow-hidden">
+      <section className="py-40 bg-black relative overflow-hidden">
         <div className="px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
           <ScrollReveal>
             <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">

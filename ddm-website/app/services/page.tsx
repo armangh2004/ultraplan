@@ -14,22 +14,16 @@ export const metadata: Metadata = {
     "Explore Dream Drive Motors' full suite of bespoke automotive services — leasing, financing, credit assistance, trade-ins, nationwide delivery, and dedicated concierge.",
 };
 
-// Image URLs from design
-const HERO_BG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDY987_pGqbODun7jeqrkyotfW5_z0iPcNKFAagNjeWUA7KlQhrSgl8PrRtAoxRf0NedFn7wflcjrDFkGSWwjZsBBlZ3-wbYYakcb1rVg1rcwu0Sugcaz_2gyME5WponVycM81PB_sIW-9tUZgV-LyIfLIH3LVF8JoYigLC1SaE-EbJ6UbastSP4pRq6toKwM7RG-Uzd2jCjkP-7Z85fuKWiuBvavuwWuMOOF8mPwN50_VijIpjtjZ_Va3VzOuYOrbTP4kezxYKTHw";
-const BESPOKE_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuC58j4FzVp2j0GAAM1vjMDLJ_eb5-XP-WaGq-m7eycKWmxK2OkdlkW1oeFmj-r8W5cM2kcNqtXPHyxJbnS15WJuExdZdEmb3jSnnSwEc8Jet3Dkf7VSLhWQHykwQamoytACPB7QoDggokOih37iiRkldmB3V6NiiRa0dxIkmXnUIFtc2rex4TrSqJm1vNXUtdQEX2G2sWLuhomtsiY1-g5LhcFZq4h8SnreWNYlExHIrQeNbUZgMRB6JK_XZYVfguMRdBB0wZQLuWE";
+// Local high-res image paths
+const HERO_BG = "/images/garage/gt3rs-showroom.jpg";
+const BESPOKE_IMG = "/images/garage/ferrari-classic.jpg";
 
 // Background images for service cards
 const SERVICE_BG: Record<string, string> = {
-  Leasing:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDyQH7CcAW5cFZBc8Q1N3DXXukURhStnr3vxcRy2OQ7AekNacr-d6SCIuXo4Ne3gQzst9qoznIa9vOSYIfEou8sXwfUA9xd32-if7ZirRKZROYZkGvg9zbmLZauGJ7hf3YbL_xwINJT6z6Dc0GmHMObg2bUvPWH1FwHQxnhnpjoKKvsPlZekPuLA8P_fQFzZyfvWGELEbunK65PFa6tVFyxHBnQ68818tkBDUhJbLaJMlQeeszkIykdGycH5RE4gQ4fJwSnKqDQ2fk",
-  Financing:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuC58j4FzVp2j0GAAM1vjMDLJ_eb5-XP-WaGq-m7eycKWmxK2OkdlkW1oeFmj-r8W5cM2kcNqtXPHyxJbnS15WJuExdZdEmb3jSnnSwEc8Jet3Dkf7VSLhWQHykwQamoytACPB7QoDggokOih37iiRkldmB3V6NiiRa0dxIkmXnUIFtc2rex4TrSqJm1vNXUtdQEX2G2sWLuhomtsiY1-g5LhcFZq4h8SnreWNYlExHIrQeNbUZgMRB6JK_XZYVfguMRdBB0wZQLuWE",
-  "Sell / Trade-In":
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBALHLdmFhBx4wxH-QvOjZdkBVtaUZm9zXlEQPTnPh7be1OHwyo2HBLOuRuHBha0GxEL71y31X-5Gh-LWml9-wbZw5AgPitf_KkKOIwNxclpFhc-uudS4tTw59Vl9_PuXeq_ZKGVsyNlSnvILRj0n27-djdaXaHH5ksz85Tv9HHK5nYQdUGGfX08aVHQk-6BRGC-_2j319P3TZ51sqAx8ORA64b_LHeZHktLaMJUYNRA0GHZ5KuUR3u3tmk9KfF3CfXjCr6wZXwya4",
-  Concierge:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDGAvmytjGzXv6btYcrkuAh6UnOtZrQDfVGBzEf0hEjbtakZCOeRRr8AHRlP8Bc7PwJyAZzJkv60cREyoUNB0-vxW7AmFtRxNj100JjBmnb-sn_xIX7xwg_9-lyLdVyGW05gzQyPJwZf9CeXjacmTFBff9C2-Y1jZapIT0v7UPx2R9WyUV9Zs9tmammmbhlEqDUi2b2Y3Xq9dAX7Gd9aR2r_bED5Y-_kN1qmVFESLlmpgLq-K9jDNB8DCue_M6T-MNfXWP5KL6_sAI",
+  Leasing: "/images/garage/porsche-headlights.jpg",
+  Financing: "/images/garage/bmw-ix3.jpg",
+  "Sell / Trade-In": "/images/garage/dodge-challenger.jpg",
+  Concierge: "/images/garage/mercedes-rear.jpg",
 };
 
 export default function ServicesPage() {
@@ -38,7 +32,7 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="relative h-[95vh] flex items-center px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent z-10" />
           <div className="absolute inset-0 bg-black/40 z-10" />
           <Image
             src={HERO_BG}
@@ -105,7 +99,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Bespoke Experience Section */}
-      <section className="py-56 px-6 md:px-12 bg-surface-container-lowest relative overflow-hidden border-t border-white/5">
+      <section className="py-56 px-6 md:px-12 bg-black relative overflow-hidden border-t border-white/5">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-32 relative z-10">
@@ -162,7 +156,7 @@ export default function ServicesPage() {
 
           <ScrollReveal direction="right" className="flex-1 relative">
             <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
               <Image
                 src={BESPOKE_IMG}
                 alt="Collector lifestyle"

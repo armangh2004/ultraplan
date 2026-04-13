@@ -6,10 +6,9 @@ import ScrollReveal from "@/components/animation/ScrollReveal";
 import StaggerReveal from "@/components/animation/StaggerReveal";
 import TextSplit from "@/components/animation/TextSplit";
 import NumberCounter from "@/components/animation/NumberCounter";
-import ParallaxImage from "@/components/animation/ParallaxImage";
-import MonogramOverlay from "@/components/ui/MonogramOverlay";
 import Button from "@/components/ui/Button";
 import CTASection from "@/components/sections/CTASection";
+import HeroLambo from "@/components/sections/HeroLambo";
 
 export const metadata: Metadata = {
   title: "Dream Drive Motors | Curated Automotive Excellence",
@@ -17,37 +16,12 @@ export const metadata: Metadata = {
     "The gold standard in pre-owned automotive excellence and bespoke financial services. Explore our curated collection of luxury vehicles.",
 };
 
-// Image URLs
-const HERO_BG =
-  "https://res.cloudinary.com/dpcw7jj8i/image/upload/wp9273586_fatkge.jpg";
-const SHOWROOM_IMG =
-  "https://res.cloudinary.com/dpcw7jj8i/image/upload/pexels-svjae-3764984_hhvah5.jpg";
+// ─── High-res local images ───
+const ABOUT_IMG = "/images/garage/porsche-headlights.jpg";
+const CURATED_IMG = "/images/garage/ferrari-classic.jpg";
+const ELITE_IMG = "/images/garage/bmw-ix3.jpg";
 
-// ─── Category showcase data ───
-const CATEGORIES = [
-  {
-    name: "Exotic",
-    highlight: "Coupes",
-    makes: "Lamborghini · Ferrari · Porsche",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBz1VKO7PPNLCY77sBOvIH-61n9xGWD2A25brleceAk-ZJBqK1zObAR2cDRP39wtH1UoMvS1tXwhPGsTP99yOdP4RxdI9C-q6vGM-dbF463n3ZegstH1UYhaIdm68v4j0iIw5ktcMVsNGjhlO9XDx_4F_x2nuHwbOxsYZF0ahMQ8wPitKE6j9f60teq3HBZTsHhWjmUt57OUue9SrPHDIg9OcdO2QmqBStyEz0mEhcyogtOjGCICzxVl99YdPbaNM3-BGgdfXyaeic",
-  },
-  {
-    name: "Luxury",
-    highlight: "SUVs",
-    makes: "Range Rover · G-Class · Escalade",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDu5ETpZhnNP6d9fDgiXrlVAgzsnNKuHEeTf0rX9VjHaELosqs40jVcGlxfG1lpdKAryMDpV2xD6_glRsn5ws7ujoaDq2a5drVEtUEJZXhtlBcbFQM-68NFiz6t_-72n-1OJaCoaX8BoQtMgVfAgsdsyUf2nn0jT0zLSguvMeTjOEAzYgjPQdwJS-tSWMQcvNF8XMrhDTkccTlh3fESDFkjARPFhDV3kQoqJDif5CtsurLvrrxlGmgybCn2EgGMJX7Ro6L7aMdmvrs",
-  },
-  {
-    name: "Performance",
-    highlight: "Sedans",
-    makes: "Mercedes S-Class · BMW M5 · Panamera",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBVeDPBTHrXZQtmz7rvkROGmpSJ5ZBBiCawmniuHAWThHGFbZOpulcKxMolcJPMz8pEkOY7XqrzLTWZncTvFfOszXXDilCJKMk2IPUbarFqU5JbGJ9d3YzCWf9CCoaAmOH2W8OXh1JG5uu9dIUqqRwtlsmbhpFy6Yz3T2an4naqYeWfdw3EA5OVG_gAIzvM4cJuHx81f1hqgDJjgTY8FZf6S6yePldIaWijA3-mLdB2GBR-djpQksguT-HFkA_PQnBlj4e1QNKNPgI",
-  },
-];
-
+// ─── Data ───
 const DDM_FEATURES = [
   {
     icon: "verified",
@@ -76,8 +50,7 @@ const HOMEPAGE_SERVICES = [
       "Flexible lease programs with competitive rates, crafted for clients who demand both performance and financial agility.",
     icon: "directions_car",
     href: "/services/leasing",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCXVP6rMNleQeRlFOjCRUV6WUG2KHKNHLfQTkJTwLjcfTP8R39sTFmrzD6i23S9CfImYQQMEmLKtstbmC5IMIbUvFSlex0ibsHudZ6zek9G9cpcmDfMnNaNSgGWVdGurFWttPTDclWOZCxPt9AukvAf7ddFJ3eNA2YE8j6oOfvRhGWn16AQEDozFvkIWGlfymCgABMKty6yeXyUk7pnqp_8XxrtHA4gIblapToBncAr8feWuod1QLHnOL3akz-8sifHfiJcjrBtAYw",
+    image: "/images/garage/lambo-aventador.jpg",
   },
   {
     title: "Auto Financing",
@@ -85,8 +58,7 @@ const HOMEPAGE_SERVICES = [
       "Precision-structured financing solutions designed to complement your lifestyle and investment strategy.",
     icon: "account_balance",
     href: "/services/financing",
-    image:
-      "https://res.cloudinary.com/dpcw7jj8i/image/upload/wp9015733_lzfnlo.jpg",
+    image: "/images/garage/porsche-headlights.jpg",
   },
   {
     title: "Credit Application",
@@ -94,8 +66,7 @@ const HOMEPAGE_SERVICES = [
       "Discreet, accelerated processing through our streamlined credit pathway. Expert guidance at every step.",
     icon: "verified_user",
     href: "/services/credit-info",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBVeDPBTHrXZQtmz7rvkROGmpSJ5ZBBiCawmniuHAWThHGFbZOpulcKxMolcJPMz8pEkOY7XqrzLTWZncTvFfOszXXDilCJKMk2IPUbarFqU5JbGJ9d3YzCWf9CCoaAmOH2W8OXh1JG5uu9dIUqqRwtlsmbhpFy6Yz3T2an4naqYeWfdw3EA5OVG_gAIzvM4cJuHx81f1hqgDJjgTY8FZf6S6yePldIaWijA3-mLdB2GBR-djpQksguT-HFkA_PQnBlj4e1QNKNPgI",
+    image: "/images/garage/mclaren-artura.jpg",
   },
   {
     title: "Sell Your Car",
@@ -103,8 +74,7 @@ const HOMEPAGE_SERVICES = [
       "Receive an immediate, no-obligation offer through our direct acquisition program. No listing delays.",
     icon: "sell",
     href: "/services/acquisition",
-    image:
-      "https://res.cloudinary.com/dpcw7jj8i/image/upload/pexels-svjae-3764984_hhvah5.jpg",
+    image: "/images/garage/gt3rs-showroom.jpg",
   },
   {
     title: "Trade-Ins",
@@ -112,8 +82,7 @@ const HOMEPAGE_SERVICES = [
       "Premium valuations for your current vehicle. A seamless transition to your next chapter with DDM.",
     icon: "swap_horiz",
     href: "/services/trade-in",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBG2MCM9ciuVU6jvMVBnRNlfW4kifQS2RBS6CjztM2xulCjl6IoYHU0kmTGzpUwjhzNxBTQPFKO_eKfgFHaPtgjkhCc6bx6Epz8585uYOFiTK1Z3jfxkLtw7JRxsL1zX7KUczi-Pddm3Ibq9wNgzFM_xXAyw2Dc57wvqYT7ng36ywImNzACHyWRGqzZIQ_vkqaWAzN-uKE_2JvG68YncFMj15wuj9j-Wt7kMyuKdq7ZseGgODQtezQHuJMqyorDMuOBxdqJCli58Vw",
+    image: "/images/garage/ferrari-f8.jpg",
   },
   {
     title: "Home Delivery",
@@ -121,8 +90,7 @@ const HOMEPAGE_SERVICES = [
       "White-glove enclosed transport to your doorstep, anywhere in the continental United States.",
     icon: "local_shipping",
     href: "/services/delivery",
-    image:
-      "https://res.cloudinary.com/dpcw7jj8i/image/upload/wp9273586_fatkge.jpg",
+    image: "/images/garage/dodge-challenger.jpg",
   },
 ];
 
@@ -135,118 +103,103 @@ const STATS = [
 export default function HomePage() {
   return (
     <>
-      {/* ─── Hero Section — CSS parallax background ─── */}
-      <header className="relative w-full min-h-screen flex items-center overflow-hidden">
-        {/* Parallax background via CSS background-attachment: fixed */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url('${HERO_BG}')`,
-            backgroundAttachment: "fixed",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0 z-[1]"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.25) 100%)",
-          }}
-        />
+      {/* ─── Hero Section ─── */}
+      <header className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+        {/* Lambo background — cinematic reveal */}
+        <HeroLambo />
 
-        {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 py-32">
-          <div className="max-w-[700px]">
-            {/* Pulsing badge */}
-            <div className="inline-flex items-center gap-2 border border-primary/50 px-4 py-1.5 mb-8 text-[11px] tracking-[0.2em] uppercase text-primary backdrop-blur-sm bg-black/30">
+        {/* Hero Content — sits on top of the lambo */}
+        <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 pt-32 pb-8 text-center">
+          {/* Pulsing badge */}
+          <ScrollReveal>
+            <div className="inline-flex items-center gap-2 border border-primary/40 px-5 py-2 mb-10 text-[10px] tracking-[0.25em] uppercase text-primary/90">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Baldwin Park, CA · Est. 2026
             </div>
+          </ScrollReveal>
 
-            <TextSplit
-              as="h1"
-              className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6"
-              splitBy="words"
-              staggerDelay={0.08}
-              duration={1}
-            >
-              Drive Your Ambition.
-            </TextSplit>
+          <TextSplit
+            as="h1"
+            className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6"
+            splitBy="words"
+            staggerDelay={0.08}
+            duration={1}
+          >
+            Drive Your Ambition.
+          </TextSplit>
 
-            <p
-              className="font-body text-lg text-white/80 mb-10 max-w-[520px] leading-relaxed font-light"
-              style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
-            >
+          <ScrollReveal delay={0.3}>
+            <p className="font-body text-lg md:text-xl text-white/50 mb-12 max-w-[580px] mx-auto leading-relaxed font-light">
               Premium auto leasing and sales made simple. Flexible financing,
-              transparent process, and the keys to your dream car — all from
-              one trusted dealership.
+              transparent process, and the keys to your dream car.
             </p>
+          </ScrollReveal>
 
-            <div className="flex gap-4 flex-wrap">
+          <ScrollReveal delay={0.4}>
+            <div className="flex gap-5 flex-wrap justify-center">
               <Button href="/inventory" variant="primary" size="md">
                 Explore Collection
               </Button>
               <Link
                 href="/services"
-                className="inline-flex items-center px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white border border-white/50 bg-black/30 backdrop-blur-sm hover:border-primary hover:text-primary transition-all duration-200"
+                className="inline-flex items-center px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white/70 border border-white/20 hover:border-primary/60 hover:text-primary transition-all duration-500"
               >
                 Our Services
               </Link>
             </div>
+          </ScrollReveal>
 
-            {/* Hero Stats */}
-            <div className="flex gap-12 mt-16 pt-8 border-t border-primary/30 flex-wrap">
+          {/* Hero Stats */}
+          <ScrollReveal delay={0.5}>
+            <div className="flex gap-12 mt-16 justify-center flex-wrap">
               <div>
                 <div className="font-headline text-3xl text-primary font-bold">
                   500+
                 </div>
-                <div className="text-[11px] tracking-[0.12em] uppercase text-white/60 mt-1">
+                <div className="text-[10px] tracking-[0.15em] uppercase text-white/40 mt-1">
                   Happy Customers
                 </div>
               </div>
+              <div className="w-px bg-white/[0.06]" />
               <div>
                 <div className="font-headline text-3xl text-primary font-bold">
                   All
                 </div>
-                <div className="text-[11px] tracking-[0.12em] uppercase text-white/60 mt-1">
+                <div className="text-[10px] tracking-[0.15em] uppercase text-white/40 mt-1">
                   Credit Types Welcome
                 </div>
               </div>
+              <div className="w-px bg-white/[0.06]" />
               <div>
                 <div className="font-headline text-3xl text-primary font-bold">
                   Fast
                 </div>
-                <div className="text-[11px] tracking-[0.12em] uppercase text-white/60 mt-1">
+                <div className="text-[10px] tracking-[0.15em] uppercase text-white/40 mt-1">
                   Same-Day Approval
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
-        {/* Bottom gradient fade into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 z-[2] bg-gradient-to-t from-background to-transparent" />
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 z-[2] bg-gradient-to-t from-black to-transparent" />
       </header>
 
-      {/* ─── Company Overview ─── */}
-      <section className="py-32 md:py-40 bg-background/80 relative overflow-hidden">
-        <MonogramOverlay
-          className="absolute bottom-0 left-0 p-24"
-          opacity={0.025}
-          size="text-[24rem]"
-        />
+      {/* ─── About DDM — 65% text left / 35% image right ─── */}
+      <section className="py-28 md:py-40 bg-black relative overflow-hidden">
+        {/* Decorative gold line accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            {/* Left — Heading */}
-            <div className="lg:col-span-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            {/* Left — Text (65%) */}
+            <div className="lg:col-span-7">
               <ScrollReveal>
-                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary mb-8 block">
+                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-8 block">
                   About Dream Drive Motors
                 </span>
-                <h2 className="font-headline text-5xl lg:text-6xl leading-[1.1] tracking-tight">
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8">
                   The Gold Standard in{" "}
                   <br className="hidden lg:block" />
                   <span className="serif-italic text-primary">
@@ -254,30 +207,25 @@ export default function HomePage() {
                   </span>
                 </h2>
               </ScrollReveal>
-            </div>
 
-            {/* Right — Body + Stats */}
-            <div className="lg:col-span-6 lg:col-start-7">
               <ScrollReveal delay={0.1}>
-                <p className="text-on-surface-variant text-base md:text-lg leading-relaxed mb-6">
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-5 max-w-[600px]">
                   Dream Drive Motors is not a dealership — it is a private
                   automotive atelier. We source, authenticate, and curate only
                   the most exceptional pre-owned luxury and performance vehicles
                   for collectors and enthusiasts who refuse to compromise.
                 </p>
-                <p className="text-on-surface-variant text-base md:text-lg leading-relaxed mb-16">
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-16 max-w-[600px]">
                   From our Baldwin Park gallery to your doorstep, every
                   interaction is defined by discretion, precision, and an
-                  unwavering commitment to excellence. Our concierge team handles
-                  everything — from bespoke leasing structures to enclosed
-                  nationwide delivery.
+                  unwavering commitment to excellence.
                 </p>
               </ScrollReveal>
 
               {/* Stats Row */}
-              <StaggerReveal className="grid grid-cols-3 gap-8">
+              <StaggerReveal className="grid grid-cols-3 gap-8 border-t border-white/[0.06] pt-10">
                 {STATS.map((stat) => (
-                  <div key={stat.label} className="text-center lg:text-left">
+                  <div key={stat.label}>
                     <div className="font-headline text-4xl lg:text-5xl text-on-surface mb-2 tracking-tight">
                       <NumberCounter
                         end={stat.end}
@@ -285,155 +233,131 @@ export default function HomePage() {
                         duration={2.5}
                       />
                     </div>
-                    <span className="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant">
+                    <span className="font-label text-[9px] tracking-[0.25em] uppercase text-white/35">
                       {stat.label}
                     </span>
                   </div>
                 ))}
               </StaggerReveal>
             </div>
+
+            {/* Right — Porsche Image (35%) with seamless blending */}
+            <ScrollReveal direction="right" className="lg:col-span-5">
+              <div className="relative w-full h-[450px] lg:h-[620px] overflow-hidden">
+                <Image
+                  src={ABOUT_IMG}
+                  alt="Porsche headlights in darkness"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  quality={90}
+                />
+                {/* Seamless edge fade to black */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: [
+                      "linear-gradient(to bottom, black 0%, transparent 12%, transparent 85%, black 100%)",
+                      "linear-gradient(to right, black 0%, transparent 12%, transparent 85%, black 100%)",
+                    ].join(", "),
+                  }}
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface to-transparent" />
       </section>
 
-      {/* ─── Curated Selection — Category Cards ─── */}
-      <section className="py-32 bg-surface/90 relative">
+      {/* ─── Curated Selection — image left / text right ─── */}
+      <section className="py-28 md:py-40 bg-black relative">
+        {/* Decorative gold line accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <ScrollReveal>
-            <div className="flex justify-between items-end mb-16">
-              <div>
-                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary mb-6 block">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            {/* Left — Ferrari Image with seamless blending */}
+            <ScrollReveal direction="left" className="lg:col-span-5 order-2 lg:order-1">
+              <div className="relative w-full h-[450px] lg:h-[620px] overflow-hidden">
+                <Image
+                  src={CURATED_IMG}
+                  alt="Ferrari in dark showroom"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  quality={90}
+                />
+                {/* Seamless edge fade to black */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: [
+                      "linear-gradient(to bottom, black 0%, transparent 12%, transparent 85%, black 100%)",
+                      "linear-gradient(to right, black 0%, transparent 12%, transparent 85%, black 100%)",
+                    ].join(", "),
+                  }}
+                />
+              </div>
+            </ScrollReveal>
+
+            {/* Right — Text */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <ScrollReveal>
+                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-8 block">
                   Our Collection
                 </span>
-                <h2 className="font-headline text-5xl mb-4 text-on-surface">
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-6 text-on-surface leading-[1.1]">
                   Curated{" "}
                   <span className="serif-italic text-primary">Selection</span>
                 </h2>
-                <p className="text-on-surface-variant text-sm tracking-wide">
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-5 max-w-[540px]">
                   We source the world&apos;s finest automobiles across every
-                  category.
+                  category — from exotic coupes and luxury SUVs to performance
+                  sedans and grand tourers.
                 </p>
-              </div>
-              <Link
-                href="/inventory"
-                className="text-primary text-[10px] uppercase font-bold tracking-[0.2em] border-b border-primary pb-1 hover:text-on-surface hover:border-on-surface transition-all hidden md:inline-block"
-              >
-                View Full Collection
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          {/* Category Bento Grid */}
-          <ScrollReveal delay={0.15}>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto lg:h-[700px]">
-              {/* Featured — Exotic Coupes */}
-              <Link
-                href="/inventory"
-                className="md:col-span-7 relative overflow-hidden rounded-sm group block h-[400px] lg:h-full"
-              >
-                <Image
-                  src={CATEGORIES[0].image}
-                  alt={`${CATEGORIES[0].name} ${CATEGORIES[0].highlight}`}
-                  fill
-                  className="object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 58vw"
-                  quality={85}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-                  <span className="font-label text-[10px] tracking-[0.3em] uppercase text-primary mb-3 block">
-                    {CATEGORIES[0].makes}
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-12 max-w-[540px]">
+                  Every vehicle in our collection is hand-selected for its
+                  provenance, condition, and desirability. We work with a global
+                  network of collectors and dealers to bring you options that
+                  never reach the open market.
+                </p>
+                <Link
+                  href="/inventory"
+                  className="group inline-flex items-center text-primary font-bold text-[10px] uppercase tracking-widest gap-2 hover:gap-4 transition-all duration-500"
+                >
+                  <span className="border-b border-primary/40 group-hover:border-primary pb-1 transition-colors duration-500">
+                    View Full Collection
                   </span>
-                  <h3 className="font-headline text-4xl md:text-5xl text-white mb-2">
-                    {CATEGORIES[0].name}{" "}
-                    <span className="serif-italic text-primary">
-                      {CATEGORIES[0].highlight}
-                    </span>
-                  </h3>
-                  <span className="inline-flex items-center text-primary font-bold text-[10px] uppercase tracking-widest gap-2 group-hover:gap-4 transition-all duration-300 mt-4">
-                    Explore{" "}
-                    <span className="material-symbols-outlined text-sm">
-                      arrow_forward
-                    </span>
+                  <span className="material-symbols-outlined text-sm">
+                    arrow_forward
                   </span>
-                </div>
-              </Link>
-
-              {/* Compact cards — SUVs & Sedans */}
-              <div className="md:col-span-5 flex flex-col gap-4">
-                {CATEGORIES.slice(1).map((cat) => (
-                  <Link
-                    key={cat.name}
-                    href="/inventory"
-                    className="relative overflow-hidden rounded-sm group block flex-1 min-h-[220px]"
-                  >
-                    <Image
-                      src={cat.image}
-                      alt={`${cat.name} ${cat.highlight}`}
-                      fill
-                      className="object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 42vw"
-                      quality={85}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                      <span className="font-label text-[9px] tracking-[0.25em] uppercase text-primary/80 mb-2 block">
-                        {cat.makes}
-                      </span>
-                      <h3 className="font-headline text-2xl md:text-3xl text-white">
-                        {cat.name}{" "}
-                        <span className="serif-italic text-primary">
-                          {cat.highlight}
-                        </span>
-                      </h3>
-                      <span className="inline-flex items-center text-primary font-bold text-[10px] uppercase tracking-widest gap-2 group-hover:gap-4 transition-all duration-300 mt-3">
-                        Explore{" "}
-                        <span className="material-symbols-outlined text-sm">
-                          arrow_forward
-                        </span>
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+                </Link>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* ─── The DDM Difference — with ParallaxImage ─── */}
-      <section className="py-32 bg-surface-container-low/85 relative overflow-hidden">
-        {/* Top gradient fade from previous section */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-surface to-transparent z-[1]" />
-        <MonogramOverlay
-          className="absolute top-0 right-0 p-24"
-          opacity={0.03}
-          size="text-[30rem]"
-        />
-        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            {/* Image — now with parallax */}
-            <ScrollReveal direction="left" className="order-2 lg:order-1">
-              <ParallaxImage
-                src={SHOWROOM_IMG}
-                alt="Luxury showroom interior"
-                speed={0.2}
-                className="rounded-sm shadow-2xl border border-white/5 h-[400px] lg:h-[520px]"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </ScrollReveal>
+      {/* ─── Elite Service — text left / image right ─── */}
+      <section className="py-28 md:py-40 bg-black relative overflow-hidden">
+        {/* Decorative gold line accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-            {/* Content */}
-            <div className="order-1 lg:order-2">
+        {/* Subtle ambient glow */}
+        <div
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-[0.03] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, #D4AF37 0%, transparent 70%)",
+          }}
+        />
+
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            {/* Left — Content */}
+            <div className="lg:col-span-7">
               <ScrollReveal>
-                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary mb-6 block">
+                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
                   The DDM Difference
                 </span>
-                <h2 className="font-headline text-5xl lg:text-6xl mb-8 leading-tight">
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-12 leading-tight">
                   Elite Service for <br />
                   <span className="serif-italic text-primary">
                     The Elite Driver
@@ -443,8 +367,8 @@ export default function HomePage() {
 
               <StaggerReveal className="space-y-10">
                 {DDM_FEATURES.map((feature) => (
-                  <div key={feature.title} className="flex gap-6">
-                    <div className="w-12 h-12 rounded-sm bg-primary/5 flex items-center justify-center flex-shrink-0 border border-primary/20">
+                  <div key={feature.title} className="flex gap-6 group">
+                    <div className="w-12 h-12 rounded-sm bg-white/[0.02] flex items-center justify-center flex-shrink-0 border border-primary/15 group-hover:border-primary/40 transition-colors duration-500">
                       <span
                         className="material-symbols-outlined text-primary"
                         style={{
@@ -455,10 +379,10 @@ export default function HomePage() {
                       </span>
                     </div>
                     <div>
-                      <h4 className="font-headline text-2xl mb-2">
+                      <h4 className="font-headline text-xl md:text-2xl mb-2 text-on-surface">
                         {feature.title}
                       </h4>
-                      <p className="text-on-surface-variant text-sm leading-relaxed">
+                      <p className="text-white/40 text-sm leading-relaxed max-w-[440px]">
                         {feature.description}
                       </p>
                     </div>
@@ -466,22 +390,45 @@ export default function HomePage() {
                 ))}
               </StaggerReveal>
             </div>
+
+            {/* Right — BMW Image with seamless blending */}
+            <ScrollReveal direction="right" className="lg:col-span-5">
+              <div className="relative w-full h-[450px] lg:h-[620px] overflow-hidden">
+                <Image
+                  src={ELITE_IMG}
+                  alt="BMW iX3 illuminated"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  quality={90}
+                />
+                {/* Seamless edge fade to black */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: [
+                      "linear-gradient(to bottom, black 0%, transparent 12%, transparent 85%, black 100%)",
+                      "linear-gradient(to right, black 0%, transparent 12%, transparent 85%, black 100%)",
+                    ].join(", "),
+                  }}
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface to-transparent z-[1]" />
       </section>
 
-      {/* ─── Services — with hover background images ─── */}
-      <section className="py-32 bg-surface/90">
+      {/* ─── Services ─── */}
+      <section className="py-28 md:py-40 bg-black relative">
+        {/* Decorative gold line accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <div className="mb-16">
-              <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary mb-6 block">
+            <div className="mb-20 text-center">
+              <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
                 What We Offer
               </span>
-              <h2 className="font-headline text-5xl text-on-surface">
+              <h2 className="font-headline text-4xl md:text-5xl text-on-surface">
                 Our{" "}
                 <span className="serif-italic text-primary">Services</span>
               </h2>
@@ -489,30 +436,44 @@ export default function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/5 rounded-sm overflow-hidden border border-white/5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] overflow-hidden">
               {HOMEPAGE_SERVICES.map((service) => (
                 <Link
                   key={service.href}
                   href={service.href}
-                  className="bg-surface p-10 md:p-12 hover:bg-surface-container-low transition-colors duration-500 group block relative overflow-hidden"
+                  className="bg-black p-10 md:p-12 transition-all duration-700 group block relative overflow-hidden min-h-[320px]"
                 >
-                  {/* Hover background image */}
+                  {/* Hover background image — much more visible */}
                   <div className="absolute inset-0 z-0">
                     <Image
                       src={service.image}
                       alt=""
                       fill
-                      className="object-cover opacity-0 group-hover:opacity-[0.25] scale-110 group-hover:scale-100 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                      className="object-cover opacity-0 group-hover:opacity-40 scale-[1.15] group-hover:scale-100 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                       sizes="(max-width: 768px) 100vw, 33vw"
+                      quality={90}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-surface/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    {/* Gradient overlay — keeps text readable while image is visible */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                      style={{
+                        background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.3) 100%)",
+                      }}
+                    />
+                    {/* Gold tint on the bottom edge */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+                      style={{
+                        background: "linear-gradient(to top, rgba(212,175,55,0.08) 0%, transparent 40%)",
+                      }}
+                    />
                   </div>
 
                   {/* Content */}
                   <div className="relative z-10">
-                    <div className="w-11 h-11 rounded-sm bg-primary/5 flex items-center justify-center mb-6 border border-primary/15 group-hover:border-primary/30 transition-colors duration-500">
+                    <div className="w-10 h-10 rounded-sm bg-white/[0.03] flex items-center justify-center mb-8 border border-primary/10 group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-700">
                       <span
-                        className="material-symbols-outlined text-primary text-xl"
+                        className="material-symbols-outlined text-primary text-lg"
                         style={{
                           fontVariationSettings: "'FILL' 1",
                         }}
@@ -525,10 +486,10 @@ export default function HomePage() {
                         {service.title}
                       </span>
                     </h3>
-                    <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
+                    <p className="text-white/35 text-sm leading-relaxed mb-8 group-hover:text-white/60 transition-colors duration-500">
                       {service.description}
                     </p>
-                    <span className="inline-flex items-center text-primary font-bold text-[10px] uppercase tracking-widest gap-2 group-hover:gap-4 transition-all duration-300">
+                    <span className="inline-flex items-center text-primary/50 group-hover:text-primary font-bold text-[10px] uppercase tracking-widest gap-2 group-hover:gap-4 transition-all duration-500">
                       Learn More{" "}
                       <span className="material-symbols-outlined text-sm">
                         arrow_forward

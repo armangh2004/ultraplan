@@ -13,14 +13,6 @@ export const metadata: Metadata = {
     "A streamlined exit for the world's most significant automobiles. No listing delays. No public exposure. Just immediate valuation and liquidity.",
 };
 
-// Image URLs from design
-const HERO_BG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBpYvFsh3XMMIvdkzMjBDseH1rubqIQ7d3eVONinpAooPq5magGmjr_Tr5Y28fGUx0S0lcdH_NQNCAUWCgM8al07UiE079KC2p9laN5S0k-WJSFtciCL8XLsxsxaL7OXX2Z7gIC5rR0yolja4gTWvVCoQx20kGByM_ueN9vsllRK4PteWHzKv5rHNXLTFnFUpCzUrA0YHAyenhW3lvCn1xNStFB73voSv1ZSE3uiPSFxMOGMa5Nmy4An1il38lSHR5gnS4Lb_ep3Qc";
-const LOGISTICS_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCuoi9hDMqN8ZSRJ29ypRajkLQ386aF8ovVZg-wz5zoEmsFIpIPU3fIAn5A2nZcRpukagWyjoYfiZf5unMusJgtce0DDaEuAGimkYBhRijBafoDrDl1MR5NV08oKEVpZBlzM0apvyND6QG6fAGS3t5yfP6QmB-Hcr771kHTErCiEZT-pJB1BicYspsWPUUQMGlmTAKIo2SwgYQA1BLalmVDmyB2hfgFCeZ4IIRsKSandq0NSOeiRBRQXQmqSrVAMTx8Zxi58OYgbUo";
-const PROCESS_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDkWME-16neWbv9AWvMYAtuRPikBryAkMP73RXfX0nPJ9C9Recx5u3FNpyfTBZqYId1D8Hc_nd7pvliffopWvBcRLpdovMSHQlhgWhRhYX-qXMhoro2FWpm-PbNJmUbOZ_CQfxs_Ccxe_fOkZbeM67_3leNfEP88GtnllN7R-oiYuyl_UTBPvwh1Qif3JKGQz0i1_ktnvvW0Rt72xljqqEUEQQKnwmj_tj0AXfhnoMs2-tEymXvPX7SEjkC2cEyxemOyjtCeU5al3U";
-
 export default function AcquisitionPage() {
   return (
     <>
@@ -28,7 +20,7 @@ export default function AcquisitionPage() {
       <section className="relative h-[870px] flex items-center px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src={HERO_BG}
+            src="/images/garage/porsche-headlights.jpg"
             alt="Vintage Porsche in architectural garage"
             fill
             priority
@@ -36,7 +28,7 @@ export default function AcquisitionPage() {
             quality={90}
             className="object-cover grayscale opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
         </div>
 
         <ScrollReveal className="relative z-10 max-w-4xl mx-auto w-full">
@@ -69,11 +61,11 @@ export default function AcquisitionPage() {
       </section>
 
       {/* Value Proposition Bento Grid */}
-      <section className="py-32 px-6 md:px-12 bg-surface-container-low relative">
+      <section className="py-32 px-6 md:px-12 bg-black relative">
         <MonogramOverlay className="right-0 top-1/4" />
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
           {/* Main Feature Card */}
-          <ScrollReveal className="md:col-span-8 bg-surface-container-highest p-12 rounded-xl flex flex-col justify-between min-h-[500px] border border-outline-variant/10">
+          <ScrollReveal className="md:col-span-8 bg-black p-12 rounded-xl flex flex-col justify-between min-h-[500px] border border-outline-variant/10">
             <div>
               <span className="material-symbols-outlined text-primary text-4xl mb-8">
                 account_balance
@@ -157,7 +149,7 @@ export default function AcquisitionPage() {
             <GlassCard className="rounded-xl flex flex-col md:flex-row items-center gap-12 border border-outline-variant/10">
               <div className="w-full md:w-1/3 relative aspect-square">
                 <Image
-                  src={LOGISTICS_IMG}
+                  src="/images/garage/mercedes-rear.jpg"
                   alt="Luxury car interior"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -188,7 +180,7 @@ export default function AcquisitionPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-32 px-6 md:px-12 bg-background">
+      <section className="py-32 px-6 md:px-12 bg-black">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-24 items-start">
           <ScrollReveal className="w-full md:w-1/2 md:sticky md:top-32">
             <span className="font-label text-primary uppercase tracking-[0.3em] text-[10px] mb-6 block">
@@ -241,7 +233,7 @@ export default function AcquisitionPage() {
           <ScrollReveal direction="right" className="w-full md:w-1/2 space-y-12">
             <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
               <Image
-                src={PROCESS_IMG}
+                src="/images/garage/ferrari-classic.jpg"
                 alt="Vintage car key handover"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -249,7 +241,7 @@ export default function AcquisitionPage() {
                 className="object-cover"
               />
             </div>
-            <div className="bg-surface-container p-12 rounded-xl border border-outline-variant/15">
+            <div className="bg-black p-12 rounded-xl border border-outline-variant/15">
               <span
                 className="material-symbols-outlined text-primary text-4xl mb-6"
                 style={{ fontVariationSettings: "'FILL' 1" }}

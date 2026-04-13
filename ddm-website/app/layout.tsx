@@ -4,6 +4,7 @@ import "./globals.css";
 
 import SmoothScroll from "@/components/interactive/SmoothScroll";
 import CustomCursor from "@/components/interactive/CustomCursor";
+import GarageScroll from "@/components/background/GarageScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <GarageScroll />
         <SmoothScroll>
           <CustomCursor />
           <Navbar />

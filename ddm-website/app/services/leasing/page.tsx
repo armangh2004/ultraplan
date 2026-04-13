@@ -14,21 +14,14 @@ export const metadata: Metadata = {
     "Redefining ownership through curated flexibility. Experience the world's finest automobiles with terms as refined as the vehicles themselves.",
 };
 
-// Image URLs from design
-const HERO_BG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBKnFmpPrHHrdy3NtaoG83irQnlFNaFne-z--dxE76MWW3cgXh31mHTIYBxUOvN_ShEvVa_NoErzr5iZn_x399nrh9tx21YXscVWjtcSDylUCrkbTNWvEuJenJ9OBkL22Pa4ax-KfyUTxubX3fcjLrkWPxhVsCoSdV66vBmpE35OYNrvuJPUT-xaQblIeNOHTQXAyWDIsKKX2VIANP10ylv0_EIeOkhn36eCz_CI9tJPtviuxPwcfW47w4NtNKMoGbeB_mHMrOc4Xc";
-const STEERING_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuB65FmiVnuq5QmAi80TxRRI7XmhHzTnU0_gXMep-F8VO-VzgyhcJWqYIDLuZXapHg8DRq86K4twKvqEeBq9_i5ZAZDucAK1dggZ2_Z_RdmleWUqTLPN5KWrmKQ5JF37f1Q2MJRYp1bDm6cct3Z9RR9Z9nJuRyix02jsubxPRY2096aRHb_Cpc_bPbct_rh04uZCmspwNq-O4WOI-IPLFtgjoR1ATv7GU0DYI3sRaC-m6mywZL8fWfDbZvjQLLZ3C2nuCSNArQyMK-Y";
-const KEYS_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBwnmFkZJ2dwQN2LkIRL8Go-RgueSJzQ0veI-1X6VYbZ7b3aQRJSM1xIpQleQLne-OHhpPP8CRYR4R26XETfc5pnFNRqRvNho9VdFFWe8clNGiWX0blqnqEHtum9L_hVry9_zZPHkeo8eh8kqHjlQ05YdBIPpd6DnU3NUxSiOioPxeN1R-bJQ5oJeG_1TRdXGAX93_sSV_QZ2jTzzpj2EgYRrOhdPGvz91CWAhgBXfv2olK1K3ALYBWDWVjm6jzIX9ea-sk_w1tSIQ";
-const BENTO_1 =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD3xrV5rsTmtEoGf7Zxaf1NGvmwRBtX4423XMkhvvbsqkQEx6b_ZZH8nmtfy8MJFldIgnPTG3C7XOdGKKunIY0Pd0rRlPMR5hlKZLso2JWWwCMudnUTGtnIubLU11ZuweHqnivQ-cny9Bo0Z1CgJhfo7y17et2Io-PsNUF7ipLtKdRqKlASmXXnKcdHBT5lL0gkUBMShp3TNmKCMvTBSFAPhmEkwrHaeXcCnieuI7hgRts2pCiDP1E-kjHsc4KZEdVv5kVT6oBgAcA";
-const BENTO_2 =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAQ7_VW8HnfOrlAvKJOXTMYczm02nfY_oXFGSJUC6kTziq6RVoDlJzP7jilF0zGv8gAtlKG8JkUlmkatdqJZuu81ucTlyuqCL0XdSti90yIcbEtCxC2j2bTEQ7i6Gw9rxq6zh6heSfmn8BJZz0pfwafUe2WEqxGPS_f068BQB487ZDZTEoD6TNJuWntfZluw3h37Z_gHg9MOryBePTTpWzwKFPwtL7vjFuEuulyKLAt4eR21Ho63y5yOAHi7OfDOwa7x0fxWa6cH8s";
-const BENTO_3 =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDqH8BthvDztWSnMHckcr7_qNtUi1Gm4dxoWlFAjEuy75JfBKC_Jb_CUUeOEatl9C5RVOEBayAzQ05v0dzIIyLM69tlifWOkrnP0QknfZLn5xnnx0CSm2JUoClvfKZSZ9nPC5uEaZNecrJNxpotyUHMA7wZra1rp6hRC5HSFbftAg9KU5ygG0BMN7aJGPSNxIAuRvN3VGoLJqJwUGHAc68KUcR14RhGzTc40u1EWqsfKNYH6RznbswPYvoPCIwpBz1_58T9Wjie_8w";
-const BENTO_4 =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuABryqkR8zU79pp4gPzXftmKunXOWu1N8bFpY6X3CqftJ_HAoxlcxSJlZ7Up9YTCsip6M75zZ0uoYVWti-_qay4V0JI_Ii0Gyxa2-Bwh98emXD7WGGt8ngDf2D7e52l0hTkWWmVD7YM3ufGvhpkejSULe64qGRAiGk6-YvQalezGDYViahXxHOC-m_pgPrUlqwREqSPW7hJ7AZ1jzjob0cMsaqRxxgQXrqVYuE9JnO8zcj_D5PIBOjLa8AFnBEXBaq0WKsxHz_tTxc";
+// Local high-res images
+const HERO_BG = "/images/garage/supercar-showroom.jpg";
+const STEERING_IMG = "/images/garage/mclaren-wheel.jpg";
+const KEYS_IMG = "/images/garage/porsche-headlights.jpg";
+const BENTO_1 = "/images/garage/gt3rs-showroom.jpg";
+const BENTO_2 = "/images/garage/ferrari-classic.jpg";
+const BENTO_3 = "/images/garage/lambo-aventador.jpg";
+const BENTO_4 = "/images/garage/bmw-ix3.jpg";
 
 export default function LeasingPage() {
   return (
@@ -45,7 +38,7 @@ export default function LeasingPage() {
             quality={90}
             className="object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 px-6 md:px-12 w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-end pb-24">
@@ -84,7 +77,7 @@ export default function LeasingPage() {
       </section>
 
       {/* Art of the Lease Section */}
-      <section className="bg-surface-container-low py-32 relative">
+      <section className="bg-black py-32 relative">
         <MonogramOverlay className="left-0 top-1/4" />
         <div className="px-6 md:px-12 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
@@ -137,7 +130,7 @@ export default function LeasingPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="bg-surface-container p-6 rounded-sm border border-outline-variant/10">
+                <div className="bg-black p-6 rounded-sm border border-outline-variant/10">
                   <span
                     className="material-symbols-outlined text-primary text-3xl mb-4"
                     style={{ fontVariationSettings: "'FILL' 1" }}
@@ -150,7 +143,7 @@ export default function LeasingPage() {
                 </div>
               </div>
               <div className="space-y-4">
-                <div className="bg-surface-container-highest p-6 rounded-sm flex items-center justify-between border border-outline-variant/10">
+                <div className="bg-black p-6 rounded-sm flex items-center justify-between border border-outline-variant/10">
                   <p className="font-label uppercase tracking-widest text-[10px] text-on-surface-variant font-bold">
                     Membership Tier
                   </p>
@@ -173,7 +166,7 @@ export default function LeasingPage() {
       </section>
 
       {/* Vehicle Portfolio Bento */}
-      <section className="py-32 bg-surface">
+      <section className="py-32 bg-black">
         <div className="px-6 md:px-12 max-w-7xl mx-auto">
           <ScrollReveal>
             <header className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
@@ -207,7 +200,7 @@ export default function LeasingPage() {
             quality={90}
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent p-8 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-8 flex flex-col justify-end">
                   <p className="font-label text-[10px] text-primary uppercase tracking-widest mb-1 font-bold">
                     Grand Tourer
                   </p>
@@ -226,7 +219,7 @@ export default function LeasingPage() {
             quality={90}
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent p-8 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-8 flex flex-col justify-end">
                   <p className="font-label text-[10px] text-primary uppercase tracking-widest mb-1 font-bold">
                     Heritage Series
                   </p>
@@ -245,7 +238,7 @@ export default function LeasingPage() {
             quality={90}
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent p-6 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-6 flex flex-col justify-end">
                   <h3 className="font-headline text-2xl italic text-on-surface">
                     The Roadster
                   </h3>
@@ -261,7 +254,7 @@ export default function LeasingPage() {
             quality={90}
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent p-6 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-6 flex flex-col justify-end">
                   <h3 className="font-headline text-2xl italic text-on-surface">
                     EV Vision
                   </h3>

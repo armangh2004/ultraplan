@@ -11,13 +11,10 @@ export const metadata: Metadata = {
     "Moving between masterpieces should be as effortless as the drive itself. Our Seamless Trade-In program ensures your legacy continues without interruption.",
 };
 
-// Image URLs from design
-const HERO_MODERN =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCAwaSRz8C0gBiydlo2Clnb9-csTMYAxIpNMy9UNRdv85XiJCaSI0U9nBWdKqr8o3R0gfqK1QByX5oSLjwx2nsBYgXNoUTPboXVsLJHDNNRf2fzPDUkVi37-hsLYMdOfYkcJRsWCcRV7ti96paQAt1g522KOwa2_D8fpLASdRGdLnUBW0JEYYefDvuwla4wmBpiWnkjoF0J2h4HK6F5GteK2tGmvNI4ml0T65BdsO2nT1D5DcyipqYNbr55qFcrdUukfzKKujYynj8";
-const HERO_VINTAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuB9lRAUP9tHCiREIyko9dL7dFNgu44fCal4pAhOGg7ghldu22Hb5ubduae3Bg6k6Ny45eWLpzro9z8L8JA7XPMMfdbzcCGP173EPMScqMBHSzMcAEtb6kfnxHKU72t1vT06eWfkWvdwbdqEkh-pB6SvOwNIKlk-urhzHsnuS53R1JggQ0kF1lPXwv5Osrh8wagGG3mhIuOWF7tOjOJKwFzpkEWSP4RQu0olw_xaSZwYhjVi6I4bGIv1nf74cvImbOJ57Kl6S6mBxlQ";
-const BENTO_BG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDwBO5fDC8cyas8_AojXKqhBPBPG7jATL2y8p0FswnOJodn4bZoFJnYBbyjPEAS_yy_n32Owawr6tV-k2fNYIPDiusR_v6gwSNLPFIMv-9kbENOeE8Rq-l03s1R3on1c-s7Yb5zN1sE3_57vQl4yeJonsZV8Tjqd5sws6Hn3zf_Zda7wJ-fUV7TVkYpHGwYtQ5_XXL3CX8cJjyMaxy3sRMKAE6G1recI7tf2OCtNf7nb90OSjiXPnRCtyRqIdippnWEV7YteKpyxak";
+// Local high-res images
+const HERO_MODERN = "/images/garage/porsche-headlights.jpg";
+const HERO_VINTAGE = "/images/garage/ferrari-classic.jpg";
+const BENTO_BG = "/images/garage/supercar-showroom.jpg";
 
 export default function TradeInPage() {
   return (
@@ -65,7 +62,7 @@ export default function TradeInPage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-12 -left-12 w-2/3 aspect-square rounded-sm overflow-hidden shadow-2xl border-4 border-background z-20 hidden md:block">
+            <div className="absolute -bottom-12 -left-12 w-2/3 aspect-square rounded-sm overflow-hidden shadow-2xl border-4 border-black z-20 hidden md:block">
               <Image
                 src={HERO_VINTAGE}
                 alt="Vintage silver car"
@@ -80,7 +77,7 @@ export default function TradeInPage() {
       </section>
 
       {/* Valuation Section */}
-      <section className="bg-surface-container-low py-32 px-6 md:px-12 border-y border-outline-variant/10">
+      <section className="bg-black py-32 px-6 md:px-12 border-y border-outline-variant/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
             <ScrollReveal className="space-y-16">
@@ -145,8 +142,8 @@ export default function TradeInPage() {
 
             {/* Form Card */}
             <ScrollReveal direction="right">
-              <div className="bg-surface-container-high p-1 rounded-sm shadow-2xl border border-outline-variant/20">
-                <div className="bg-surface-container p-10 space-y-8 rounded-sm">
+              <div className="bg-black p-1 rounded-sm shadow-2xl border border-outline-variant/20">
+                <div className="bg-black p-10 space-y-8 rounded-sm">
                   <h3 className="font-headline text-3xl font-light">
                     Inquire for{" "}
                     <span className="serif-italic text-primary">Valuation</span>
@@ -157,7 +154,7 @@ export default function TradeInPage() {
                         Vehicle Identification
                       </label>
                       <input
-                        className="w-full bg-surface-container-low border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm placeholder:opacity-30"
+                        className="w-full bg-black border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm placeholder:opacity-30"
                         placeholder="Year, Make & Model"
                         type="text"
                       />
@@ -167,7 +164,7 @@ export default function TradeInPage() {
                         Estimated Mileage
                       </label>
                       <input
-                        className="w-full bg-surface-container-low border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm placeholder:opacity-30"
+                        className="w-full bg-black border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm placeholder:opacity-30"
                         placeholder="Current Odometer Reading"
                         type="text"
                       />
@@ -176,7 +173,7 @@ export default function TradeInPage() {
                       <label className="font-label text-[10px] uppercase tracking-widest text-primary font-bold">
                         Next Masterpiece Interest
                       </label>
-                      <select className="w-full bg-surface-container-low border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm">
+                      <select className="w-full bg-black border-none focus:ring-0 rounded-sm py-4 px-4 text-on-surface text-sm">
                         <option>Select Inventory Category</option>
                         <option>Modern Performance</option>
                         <option>Vintage Heritage</option>
@@ -273,7 +270,7 @@ export default function TradeInPage() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-32 px-6 md:px-12 bg-surface-container-low border-y border-outline-variant/15">
+      <section className="py-32 px-6 md:px-12 bg-black border-y border-outline-variant/15">
         <ScrollReveal className="max-w-4xl mx-auto text-center">
           <span
             className="material-symbols-outlined text-primary text-6xl mb-8"

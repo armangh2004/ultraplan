@@ -12,11 +12,9 @@ export const metadata: Metadata = {
     "A bespoke financing journey designed for the discerning individual. Absolute discretion, accelerated processing, and terms as refined as the vehicles we curate.",
 };
 
-// Image URLs from design
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDd6LzUXDS5-pmH2HefapyCONDMSh1aO1_-jaM2hNz0QGFAho4wKEMpuD98mzVapTrP4Tju75sPCJUA9dmGrH7oiJTywbF3lwyl_4v13XPX72kP0s-jiLHSh6fzUmWUOPoilZ_KOKIsBFZb2kHsVpOf9vY3nqt2ng2GciyiTaW9NE1jLtjZFntMq2XViVgqDVOq5qmDRKOpV5UbSZI941Yly-qM1NwJ9vJxGNw1A-wjyV8Dtq5EIvEfNurQZXh8_wSv2w4BPBhD0sM";
-const BANNER_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBNolwvaa64EEQ8zynZc2h7AefXXNsCPjukNInRvv0s5H3CZO4lcOb2sHHGaKgebuQWiMzCFnkLU-Ki1bYxj8o9aMz5lOYuxm9U2ejfdMKuIxc0sVWYrd2cgCDLavxHNCs6TDsvj0ao5LKketFxUDuiYe85EC-IH6ZsZgTh3OdeP9Y8EMkwmvZqwuwKPfZk8h0BeBlJVQAQliJEgwaeUUCO3ltfHBoZatOjR-AZg8vGo64RvBJyy6NaWNnSl9J0N5ibKAJWolX_YF8";
+// Local high-res images
+const HERO_IMG = "/images/garage/porsche-headlights.jpg";
+const BANNER_IMG = "/images/garage/gt3rs-showroom.jpg";
 
 export default function CreditInfoPage() {
   return (
@@ -77,7 +75,7 @@ export default function CreditInfoPage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-10 -left-10 bg-surface p-10 border border-white/10 max-w-xs shadow-2xl">
+            <div className="absolute -bottom-10 -left-10 bg-black p-10 border border-white/10 max-w-xs shadow-2xl">
               <p className="font-headline italic text-xl text-primary mb-3">
                 &ldquo;Discretion is our hallmark.&rdquo;
               </p>
@@ -90,7 +88,7 @@ export default function CreditInfoPage() {
       </section>
 
       {/* Form Section */}
-      <section className="px-6 md:px-12 py-32 relative bg-surface-container-low">
+      <section className="px-6 md:px-12 py-32 relative bg-black">
         {/* Watermark */}
         <MonogramOverlay
           text="ELITE"
@@ -145,16 +143,16 @@ export default function CreditInfoPage() {
                   Preferred Contact Method
                 </label>
                 <select className="w-full bg-transparent border-0 border-b border-white/20 focus:border-primary focus:ring-0 text-on-surface py-3 px-0 transition-all font-body text-lg appearance-none cursor-pointer">
-                  <option className="bg-surface">Direct Call</option>
-                  <option className="bg-surface">Encrypted Message</option>
-                  <option className="bg-surface">Email Liaison</option>
+                  <option className="bg-black">Direct Call</option>
+                  <option className="bg-black">Encrypted Message</option>
+                  <option className="bg-black">Email Liaison</option>
                 </select>
               </div>
             </div>
 
             {/* Tailored Structures Card */}
             <div className="pt-12">
-              <div className="bg-surface p-12 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
+              <div className="bg-black p-12 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary" />
                 <div className="max-w-md text-center md:text-left">
                   <h3 className="font-headline text-3xl italic mb-3">
@@ -207,7 +205,7 @@ export default function CreditInfoPage() {
       <section className="px-6 md:px-12 py-32 max-w-7xl mx-auto">
         <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Unrivaled Privacy (2-col) */}
-          <div className="md:col-span-2 bg-surface p-16 border border-white/5 flex flex-col justify-between group hover:border-primary/30 transition-all duration-500">
+          <div className="md:col-span-2 bg-black p-16 border border-white/5 flex flex-col justify-between group hover:border-primary/30 transition-all duration-500">
             <div>
               <span className="material-symbols-outlined text-5xl text-primary mb-12 block">
                 verified
@@ -232,7 +230,7 @@ export default function CreditInfoPage() {
           </div>
 
           {/* 24/7 Concierge */}
-          <div className="bg-surface p-16 border border-white/5 relative overflow-hidden flex flex-col justify-between">
+          <div className="bg-black p-16 border border-white/5 relative overflow-hidden flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-5xl text-primary mb-12 block">
                 support_agent
@@ -253,7 +251,7 @@ export default function CreditInfoPage() {
           </div>
 
           {/* Prestige Perks */}
-          <div className="bg-surface p-16 border border-white/5">
+          <div className="bg-black p-16 border border-white/5">
             <h4 className="font-label text-[10px] uppercase tracking-[0.5em] mb-12 text-primary">
               Prestige Perks
             </h4>
@@ -291,7 +289,7 @@ export default function CreditInfoPage() {
               quality={90}
               className="object-cover grayscale brightness-50"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent flex flex-col justify-end p-16">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end p-16">
               <p className="font-headline text-4xl text-on-surface italic">
                 Experience the Extraordinary.
               </p>

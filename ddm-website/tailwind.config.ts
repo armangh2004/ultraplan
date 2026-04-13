@@ -20,7 +20,7 @@ const config: Config = {
       colors: {
         primary: "#D4AF37",
         "on-primary": "#1c1b1b",
-        background: "#0a0a0a",
+        background: "#000000",
         surface: "#131313",
         "surface-container-low": "#1c1b1b",
         "surface-container": "#201f1f",
