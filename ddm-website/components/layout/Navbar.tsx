@@ -7,9 +7,19 @@ import { NAV_LINKS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import MobileMenu from "./MobileMenu";
 
+const SERVICE_DROPDOWN = [
+  { label: "Auto Leasing", href: "/services/leasing" },
+  { label: "Auto Financing", href: "/services/financing" },
+  { label: "Credit Application", href: "/services/credit-info" },
+  { label: "Sell Your Car", href: "/services/acquisition" },
+  { label: "Trade-Ins", href: "/services/trade-in" },
+  { label: "Home Delivery", href: "/services/delivery" },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
     <>
@@ -25,52 +35,77 @@ export default function Navbar() {
             </Link>
 
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-[10px] tracking-[0.2em] uppercase transition-colors ${
-                    pathname === link.href
-                      ? "text-primary border-b border-primary pb-1"
-                      : "text-on-surface/60 hover:text-primary"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isServices = link.label === "Services";
+                const isActive = isServices
+                  ? pathname.startsWith("/services")
+                  : pathname === link.href;
+
+                if (isServices) {
+                  return (
+                    <div
+                      key={link.href}
+                      className="relative"
+                      onMouseEnter={() => setServicesOpen(true)}
+                      onMouseLeave={() => setServicesOpen(false)}
+                    >
+                      <Link
+                        href={link.href}
+                        className={`text-[10px] tracking-[0.2em] uppercase transition-colors inline-flex items-center gap-1 ${
+                          isActive
+                            ? "text-primary border-b border-primary pb-1"
+                            : "text-on-surface/60 hover:text-primary"
+                        }`}
+                      >
+                        {link.label}
+                        <span className="material-symbols-outlined text-[14px]">
+                          expand_more
+                        </span>
+                      </Link>
+
+                      {/* Dropdown */}
+                      {servicesOpen && (
+                        <div className="absolute top-full left-0 pt-3">
+                          <div className="bg-surface-container border border-white/10 backdrop-blur-xl shadow-2xl py-2 min-w-[220px]">
+                            {SERVICE_DROPDOWN.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`block px-5 py-3 text-[10px] tracking-[0.15em] uppercase transition-colors ${
+                                  pathname === item.href
+                                    ? "text-primary bg-primary/5"
+                                    : "text-on-surface/70 hover:text-primary hover:bg-white/5"
+                                }`}
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-[10px] tracking-[0.2em] uppercase transition-colors ${
+                      isActive
+                        ? "text-primary border-b border-primary pb-1"
+                        : "text-on-surface/60 hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
-          {/* Right: Search + Icons + Inquire */}
+          {/* Right: Inquire + Hamburger */}
           <div className="flex items-center gap-4">
-            {/* Search bar — desktop only */}
-            <div className="hidden lg:flex items-center bg-white/5 border border-white/10 px-4 py-2 gap-2">
-              <span className="material-symbols-outlined text-on-surface/40 text-lg">
-                search
-              </span>
-              <input
-                type="text"
-                placeholder="Search"
-                aria-label="Search inventory"
-                className="bg-transparent border-none outline-none text-on-surface text-xs placeholder:text-on-surface/40 w-28"
-              />
-            </div>
-
-            {/* Icon buttons */}
-            <button
-              className="text-primary hover:scale-110 transition-transform hidden lg:block"
-              aria-label="Schedule appointment"
-            >
-              <span className="material-symbols-outlined">calendar_today</span>
-            </button>
-            <button
-              className="text-primary hover:scale-110 transition-transform hidden lg:block"
-              aria-label="User account"
-            >
-              <span className="material-symbols-outlined">person</span>
-            </button>
-
-            {/* Inquire button */}
             <Button
               variant="primary"
               size="sm"

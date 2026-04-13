@@ -22,7 +22,15 @@
 
 @layer base {
   body {
-    @apply bg-background text-on-surface font-body antialiased;
+    @apply text-on-surface font-body antialiased;
+    background-color: #0a0a0a;
+    background-image:
+      linear-gradient(rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.88)),
+      url('https://i.ibb.co/4ggKBY0n/wp9015733.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   ::selection {

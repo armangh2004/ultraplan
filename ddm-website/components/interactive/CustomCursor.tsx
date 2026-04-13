@@ -14,11 +14,11 @@ export default function CustomCursor() {
   const rafRef = useRef<number>(0);
 
   const animate = useCallback(() => {
-    const lerp = 0.08;
+    const lerp = 0.5;
     pos.current.x += (target.current.x - pos.current.x) * lerp;
     pos.current.y += (target.current.y - pos.current.y) * lerp;
     if (cursorRef.current) {
-      cursorRef.current.style.transform = `translate3d(${pos.current.x - 16}px, ${pos.current.y - 16}px, 0)`;
+      cursorRef.current.style.transform = `translate3d(${pos.current.x - 4}px, ${pos.current.y - 4}px, 0)`;
     }
     rafRef.current = requestAnimationFrame(animate);
   }, []);
@@ -61,19 +61,22 @@ export default function CustomCursor() {
     <div
       ref={cursorRef}
       aria-hidden="true"
-      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-screen"
+      className="fixed top-0 left-0 pointer-events-none z-[9999]"
       style={{
         opacity: isVisible ? 1 : 0,
-        transition: "opacity 0.4s ease",
+        transition: "opacity 0.2s ease",
       }}
     >
       <div
-        className="rounded-full border transition-all duration-300 ease-out"
+        className="rounded-full transition-all duration-200 ease-out"
         style={{
-          width: isHovering ? 48 : 32,
-          height: isHovering ? 48 : 32,
-          borderColor: isHovering ? "rgba(212, 175, 55, 0.6)" : "rgba(212, 175, 55, 0.3)",
-          transform: `translate(${isHovering ? -8 : 0}px, ${isHovering ? -8 : 0}px)`,
+          width: isHovering ? 40 : 8,
+          height: isHovering ? 40 : 8,
+          backgroundColor: isHovering ? "transparent" : "rgba(212, 175, 55, 0.4)",
+          borderWidth: isHovering ? 1.5 : 0,
+          borderStyle: "solid",
+          borderColor: "rgba(212, 175, 55, 0.35)",
+          transform: `translate(${isHovering ? -16 : 0}px, ${isHovering ? -16 : 0}px)`,
         }}
       />
     </div>

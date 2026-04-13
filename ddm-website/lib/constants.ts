@@ -16,11 +16,10 @@ export const BUSINESS_INFO = {
 // Navigation
 // ---------------------------------------------------------------------------
 export const NAV_LINKS: NavLink[] = [
+  { label: "Home", href: "/" },
   { label: "Inventory", href: "/inventory" },
-  { label: "Leasing", href: "/services/leasing" },
-  { label: "Sell/Trade", href: "/services/trade-in" },
-  { label: "About", href: "/about" },
-  { label: "Concierge", href: "/services" },
+  { label: "Services", href: "/services" },
+  { label: "Contact", href: "/contact" },
 ];
 
 // ---------------------------------------------------------------------------

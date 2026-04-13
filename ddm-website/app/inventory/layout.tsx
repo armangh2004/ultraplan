@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Reserve Inventory",
+  title: "The Reserve Collection",
   description:
-    "Explore our strictly vetted selection of high-performance vehicles and luxury grand tourers. Every unit is a masterpiece of engineering.",
+    "Explore our curated vehicle categories — from exotic coupes to luxury SUVs. Any car can be sourced based on your financing and credit profile.",
 };
 
 export default function InventoryLayout({
