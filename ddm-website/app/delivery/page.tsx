@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 // Local high-res images
 const HERO_BG = "/images/garage/supercar-showroom.jpg";
 const CEREMONY_IMG = "/images/garage/lambo-aventador.jpg";
-const ECOSYSTEM_IMG = "/images/garage/bmw-ix3.jpg";
+const ECOSYSTEM_IMG = "/images/garage/blackferrari.jpg";
 const GLOBE_IMG = "/images/garage/mercedes-rear.jpg";
 
 export default function DeliveryPage() {
@@ -53,7 +53,7 @@ export default function DeliveryPage() {
       </section>
 
       {/* Handover Experience Bento */}
-      <section className="py-40 px-6 md:px-12 bg-black">
+      <section className="py-16 md:py-24 px-6 md:px-12 bg-black">
         <ScrollReveal className="mb-24">
           <h2 className="text-5xl font-headline italic text-on-surface mb-6">
             The Handover Experience
@@ -170,8 +170,8 @@ export default function DeliveryPage() {
       </section>
 
       {/* Sovereign Logistics Section */}
-      <section className="py-40 bg-black relative overflow-hidden">
-        <div className="px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
+      <section className="py-16 md:py-24 bg-black relative overflow-hidden">
+        <div className="px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
             <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
               Diplomatic Reach

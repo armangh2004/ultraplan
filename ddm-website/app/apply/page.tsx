@@ -10,17 +10,15 @@ export const metadata: Metadata = {
     "A bespoke financing journey designed for the discerning individual. Absolute discretion, accelerated processing, and terms as refined as the vehicles we offer.",
 };
 
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDd6LzUXDS5-pmH2HefapyCONDMSh1aO1_-jaM2hNz0QGFAho4wKEMpuD98mzVapTrP4Tju75sPCJUA9dmGrH7oiJTywbF3lwyl_4v13XPX72kP0s-jiLHSh6fzUmWUOPoilZ_KOKIsBFZb2kHsVpOf9vY3nqt2ng2GciyiTaW9NE1jLtjZFntMq2XViVgqDVOq5qmDRKOpV5UbSZI941Yly-qM1NwJ9vJxGNw1A-wjyV8Dtq5EIvEfNurQZXh8_wSv2w4BPBhD0sM";
+const HERO_IMG = "/images/garage/mclaren-wheel.jpg";
 
-const BENTO_BANNER =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBNolwvaa64EEQ8zynZc2h7AefXXNsCPjukNInRvv0s5H3CZO4lcOb2sHHGaKgebuQWiMzCFnkLU-Ki1bYxj8o9aMz5lOYuxm9U2ejfdMKuIxc0sVWYrd2cgCDLavxHNCs6TDsvj0ao5LKketFxUDuiYe85EC-IH6ZsZgTh3OdeP9Y8EMkwmvZqwuwKPfZk8h0BeBlJVQAQliJEgwaeUUCO3ltfHBoZatOjR-AZg8vGo64RvBJyy6NaWNnSl9J0N5ibKAJWolX_YF8";
+const BENTO_BANNER = "/images/garage/gt3rs-showroom.jpg";
 
 export default function ApplyPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="px-6 md:px-12 mb-32 relative max-w-screen-2xl mx-auto pt-40">
+      <section className="px-6 md:px-12 mb-16 relative max-w-screen-2xl mx-auto pt-40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <ScrollReveal>
@@ -77,7 +75,7 @@ export default function ApplyPage() {
                   src={HERO_IMG}
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-surface-container p-10 shadow-2xl border border-outline-variant/20 max-w-xs">
+              <div className="absolute -bottom-8 -left-8 bg-black p-10 shadow-2xl border border-outline-variant/20 max-w-xs">
                 <p className="serif-italic text-2xl text-primary mb-3 leading-tight">
                   &ldquo;Discretion is our hallmark.&rdquo;
                 </p>
@@ -91,7 +89,7 @@ export default function ApplyPage() {
       </section>
 
       {/* Form Section */}
-      <section className="px-6 md:px-12 bg-surface-container-low py-32 relative overflow-hidden">
+      <section className="px-6 md:px-12 bg-black-low py-16 md:py-24 relative overflow-hidden">
         <MonogramOverlay
           className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4"
           size="text-[50rem]"
@@ -112,11 +110,11 @@ export default function ApplyPage() {
       </section>
 
       {/* Feature Bento Grid */}
-      <section className="px-6 md:px-12 py-32 max-w-screen-2xl mx-auto">
+      <section className="px-6 md:px-12 py-16 md:py-24 max-w-screen-2xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Unrivaled Privacy - 2 col */}
           <ScrollReveal className="md:col-span-2">
-            <div className="bg-surface-container-low p-16 flex flex-col justify-between group hover:bg-surface-container transition-all duration-500 border border-outline-variant/10 h-full">
+            <div className="bg-black-low p-16 flex flex-col justify-between group hover:bg-black transition-all duration-500 border border-outline-variant/10 h-full">
               <div>
                 <span
                   className="material-symbols-outlined text-5xl text-primary mb-10"
@@ -146,7 +144,7 @@ export default function ApplyPage() {
 
           {/* 24/7 Concierge */}
           <ScrollReveal delay={0.1}>
-            <div className="bg-surface-container-high p-16 relative overflow-hidden border border-outline-variant/10 flex flex-col h-full">
+            <div className="bg-black-high p-16 relative overflow-hidden border border-outline-variant/10 flex flex-col h-full">
               <span className="material-symbols-outlined text-5xl text-primary mb-10">
                 support_agent
               </span>
@@ -167,7 +165,7 @@ export default function ApplyPage() {
 
           {/* Prestige Perks */}
           <ScrollReveal delay={0.15}>
-            <div className="bg-surface-container-low p-16 border border-outline-variant/15 hover:border-primary/20 transition-all duration-500 h-full">
+            <div className="bg-black-low p-16 border border-outline-variant/15 hover:border-primary/20 transition-all duration-500 h-full">
               <h4 className="font-label text-[11px] uppercase tracking-[0.4em] mb-10 text-primary font-bold">
                 Prestige Perks
               </h4>
@@ -215,7 +213,7 @@ export default function ApplyPage() {
                 className="w-full h-full object-cover"
                 src={BENTO_BANNER}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent flex flex-col justify-end p-16">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-16">
                 <p className="font-headline text-5xl text-on-surface tracking-tight">
                   Experience the Extraordinary.
                 </p>

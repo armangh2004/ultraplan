@@ -46,7 +46,7 @@ export default function NumberCounter({
       },
       scrollTrigger: {
         trigger: element,
-        start: "top 85%",
+        start: "top 95%",
         once: true,
       },
     });

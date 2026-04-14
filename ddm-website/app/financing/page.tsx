@@ -57,7 +57,7 @@ export default function FinancingPage() {
       </section>
 
       {/* Bento Grid Specs */}
-      <section className="px-6 md:px-12 py-32 bg-black">
+      <section className="px-6 md:px-12 py-16 md:py-24 bg-black">
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 h-auto md:h-[600px]">
           {/* Main Feature Card */}
           <ScrollReveal className="md:col-span-8 bg-black rounded-xl overflow-hidden relative group border border-outline-variant/10">
@@ -172,7 +172,7 @@ export default function FinancingPage() {
       </section>
 
       {/* Editorial / Signature Statement */}
-      <section className="py-40 bg-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-black relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <ScrollReveal className="col-span-12 md:col-span-5 relative">
             <Image
@@ -211,7 +211,7 @@ export default function FinancingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6 md:px-12 bg-black">
+      <section className="py-16 md:py-24 px-6 md:px-12 bg-black">
         <ScrollReveal className="max-w-4xl mx-auto text-center">
           <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-label uppercase tracking-widest mb-8">
             Invitation Only

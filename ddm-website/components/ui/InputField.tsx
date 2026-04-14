@@ -8,6 +8,8 @@ interface InputFieldProps
   label: string;
   error?: string | null;
   variant?: "underline" | "filled";
+  /** Show a small green checkmark when the field is valid */
+  valid?: boolean;
 }
 
 export default function InputField({
@@ -19,6 +21,8 @@ export default function InputField({
   name,
   id,
   className,
+  required,
+  valid,
   ...props
 }: InputFieldProps) {
   const inputId = id || name || label.toLowerCase().replace(/\s+/g, "-");
@@ -30,22 +34,32 @@ export default function InputField({
         className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold transition-colors group-focus-within:text-primary"
       >
         {label}
+        {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
-      <input
-        id={inputId}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className={cn(
-          "w-full text-on-surface placeholder:text-on-surface-variant/40 outline-none transition-colors",
-          variant === "filled" &&
-            "bg-surface-container-high border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-5 px-6",
-          variant === "underline" &&
-            "bg-transparent border-0 border-b border-white/20 focus:border-primary focus:ring-0 py-3 px-0",
-          error && "border-error"
+      <div className="relative">
+        <input
+          id={inputId}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          required={required}
+          className={cn(
+            "w-full text-on-surface placeholder:text-on-surface-variant/40 outline-none transition-colors",
+            variant === "filled" &&
+              "bg-surface-container-high border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-5 px-6",
+            variant === "underline" &&
+              "bg-transparent border-0 border-b border-white/20 focus:border-primary focus:ring-0 py-3 px-0",
+            error && "border-error",
+            valid && !error && "border-green-500"
+          )}
+          {...props}
+        />
+        {valid && !error && (
+          <span className="absolute right-0 top-1/2 -translate-y-1/2 text-green-500 text-sm">
+            &#10003;
+          </span>
         )}
-        {...props}
-      />
+      </div>
       {error && <p className="text-error text-[11px]">{error}</p>}
     </div>
   );

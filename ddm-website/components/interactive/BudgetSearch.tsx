@@ -10,7 +10,7 @@ export default function BudgetSearch({ className }: { className?: string }) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    router.push("/inventory");
+    router.push("/leasing");
   }
 
   return (

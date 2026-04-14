@@ -34,7 +34,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Hero Image ─── */}
-      <section className="w-full px-6 md:px-12 max-w-screen-2xl mx-auto mb-40">
+      <section className="w-full px-6 md:px-12 max-w-screen-2xl mx-auto mb-16">
         <ScrollReveal>
           <div className="aspect-[21/9] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out border border-white/5">
             <img
@@ -47,7 +47,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Editorial About Section ─── */}
-      <section className="pb-40 px-6 md:px-12 max-w-screen-2xl mx-auto">
+      <section className="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-x-12">
           {/* Left Column */}
           <div className="md:col-span-4">
@@ -119,7 +119,6 @@ export default function AboutPage() {
         }
         primaryCTA={{ label: "Request Membership", href: "/contact" }}
         secondaryCTA={{ label: "Schedule a Visit", href: "/contact" }}
-        background="bg-[#080808]"
       />
     </>
   );

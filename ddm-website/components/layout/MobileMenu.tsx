@@ -88,45 +88,34 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {/* Nav links */}
           <nav aria-label="Mobile navigation" className="flex flex-col gap-6 px-10 mt-12">
-            {NAV_LINKS.map((link, i) => (
-              <motion.div
-                key={link.href}
-                custom={i}
-                variants={linkVariants}
-                initial="closed"
-                animate="open"
-              >
-                <Link
-                  href={link.href}
-                  onClick={onClose}
-                  className={`font-headline italic text-4xl transition-colors ${
-                    pathname === link.href
-                      ? "text-primary"
-                      : "text-on-surface/60 hover:text-primary"
-                  }`}
+            {NAV_LINKS.map((link, i) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
+
+              return (
+                <motion.div
+                  key={link.href}
+                  custom={i}
+                  variants={linkVariants}
+                  initial="closed"
+                  animate="open"
                 >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              custom={NAV_LINKS.length}
-              variants={linkVariants}
-              initial="closed"
-              animate="open"
-            >
-              <Link
-                href="/contact"
-                onClick={onClose}
-                className={`font-headline italic text-4xl transition-colors ${
-                  pathname === "/contact"
-                    ? "text-primary"
-                    : "text-on-surface/60 hover:text-primary"
-                }`}
-              >
-                Contact
-              </Link>
-            </motion.div>
+                  <Link
+                    href={link.href}
+                    onClick={onClose}
+                    className={`font-headline italic text-3xl transition-colors ${
+                      isActive
+                        ? "text-primary"
+                        : "text-on-surface/60 hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </nav>
 
           {/* Business info at bottom */}

@@ -17,8 +17,12 @@ export const BUSINESS_INFO = {
 // ---------------------------------------------------------------------------
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "Inventory", href: "/inventory" },
-  { label: "Services", href: "/services" },
+  { label: "Leasing", href: "/leasing" },
+  { label: "Financing", href: "/financing" },
+  { label: "Credit Application", href: "/apply" },
+  { label: "Sell Your Car", href: "/acquisition" },
+  { label: "Trade-Ins", href: "/trade-in" },
+  { label: "Delivery", href: "/delivery" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -312,35 +316,35 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     description:
       "Tailored lease programs with competitive rates designed for discerning clients who demand flexibility.",
     icon: "directions_car",
-    href: "/services/leasing",
+    href: "/leasing",
   },
   {
     title: "Financing",
     description:
       "Bespoke financing solutions structured to match your lifestyle and investment strategy.",
     icon: "account_balance",
-    href: "/services/financing",
+    href: "/financing",
   },
   {
     title: "Credit Assistance",
     description:
       "Expert guidance through every step of the credit process, ensuring the smoothest path to ownership.",
     icon: "verified_user",
-    href: "/services/credit-info",
+    href: "/credit-info",
   },
   {
     title: "Sell / Trade-In",
     description:
       "Receive a premium, no-obligation offer for your vehicle through our direct acquisition program.",
     icon: "sell",
-    href: "/services/trade-in",
+    href: "/trade-in",
   },
   {
     title: "Nationwide Delivery",
     description:
       "White-glove, enclosed transport to your door — anywhere in the continental United States.",
     icon: "local_shipping",
-    href: "/services/delivery",
+    href: "/delivery",
     badge: "White Glove",
   },
   {

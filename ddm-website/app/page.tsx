@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 };
 
 // ─── High-res local images ───
-const ABOUT_IMG = "/images/garage/porsche-headlights.jpg";
+const ABOUT_IMG = "/images/garage/red911.jpg";
 const CURATED_IMG = "/images/garage/ferrari-classic.jpg";
-const ELITE_IMG = "/images/garage/bmw-ix3.jpg";
+const ELITE_IMG = "/images/garage/pagani.jpg";
 
 // ─── Data ───
 const DDM_FEATURES = [
@@ -49,39 +49,39 @@ const HOMEPAGE_SERVICES = [
     description:
       "Flexible lease programs with competitive rates, crafted for clients who demand both performance and financial agility.",
     icon: "directions_car",
-    href: "/services/leasing",
-    image: "/images/garage/lambo-aventador.jpg",
+    href: "/leasing",
+    image: "/images/garage/sf90.jpg",
   },
   {
     title: "Auto Financing",
     description:
       "Precision-structured financing solutions designed to complement your lifestyle and investment strategy.",
     icon: "account_balance",
-    href: "/services/financing",
-    image: "/images/garage/porsche-headlights.jpg",
+    href: "/financing",
+    image: "/images/garage/rarri.jpg",
   },
   {
     title: "Credit Application",
     description:
       "Discreet, accelerated processing through our streamlined credit pathway. Expert guidance at every step.",
     icon: "verified_user",
-    href: "/services/credit-info",
-    image: "/images/garage/mclaren-artura.jpg",
+    href: "/credit-info",
+    image: "/images/garage/mclaren.jpg",
   },
   {
     title: "Sell Your Car",
     description:
       "Receive an immediate, no-obligation offer through our direct acquisition program. No listing delays.",
     icon: "sell",
-    href: "/services/acquisition",
-    image: "/images/garage/gt3rs-showroom.jpg",
+    href: "/acquisition",
+    image: "/images/garage/aston.jpg",
   },
   {
     title: "Trade-Ins",
     description:
       "Premium valuations for your current vehicle. A seamless transition to your next chapter with DDM.",
     icon: "swap_horiz",
-    href: "/services/trade-in",
+    href: "/trade-in",
     image: "/images/garage/ferrari-f8.jpg",
   },
   {
@@ -89,8 +89,8 @@ const HOMEPAGE_SERVICES = [
     description:
       "White-glove enclosed transport to your doorstep, anywhere in the continental United States.",
     icon: "local_shipping",
-    href: "/services/delivery",
-    image: "/images/garage/dodge-challenger.jpg",
+    href: "/delivery",
+    image: "/images/garage/home-delivery.jpg",
   },
 ];
 
@@ -137,14 +137,14 @@ export default function HomePage() {
 
           <ScrollReveal delay={0.4}>
             <div className="flex gap-5 flex-wrap justify-center">
-              <Button href="/inventory" variant="primary" size="md">
-                Explore Collection
+              <Button href="/leasing" variant="primary" size="md">
+                Explore Leasing
               </Button>
               <Link
-                href="/services"
+                href="/apply"
                 className="inline-flex items-center px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white/70 border border-white/20 hover:border-primary/60 hover:text-primary transition-all duration-500"
               >
-                Our Services
+                Apply for Credit
               </Link>
             </div>
           </ScrollReveal>
@@ -187,12 +187,12 @@ export default function HomePage() {
       </header>
 
       {/* ─── About DDM — 65% text left / 35% image right ─── */}
-      <section className="py-28 md:py-40 bg-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-black relative overflow-hidden">
         {/* Decorative gold line accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             {/* Left — Text (65%) */}
             <div className="lg:col-span-7">
               <ScrollReveal>
@@ -215,7 +215,7 @@ export default function HomePage() {
                   the most exceptional pre-owned luxury and performance vehicles
                   for collectors and enthusiasts who refuse to compromise.
                 </p>
-                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-16 max-w-[600px]">
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-10 max-w-[600px]">
                   From our Baldwin Park gallery to your doorstep, every
                   interaction is defined by discretion, precision, and an
                   unwavering commitment to excellence.
@@ -243,21 +243,22 @@ export default function HomePage() {
 
             {/* Right — Porsche Image (35%) with seamless blending */}
             <ScrollReveal direction="right" className="lg:col-span-5">
-              <div className="relative w-full h-[450px] lg:h-[620px] overflow-hidden">
+              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src={ABOUT_IMG}
-                  alt="Porsche headlights in darkness"
+                  alt="Red Porsche 911 GT3 RS"
                   fill
-                  className="object-cover object-center"
+                  unoptimized
+                  className="object-cover object-[18%_40%]"
                   sizes="(max-width: 1024px) 100vw, 42vw"
-                  quality={90}
                 />
-                {/* Seamless edge fade to black */}
+                {/* Seamless edge fade — heavier bottom to hide floor */}
                 <div className="absolute inset-0 pointer-events-none"
                   style={{
                     background: [
-                      "linear-gradient(to bottom, black 0%, transparent 12%, transparent 85%, black 100%)",
+                      "linear-gradient(to bottom, black 0%, transparent 8%, transparent 60%, rgba(0,0,0,0.6) 80%, black 95%)",
                       "linear-gradient(to right, black 0%, transparent 12%, transparent 85%, black 100%)",
+                      "linear-gradient(to top, black 0%, transparent 35%)",
                     ].join(", "),
                   }}
                 />
@@ -268,15 +269,15 @@ export default function HomePage() {
       </section>
 
       {/* ─── Curated Selection — image left / text right ─── */}
-      <section className="py-28 md:py-40 bg-black relative">
+      <section className="py-16 md:py-24 bg-black relative">
         {/* Decorative gold line accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             {/* Left — Ferrari Image with seamless blending */}
             <ScrollReveal direction="left" className="lg:col-span-5 order-2 lg:order-1">
-              <div className="relative w-full h-[450px] lg:h-[620px] overflow-hidden">
+              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src={CURATED_IMG}
                   alt="Ferrari in dark showroom"
@@ -319,11 +320,11 @@ export default function HomePage() {
                   never reach the open market.
                 </p>
                 <Link
-                  href="/inventory"
+                  href="/leasing"
                   className="group inline-flex items-center text-primary font-bold text-[10px] uppercase tracking-widest gap-2 hover:gap-4 transition-all duration-500"
                 >
                   <span className="border-b border-primary/40 group-hover:border-primary pb-1 transition-colors duration-500">
-                    View Full Collection
+                    Explore Leasing Options
                   </span>
                   <span className="material-symbols-outlined text-sm">
                     arrow_forward
@@ -336,7 +337,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Elite Service — text left / image right ─── */}
-      <section className="py-28 md:py-40 bg-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-black relative overflow-hidden">
         {/* Decorative gold line accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
@@ -350,7 +351,7 @@ export default function HomePage() {
         />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             {/* Left — Content */}
             <div className="lg:col-span-7">
               <ScrollReveal>
@@ -391,23 +392,24 @@ export default function HomePage() {
               </StaggerReveal>
             </div>
 
-            {/* Right — BMW Image with seamless blending */}
+            {/* Right — Pagani with seamless blending */}
             <ScrollReveal direction="right" className="lg:col-span-5">
-              <div className="relative w-full h-[450px] lg:h-[620px] overflow-hidden">
+              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src={ELITE_IMG}
-                  alt="BMW iX3 illuminated"
+                  alt="Pagani Huayra"
                   fill
-                  className="object-cover object-center"
+                  unoptimized
+                  className="object-cover object-[center_45%]"
                   sizes="(max-width: 1024px) 100vw, 42vw"
-                  quality={90}
                 />
-                {/* Seamless edge fade to black */}
+                {/* Seamless edge fade — Pagani is already dark, light blending */}
                 <div className="absolute inset-0 pointer-events-none"
                   style={{
                     background: [
-                      "linear-gradient(to bottom, black 0%, transparent 12%, transparent 85%, black 100%)",
-                      "linear-gradient(to right, black 0%, transparent 12%, transparent 85%, black 100%)",
+                      "linear-gradient(to bottom, black 0%, transparent 8%, transparent 65%, rgba(0,0,0,0.5) 80%, black 95%)",
+                      "linear-gradient(to right, black 0%, transparent 10%, transparent 88%, black 100%)",
+                      "linear-gradient(to top, black 0%, transparent 30%)",
                     ].join(", "),
                   }}
                 />
@@ -418,13 +420,13 @@ export default function HomePage() {
       </section>
 
       {/* ─── Services ─── */}
-      <section className="py-28 md:py-40 bg-black relative">
+      <section className="py-16 md:py-24 bg-black relative">
         {/* Decorative gold line accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <div className="mb-20 text-center">
+            <div className="mb-14 text-center">
               <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
                 What We Offer
               </span>
@@ -449,7 +451,7 @@ export default function HomePage() {
                       src={service.image}
                       alt=""
                       fill
-                      className="object-cover opacity-0 group-hover:opacity-40 scale-[1.15] group-hover:scale-100 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                      className="object-cover opacity-0 group-hover:opacity-[0.55] scale-[1.15] group-hover:scale-100 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       quality={90}
                     />
@@ -512,7 +514,7 @@ export default function HomePage() {
           </>
         }
         subtitle="Whether you are acquiring your first exotic or expanding a collection, our concierge team is ready."
-        primaryCTA={{ label: "Explore Collection", href: "/inventory" }}
+        primaryCTA={{ label: "Explore Leasing", href: "/leasing" }}
         secondaryCTA={{ label: "Contact Us", href: "/contact" }}
       />
     </>

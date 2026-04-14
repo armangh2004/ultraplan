@@ -20,8 +20,8 @@ export default function CreditInfoPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="px-6 md:px-12 pt-40 mb-32 relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="px-6 md:px-12 pt-40 mb-16 relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal>
             <span className="font-label text-primary uppercase tracking-[0.5em] text-[9px] block mb-6">
               Financial Distinction
@@ -88,7 +88,7 @@ export default function CreditInfoPage() {
       </section>
 
       {/* Form Section */}
-      <section className="px-6 md:px-12 py-32 relative bg-black">
+      <section className="px-6 md:px-12 py-16 md:py-24 relative bg-black">
         {/* Watermark */}
         <MonogramOverlay
           text="ELITE"
@@ -202,7 +202,7 @@ export default function CreditInfoPage() {
       </section>
 
       {/* Features Bento Grid */}
-      <section className="px-6 md:px-12 py-32 max-w-7xl mx-auto">
+      <section className="px-6 md:px-12 py-16 md:py-24 max-w-7xl mx-auto">
         <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Unrivaled Privacy (2-col) */}
           <div className="md:col-span-2 bg-black p-16 border border-white/5 flex flex-col justify-between group hover:border-primary/30 transition-all duration-500">
