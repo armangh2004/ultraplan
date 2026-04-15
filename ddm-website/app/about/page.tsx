@@ -16,27 +16,27 @@ export default function AboutPage() {
   return (
     <>
       {/* ─── Hero Section ─── */}
-      <section className="pt-32 pb-20 px-6 md:px-12 max-w-screen-2xl mx-auto text-center md:text-left">
+      <section className="pt-32 pb-20 px-6 md:px-12 max-w-screen-2xl mx-auto flex items-center justify-center text-center">
         <div className="max-w-4xl">
           <ScrollReveal>
-            <p className="font-label text-[10px] uppercase tracking-[0.6em] text-primary mb-10 opacity-80">
+            <p className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
               Established 2024
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="font-headline text-7xl md:text-9xl font-light tracking-tighter leading-[0.85] mb-16">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-16">
               The Atelier: <br />
               <span className="serif-italic">Bespoke Excellence</span>
             </h1>
           </ScrollReveal>
-          <div className="h-[1px] w-32 bg-primary/40 mx-auto md:mx-0" />
+          <div className="h-[1px] w-32 bg-primary/40 mx-auto" />
         </div>
       </section>
 
       {/* ─── Hero Image ─── */}
       <section className="w-full px-6 md:px-12 max-w-screen-2xl mx-auto mb-16">
         <ScrollReveal>
-          <div className="aspect-[21/9] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out border border-white/5">
+          <div className="aspect-[21/9] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out border border-white/[0.04]">
             <img
               src={HERO_IMG}
               alt="The Dream Drive Collection"
@@ -52,10 +52,10 @@ export default function AboutPage() {
           {/* Left Column */}
           <div className="md:col-span-4">
             <ScrollReveal>
-              <span className="font-label text-[10px] uppercase tracking-[0.4em] text-primary/60 block mb-6">
+              <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
                 Our Philosophy
               </span>
-              <h2 className="font-headline text-5xl md:text-6xl leading-[1.1] tracking-tight">
+              <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
                 The Art of <br />
                 <span className="serif-italic">Curated Motoring</span>
               </h2>
@@ -65,7 +65,7 @@ export default function AboutPage() {
           {/* Right Column */}
           <div className="md:col-start-6 md:col-span-7 space-y-10">
             <ScrollReveal delay={0.1}>
-              <p className="font-body text-2xl md:text-3xl text-on-surface-variant leading-snug font-light">
+              <p className="font-body text-2xl md:text-3xl text-white/50 leading-snug font-light">
                 Dream Drive Motors was founded on the principle that the
                 acquisition of a luxury vehicle should be as exceptional as the
                 drive itself.
@@ -75,7 +75,7 @@ export default function AboutPage() {
               <div className="h-px w-16 bg-primary/20" />
             </ScrollReveal>
             <ScrollReveal delay={0.25}>
-              <p className="font-body text-lg text-on-surface-variant/70 leading-relaxed max-w-2xl">
+              <p className="font-body text-lg text-white/50 leading-relaxed max-w-2xl">
                 The Atelier is our dedicated space for this vision&mdash;a
                 sanctuary where automotive engineering meets personalized
                 curation. We operate beyond the traditional dealership model,
@@ -86,7 +86,7 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
-              <div className="pt-12 grid grid-cols-2 gap-8 border-t border-white/10">
+              <div className="pt-12 grid grid-cols-2 gap-8 border-t border-white/[0.06]">
                 <div>
                   <p className="font-headline text-2xl text-primary">
                     Private Gallery

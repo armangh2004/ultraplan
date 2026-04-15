@@ -75,7 +75,7 @@ export default function CalculatorPage() {
           {RELATED_OPPORTUNITIES.map((item, i) => (
             <ScrollReveal key={item.title} delay={i * 0.15}>
               <div className="group cursor-pointer">
-                <div className="aspect-[4/5] overflow-hidden mb-8 border border-outline/10 bg-surface">
+                <div className="aspect-[4/5] overflow-hidden mb-8 border border-white/[0.06] bg-white/[0.015] group-hover:border-primary/15 transition-colors duration-500">
                   <img
                     src={item.image}
                     alt={item.alt}

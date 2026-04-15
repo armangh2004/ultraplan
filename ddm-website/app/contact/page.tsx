@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import ScrollReveal from "@/components/animation/ScrollReveal";
+import StaggerReveal from "@/components/animation/StaggerReveal";
 import ContactForm from "@/components/interactive/ContactForm";
 import { BUSINESS_INFO } from "@/lib/constants";
 
@@ -10,21 +11,47 @@ export const metadata: Metadata = {
     "Get in touch with Dream Drive Motors. Submit an inquiry, schedule a visit, or call us directly.",
 };
 
+const CONTACT_ITEMS = [
+  {
+    icon: "location_on",
+    label: "Visit Us",
+    content: BUSINESS_INFO.address,
+  },
+  {
+    icon: "call",
+    label: "Call Us",
+    content: BUSINESS_INFO.phone,
+    href: `tel:${BUSINESS_INFO.phone.replace(/-/g, "")}`,
+  },
+  {
+    icon: "mail",
+    label: "Email Us",
+    content: BUSINESS_INFO.email,
+    href: `mailto:${BUSINESS_INFO.email}`,
+  },
+  {
+    icon: "schedule",
+    label: "Hours",
+    content: "Mon – Sat: 9 AM – 7 PM",
+    subtext: "Sun: By Appointment",
+  },
+];
+
 export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-black pt-40 pb-20 px-6 md:px-12">
-        <div className="max-w-screen-2xl mx-auto">
+      <section className="bg-black pt-40 pb-20 px-6 md:px-12 flex items-center justify-center">
+        <div className="max-w-screen-2xl mx-auto text-center">
           <ScrollReveal>
-            <span className="font-label text-[10px] uppercase tracking-[0.4em] text-primary/80 block mb-6">
+            <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
               Get in Touch
             </span>
-            <h1 className="font-headline text-5xl md:text-7xl text-on-surface leading-tight mb-6">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
               Contact{" "}
               <span className="serif-italic text-primary">Us</span>
             </h1>
-            <p className="text-white/40 text-lg max-w-xl leading-relaxed font-light">
+            <p className="font-body text-lg md:text-xl text-white/50 max-w-[580px] mx-auto leading-relaxed font-light">
               Have a question about leasing, financing, or selling your vehicle?
               Our team is here to help. Reach out and we&apos;ll get back to you
               within 24 hours.
@@ -34,123 +61,95 @@ export default function ContactPage() {
       </section>
 
       {/* Main content: Contact Info + Form */}
-      <section className="bg-black py-16 md:py-24 px-6 md:px-12">
-        <div className="absolute left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <section className="bg-black py-16 md:py-24 px-6 md:px-12 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Left: Contact details */}
           <div className="lg:col-span-4">
-            <ScrollReveal>
-              <div className="space-y-10">
-                {/* Address */}
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-sm bg-white/[0.03] flex items-center justify-center border border-primary/10 flex-shrink-0">
+            <StaggerReveal className="space-y-6" staggerDelay={0.1}>
+              {CONTACT_ITEMS.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-start gap-5 p-5 border border-white/[0.04] bg-white/[0.015] hover:border-primary/15 transition-colors duration-500 group"
+                >
+                  <div className="w-10 h-10 rounded-sm bg-primary/[0.06] flex items-center justify-center border border-primary/15 flex-shrink-0 group-hover:border-primary/30 group-hover:shadow-gold-sm transition-all duration-500">
                     <span
-                      className="material-symbols-outlined text-primary text-lg"
+                      className="material-symbols-outlined text-primary text-lg group-hover:scale-110 transition-transform duration-500"
                       style={{ fontVariationSettings: "'FILL' 1" }}
                     >
-                      location_on
+                      {item.icon}
                     </span>
                   </div>
                   <div>
                     <h3 className="font-label text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold mb-2">
-                      Visit Us
+                      {item.label}
                     </h3>
-                    <address className="not-italic text-on-surface text-sm leading-relaxed">
-                      {BUSINESS_INFO.address}
-                    </address>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-on-surface text-sm hover:text-primary transition-colors duration-300"
+                      >
+                        {item.content}
+                      </a>
+                    ) : item.label === "Visit Us" ? (
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=15132+Arrow+Hwy+Baldwin+Park+CA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="not-italic text-on-surface text-sm leading-relaxed hover:text-primary transition-colors duration-300 block"
+                      >
+                        {item.content}
+                      </a>
+                    ) : (
+                      <>
+                        <p className="text-on-surface text-sm">{item.content}</p>
+                        {item.subtext && (
+                          <p className="text-white/40 text-sm">{item.subtext}</p>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
+              ))}
+            </StaggerReveal>
 
-                {/* Phone */}
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-sm bg-white/[0.03] flex items-center justify-center border border-primary/10 flex-shrink-0">
-                    <span
-                      className="material-symbols-outlined text-primary text-lg"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      call
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="font-label text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold mb-2">
-                      Call Us
-                    </h3>
-                    <a
-                      href={`tel:${BUSINESS_INFO.phone.replace(/-/g, "")}`}
-                      className="text-on-surface text-sm hover:text-primary transition-colors"
-                    >
-                      {BUSINESS_INFO.phone}
-                    </a>
-                  </div>
+            {/* Directions link */}
+            <ScrollReveal delay={0.2}>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=15132+Arrow+Hwy+Baldwin+Park+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 flex items-center gap-4 p-5 border border-white/[0.04] bg-white/[0.015] hover:border-primary/15 transition-all duration-500 group"
+              >
+                <div className="w-10 h-10 rounded-sm bg-primary/[0.06] flex items-center justify-center border border-primary/15 flex-shrink-0 group-hover:border-primary/30 group-hover:shadow-gold-sm transition-all duration-500">
+                  <span
+                    className="material-symbols-outlined text-primary text-lg group-hover:scale-110 transition-transform duration-500"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    directions
+                  </span>
                 </div>
-
-                {/* Email */}
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-sm bg-white/[0.03] flex items-center justify-center border border-primary/10 flex-shrink-0">
-                    <span
-                      className="material-symbols-outlined text-primary text-lg"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      mail
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="font-label text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold mb-2">
-                      Email Us
-                    </h3>
-                    <a
-                      href={`mailto:${BUSINESS_INFO.email}`}
-                      className="text-on-surface text-sm hover:text-primary transition-colors"
-                    >
-                      {BUSINESS_INFO.email}
-                    </a>
-                  </div>
+                <div>
+                  <span className="text-on-surface text-sm group-hover:text-primary transition-colors duration-300 block">
+                    Get Directions
+                  </span>
+                  <span className="text-white/35 text-xs">
+                    Opens in Google Maps
+                  </span>
                 </div>
-
-                {/* Hours */}
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-sm bg-white/[0.03] flex items-center justify-center border border-primary/10 flex-shrink-0">
-                    <span
-                      className="material-symbols-outlined text-primary text-lg"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      schedule
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="font-label text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold mb-2">
-                      Hours
-                    </h3>
-                    <p className="text-on-surface text-sm">Mon – Sat: 9 AM – 7 PM</p>
-                    <p className="text-white/40 text-sm">Sun: By Appointment</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Google Maps embed */}
-            <ScrollReveal delay={0.1}>
-              <div className="mt-12 aspect-[4/3] rounded-sm overflow-hidden border border-white/[0.06]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.6!2d-117.9611!3d34.0851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2db00000000%3A0x0!2s15132+Arrow+Hwy%2C+Baldwin+Park%2C+CA!5e0!3m2!1sen!2sus!4v1700000000000"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) grayscale(50%)" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Dream Drive Motors Location"
-                />
-              </div>
+                <span className="material-symbols-outlined text-white/20 text-sm ml-auto group-hover:text-primary group-hover:translate-x-1 transition-all duration-300">
+                  north_east
+                </span>
+              </a>
             </ScrollReveal>
           </div>
 
           {/* Right: Contact Form */}
           <div className="lg:col-span-8">
             <ScrollReveal direction="right">
-              <div className="border border-white/[0.06] rounded-sm p-8 md:p-12">
-                <h2 className="font-headline text-3xl md:text-4xl mb-2 text-on-surface">
+              <div className="border border-white/[0.06] bg-white/[0.015] p-8 md:p-12">
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-2 text-on-surface">
                   Send Us a{" "}
                   <span className="serif-italic text-primary">Message</span>
                 </h2>

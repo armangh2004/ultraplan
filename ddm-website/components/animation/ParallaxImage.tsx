@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useIsTouchDevice } from "@/lib/hooks/useIsTouchDevice";
-import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
 
 interface ParallaxImageProps {
@@ -27,87 +26,41 @@ export default function ParallaxImage({
   sizes,
 }: ParallaxImageProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
   const isTouch = useIsTouchDevice();
-  const reducedMotion = useReducedMotion();
+  const prefersReduced = useReducedMotion();
 
-  useEffect(() => {
-    if (reducedMotion || !wrapperRef.current || !imageRef.current) return;
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ["start end", "end start"],
+  });
 
-    const wrapper = wrapperRef.current;
-    const image = imageRef.current;
+  const distance = speed * 100;
+  const y = useTransform(scrollYProgress, [0, 1], [-distance, distance]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
-    let tween: gsap.core.Tween;
-
-    if (isTouch) {
-      // On mobile: subtle scale instead of Y translation
-      tween = gsap.fromTo(
-        image,
-        { scale: 1.0 },
-        {
-          scale: 1.05,
-          ease: "none",
-          scrollTrigger: {
-            trigger: wrapper,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    } else {
-      // On desktop: Y translation parallax
-      const distance = speed * 100;
-      tween = gsap.fromTo(
-        image,
-        { y: -distance },
-        {
-          y: distance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: wrapper,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }
-
-    return () => {
-      tween.kill();
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === wrapper) {
-          st.kill();
-        }
-      });
-    };
-  }, [speed, isTouch, reducedMotion]);
+  if (prefersReduced) {
+    return (
+      <div className={cn("overflow-hidden", className)}>
+        <div className="h-full w-full">
+          {fill ? (
+            <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
+          ) : (
+            <Image src={src} alt={alt} width={1920} height={1080} priority={priority} sizes={sizes} className="h-full w-full object-cover" />
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={wrapperRef} className={cn("overflow-hidden", className)}>
-      <div ref={imageRef} className="h-full w-full">
+      <motion.div className="h-full w-full" style={isTouch ? { scale } : { y }}>
         {fill ? (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority={priority}
-            sizes={sizes}
-            className="object-cover"
-          />
+          <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
         ) : (
-          <Image
-            src={src}
-            alt={alt}
-            width={1920}
-            height={1080}
-            priority={priority}
-            sizes={sizes}
-            className="h-full w-full object-cover"
-          />
+          <Image src={src} alt={alt} width={1920} height={1080} priority={priority} sizes={sizes} className="h-full w-full object-cover" />
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -3,262 +3,422 @@ import Image from "next/image";
 
 import ScrollReveal from "@/components/animation/ScrollReveal";
 import StaggerReveal from "@/components/animation/StaggerReveal";
+import NumberCounter from "@/components/animation/NumberCounter";
+import ParallaxImage from "@/components/animation/ParallaxImage";
 import CTASection from "@/components/sections/CTASection";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Bespoke Home Delivery",
   description:
-    "Experience an elite handover ceremony conducted with surgical precision, ensuring your vehicle arrives in showroom-fresh condition.",
+    "White-glove vehicle delivery to your door. Enclosed transport, real-time tracking, and a personal handover ceremony for every client.",
 };
 
-// Local high-res images
-const HERO_BG = "/images/garage/supercar-showroom.jpg";
-const CEREMONY_IMG = "/images/garage/lambo-aventador.jpg";
-const ECOSYSTEM_IMG = "/images/garage/blackferrari.jpg";
-const GLOBE_IMG = "/images/garage/mercedes-rear.jpg";
+const STEPS = [
+  {
+    num: "01",
+    title: "Preparation",
+    desc: "Your vehicle undergoes a meticulous detail and 120-point quality inspection before loading into our climate-controlled enclosed trailer.",
+    icon: "auto_awesome",
+  },
+  {
+    num: "02",
+    title: "In Transit",
+    desc: "Real-time GPS tracking with live photo updates at every milestone. You'll always know exactly where your vehicle is.",
+    icon: "local_shipping",
+  },
+  {
+    num: "03",
+    title: "Arrival",
+    desc: "A personal concierge guides you through a comprehensive orientation and hands you the keys at your door.",
+    icon: "home",
+  },
+];
+
+const FEATURES = [
+  {
+    icon: "verified_user",
+    title: "Fully Insured Transit",
+    desc: "Comprehensive bumper-to-bumper coverage from the moment your vehicle leaves our facility until it's in your hands.",
+  },
+  {
+    icon: "thermostat",
+    title: "Climate-Controlled",
+    desc: "Custom-engineered enclosed trailers protect against UV, humidity, road debris, and temperature extremes.",
+  },
+  {
+    icon: "support_agent",
+    title: "Dedicated Concierge",
+    desc: "A single point of contact manages your entire delivery from scheduling to the final walk-around at your residence.",
+  },
+  {
+    icon: "timer",
+    title: "Precise Scheduling",
+    desc: "Choose your preferred delivery window. Our logistics team coordinates arrival within a 30-minute margin.",
+  },
+];
+
+/* Seamless edge-fade gradients — blend images into the black background */
+const EDGE_FADE = [
+  "linear-gradient(to bottom, black 0%, transparent 10%, transparent 88%, black 100%)",
+  "linear-gradient(to right, black 0%, transparent 10%, transparent 88%, black 100%)",
+].join(", ");
+
+/* Heavy fade for editorial images — fully dissolves all edges into black */
+const EDGE_FADE_HEAVY = [
+  "linear-gradient(to bottom, black 0%, black 5%, rgba(0,0,0,0.5) 20%, transparent 40%, transparent 55%, rgba(0,0,0,0.5) 75%, black 92%, black 100%)",
+  "linear-gradient(to right, black 0%, black 5%, rgba(0,0,0,0.5) 20%, transparent 40%, transparent 60%, rgba(0,0,0,0.5) 80%, black 92%, black 100%)",
+].join(", ");
 
 export default function DeliveryPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-end px-6 md:px-12 pb-32 overflow-hidden">
+      {/* ── Hero ────────────────────────────────────────────────── */}
+      <section className="relative h-[85vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src={HERO_BG}
-            alt="Enclosed car delivery transporter"
+            src="/images/garage/rr.jpg"
+            alt="Rolls Royce ready for delivery"
             fill
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover"
+            className="object-cover object-[center_40%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         </div>
 
-        <ScrollReveal className="relative z-10 max-w-4xl">
-          <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
-            The Ultimate Arrival
+        <ScrollReveal className="relative z-10 max-w-4xl text-center mx-auto">
+          <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
+            White-Glove Service
           </span>
-          <h1 className="text-7xl md:text-9xl font-headline italic leading-[1] text-on-surface mb-10">
-            Bespoke <br /> Home Delivery
+          <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-10">
+            Delivered to <br /> Your Door.
           </h1>
-          <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl font-body leading-relaxed opacity-90">
-            The culmination of your journey. Experience an elite handover
-            ceremony conducted with surgical precision, ensuring your vehicle
-            arrives in showroom-fresh condition.
+          <p className="font-body text-lg md:text-xl text-white/50 max-w-[580px] mx-auto leading-relaxed font-light">
+            Every vehicle leaves our facility in showroom condition and arrives
+            with a personal handover ceremony — wherever you are.
           </p>
         </ScrollReveal>
       </section>
 
-      {/* Handover Experience Bento */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-black">
-        <ScrollReveal className="mb-24">
-          <h2 className="text-5xl font-headline italic text-on-surface mb-6">
-            The Handover Experience
+      {/* ── Process Timeline ────────────────────────────────────── */}
+      <section className="py-16 md:py-20 px-6 md:px-12 bg-black relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
+
+        <ScrollReveal className="text-center mb-14 max-w-2xl mx-auto">
+          <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
+            The Process
+          </span>
+          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+            From Our Hands to Yours
           </h2>
-          <div className="w-32 h-px bg-primary" />
         </ScrollReveal>
 
-        <StaggerReveal className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          {/* Main Ceremony Card */}
-          <div className="md:col-span-8 bg-black rounded-xl overflow-hidden border border-white/5 group">
-            <div className="grid md:grid-cols-2 h-full">
-              <div className="p-16 flex flex-col justify-center">
-                <span className="material-symbols-outlined text-primary text-5xl mb-8">
-                  award_star
+        <StaggerReveal
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-screen-xl mx-auto"
+          staggerDelay={0.15}
+        >
+          {STEPS.map((step) => (
+            <div
+              key={step.num}
+              className="relative p-10 md:p-12 rounded-sm border border-white/[0.06] hover:border-primary/15 transition-all duration-500 group bg-white/[0.015] h-full flex flex-col"
+            >
+              <span className="absolute top-8 right-8 font-headline italic text-6xl text-white/[0.04] group-hover:text-primary/10 transition-colors duration-500 select-none">
+                {step.num}
+              </span>
+              <div className="w-14 h-14 rounded-full border border-primary/20 flex items-center justify-center mb-8 group-hover:border-primary/40 transition-colors duration-500">
+                <span
+                  className="material-symbols-outlined text-primary text-2xl"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {step.icon}
                 </span>
-                <h3 className="text-3xl font-headline mb-6 italic">
-                  A Ceremony of Ownership
-                </h3>
-                <p className="text-on-surface-variant leading-relaxed text-sm">
-                  Every delivery is orchestrated by a Senior Product Concierge.
-                  We transform a simple drop-off into a curated event, featuring
-                  a comprehensive orientation and technical synchronization in
-                  the privacy of your residence.
-                </p>
               </div>
-              <div className="relative h-80 md:h-auto overflow-hidden">
+              <h3 className="text-2xl font-headline italic mb-4 text-on-surface">
+                {step.title}
+              </h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed mt-auto">
+                {step.desc}
+              </p>
+            </div>
+          ))}
+        </StaggerReveal>
+      </section>
+
+      {/* ── Editorial: White-Glove — text left / image right ───── */}
+      <section className="py-16 md:py-20 bg-black relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
+
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            {/* Left — Text */}
+            <div className="lg:col-span-7">
+              <ScrollReveal>
+                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
+                  The Handover
+                </span>
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8">
+                  A Ceremony, <br className="hidden lg:block" />
+                  <span className="serif-italic text-primary">
+                    Not a Drop-Off.
+                  </span>
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.1}>
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-5 max-w-[600px]">
+                  Every delivery is orchestrated by a Senior Product Concierge
+                  who transforms a simple handover into a curated experience.
+                  From a comprehensive vehicle orientation to syncing your
+                  digital preferences, every detail is addressed in the comfort
+                  of your residence.
+                </p>
+              </ScrollReveal>
+
+              <StaggerReveal className="space-y-5 mb-10 pt-4" staggerDelay={0.1}>
+                {[
+                  "Full vehicle orientation and feature walkthrough",
+                  "Seat memory, drive modes, and infotainment configured to your preferences",
+                  "Complete documentation package presented and reviewed",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-4">
+                    <span
+                      className="material-symbols-outlined text-primary text-lg mt-0.5"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      check_circle
+                    </span>
+                    <span className="text-white/50 text-sm">{item}</span>
+                  </div>
+                ))}
+              </StaggerReveal>
+
+              <ScrollReveal delay={0.25}>
+                <Button href="/contact" variant="primary" size="md">
+                  Schedule Delivery
+                </Button>
+              </ScrollReveal>
+            </div>
+
+            {/* Right — Genesis Image with seamless edge blending */}
+            <ScrollReveal direction="right" className="lg:col-span-5">
+              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
-                  src={CEREMONY_IMG}
-                  alt="Key handover ceremony"
+                  src="/images/garage/carbon.png"
+                  alt="Carbon fiber Porsche in studio lighting"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   quality={90}
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover object-[10%_center]"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: EDGE_FADE_HEAVY }}
                 />
               </div>
-            </div>
+            </ScrollReveal>
           </div>
+        </div>
+      </section>
 
-          {/* Punctuality Card */}
-          <div className="md:col-span-4 bg-black p-16 rounded-xl border border-white/5 flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-headline italic mb-6">
-                Absolute Punctuality
-              </h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-10">
-                Time is your most precious asset. Our logistics suite provides
-                millimetric GPS tracking and arrival windows precise to a
-                five-minute margin.
-              </p>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="w-14 h-14 rounded-full border border-primary/20 flex items-center justify-center">
-                <span className="material-symbols-outlined text-primary">
-                  timer
+      {/* ── Features Grid ───────────────────────────────────────── */}
+      <section className="py-16 md:py-20 px-6 md:px-12 bg-black relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
+
+        <ScrollReveal className="text-center mb-14 max-w-2xl mx-auto">
+          <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
+            Our Standard
+          </span>
+          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+            Built Around Care
+          </h2>
+        </ScrollReveal>
+
+        <StaggerReveal
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-screen-xl mx-auto"
+          staggerDelay={0.1}
+        >
+          {FEATURES.map((f) => (
+            <div
+              key={f.title}
+              className="p-8 md:p-10 rounded-sm border border-white/[0.06] hover:border-primary/15 transition-all duration-500 group bg-white/[0.015]"
+            >
+              <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center mb-6 group-hover:border-primary/40 group-hover:shadow-gold-sm transition-all duration-500">
+                <span
+                  className="material-symbols-outlined text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {f.icon}
                 </span>
               </div>
-              <div className="text-[10px] font-label uppercase tracking-[0.3em] text-primary">
-                Priority Logistic Stream
-              </div>
-            </div>
-          </div>
-
-          {/* Atmosphere Card */}
-          <div className="md:col-span-4 bg-black p-16 rounded-xl relative overflow-hidden group border border-white/5">
-            <div className="relative z-10">
-              <h3 className="text-2xl font-headline italic mb-6">
-                Controlled Atmosphere
+              <h3 className="text-lg font-headline italic mb-3 text-on-surface">
+                {f.title}
               </h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">
-                Our fleet consists exclusively of custom-engineered,
-                climate-controlled trailers. Your vehicle is protected from UV
-                exposure, humidity, and road debris throughout its transit.
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                {f.desc}
               </p>
             </div>
-            <div className="absolute -bottom-16 -right-16 opacity-[0.03] text-[180px] font-headline select-none italic pointer-events-none">
-              CA
+          ))}
+        </StaggerReveal>
+      </section>
+
+      {/* ── Stats Strip ─────────────────────────────────────────── */}
+      <section className="py-16 bg-black border-y border-white/[0.04]">
+        <StaggerReveal
+          className="max-w-screen-xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-0 md:divide-x divide-white/[0.06]"
+          staggerDelay={0.12}
+        >
+          <div className="md:px-8 text-center">
+            <div className="font-headline italic text-4xl md:text-5xl text-primary mb-2">
+              <NumberCounter end={500} />+
+            </div>
+            <div className="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface-variant">
+              Vehicles Delivered
             </div>
           </div>
-
-          {/* Ecosystem Card */}
-          <div className="md:col-span-8 bg-black rounded-xl flex flex-col md:flex-row items-center p-12 md:p-16 gap-16 border border-white/5">
-            <div className="w-full md:w-2/5 relative aspect-video md:aspect-square">
-              <Image
-                src={ECOSYSTEM_IMG}
-                alt="Vehicle interior display"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                quality={90}
-                className="rounded-lg grayscale hover:grayscale-0 transition-all duration-700 object-cover"
-              />
+          <div className="md:px-8 text-center">
+            <div className="font-headline italic text-4xl md:text-5xl text-primary mb-2">
+              <NumberCounter end={48} />
             </div>
-            <div className="w-full md:w-3/5">
-              <h3 className="text-2xl font-headline italic mb-6">
-                Ecosystem Integration
-              </h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-10">
-                Beyond the physical handover, we calibrate your digital
-                environment. Seating memory, dynamic performance settings, and
-                smart-home links are pre-configured to your exact specifications.
-              </p>
-              <Button
-                href="/contact"
-                variant="tertiary"
-                className="flex items-center gap-4 group"
-              >
-                Technical Scope
-                <span className="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">
-                  east
-                </span>
-              </Button>
+            <div className="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface-variant">
+              State Coverage
+            </div>
+          </div>
+          <div className="md:px-8 text-center">
+            <div className="font-headline italic text-4xl md:text-5xl text-primary mb-2">
+              <NumberCounter end={100} />%
+            </div>
+            <div className="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface-variant">
+              Enclosed Transport
+            </div>
+          </div>
+          <div className="md:px-8 text-center">
+            <div className="font-headline italic text-4xl md:text-5xl text-on-surface mb-2">
+              0
+            </div>
+            <div className="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface-variant">
+              Damage Claims
             </div>
           </div>
         </StaggerReveal>
       </section>
 
-      {/* Sovereign Logistics Section */}
-      <section className="py-16 md:py-24 bg-black relative overflow-hidden">
-        <div className="px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <ScrollReveal>
-            <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
-              Diplomatic Reach
-            </span>
-            <h2 className="text-6xl font-headline italic mb-10 leading-tight">
-              Sovereign Logistics,
-              <br />
-              Unrivaled Custody.
-            </h2>
-            <p className="text-on-surface-variant mb-16 text-lg leading-relaxed opacity-80">
-              From private airfields to remote estates, Dream Drive Motors
-              maintains a global custodial network. We manage every complexity of
-              international transit, ensuring a borderless experience of
-              excellence.
-            </p>
-            <StaggerReveal className="space-y-10">
-              <li className="flex items-start gap-6 list-none">
-                <span className="material-symbols-outlined text-primary text-2xl mt-1">
-                  language
-                </span>
-                <div>
-                  <span className="block font-semibold text-on-surface text-base mb-1">
-                    Bureaucratic Management
-                  </span>
-                  <span className="text-sm text-on-surface-variant">
-                    Our legal team orchestrates all customs, duties, and title
-                    registrations globally.
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-6 list-none">
-                <span className="material-symbols-outlined text-primary text-2xl mt-1">
-                  verified_user
-                </span>
-                <div>
-                  <span className="block font-semibold text-on-surface text-base mb-1">
-                    Full-Value Indemnity
-                  </span>
-                  <span className="text-sm text-on-surface-variant">
-                    Comprehensive specialized asset protection covering every
-                    second of the journey.
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-6 list-none">
-                <span className="material-symbols-outlined text-primary text-2xl mt-1">
-                  fact_check
-                </span>
-                <div>
-                  <span className="block font-semibold text-on-surface text-base mb-1">
-                    The Platinum Protocol
-                  </span>
-                  <span className="text-sm text-on-surface-variant">
-                    A 200-point forensic inspection conducted immediately upon
-                    arrival.
-                  </span>
-                </div>
-              </li>
-            </StaggerReveal>
-          </ScrollReveal>
-
-          <ScrollReveal direction="right" className="relative">
-            <div className="aspect-square rounded-full flex items-center justify-center p-1 border border-white/10">
-              <div className="w-full h-full rounded-full overflow-hidden border border-white/5 shadow-[0_0_80px_rgba(212,175,55,0.1)]">
+      {/* ── Editorial: Coverage — image left / text right ────────  */}
+      <section className="py-16 md:py-20 bg-black relative overflow-hidden">
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            {/* Left — P1 Image with seamless edge blending */}
+            <ScrollReveal direction="left" className="lg:col-span-5 order-2 lg:order-1">
+              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
-                  src={GLOBE_IMG}
-                  alt="Architectural detail"
-                  width={800}
-                  height={800}
+                  src="/images/garage/812.jpg"
+                  alt="Ferrari 812 Superfast front view"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   quality={90}
-                  className="w-full h-full object-cover"
+                  className="object-cover object-[center_45%]"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: EDGE_FADE_HEAVY }}
                 />
               </div>
+            </ScrollReveal>
+
+            {/* Right — Text */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <ScrollReveal>
+                <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
+                  Nationwide Reach
+                </span>
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8">
+                  Coast to Coast, <br className="hidden lg:block" />
+                  <span className="serif-italic text-primary">
+                    Door to Door.
+                  </span>
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.1}>
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-5 max-w-[600px]">
+                  From California to New York, Dream Drive Motors maintains a
+                  nationwide logistics network. Whether you are in a major city
+                  or a remote estate, we deliver with the same standard of care
+                  and precision.
+                </p>
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-10 max-w-[600px]">
+                  Our fleet of enclosed transporters operates on optimized
+                  routes with real-time monitoring. Every vehicle is
+                  individually secured, climate-protected, and tracked via GPS
+                  from departure to your doorstep.
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.2}>
+                <Button href="/contact" variant="secondary" size="md">
+                  Get a Delivery Quote
+                </Button>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ── Showcase Gallery with Parallax ───────────────────────  */}
+      <section className="py-16 md:py-20 px-6 md:px-12 bg-black relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
+
+        <ScrollReveal className="text-center mb-12 max-w-2xl mx-auto">
+          <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
+            Recently Delivered
+          </span>
+          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+            Arriving in Style
+          </h2>
+        </ScrollReveal>
+
+        <StaggerReveal
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-screen-xl mx-auto"
+          staggerDelay={0.12}
+        >
+          {[
+            { src: "/images/garage/redp.jpg", alt: "Ferrari Purosangue Roma" },
+            { src: "/images/garage/bentley_close.jpg", alt: "Bentley Continental Detail" },
+            { src: "/images/garage/purosangue.jpg", alt: "Ferrari Purosangue" },
+          ].map((img) => (
+            <div
+              key={img.src}
+              className="relative h-72 md:h-80 overflow-hidden group"
+            >
+              <ParallaxImage
+                src={img.src}
+                alt={img.alt}
+                className="h-full w-full"
+              />
+              {/* Seamless edge fade */}
+              <div
+                className="absolute inset-0 pointer-events-none z-[1]"
+                style={{ background: EDGE_FADE }}
+              />
+              {/* Hover overlay with label */}
+              <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-[3] translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                <span className="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface">
+                  {img.alt}
+                </span>
+              </div>
+            </div>
+          ))}
+        </StaggerReveal>
+      </section>
+
+      {/* ── CTA ─────────────────────────────────────────────────── */}
       <CTASection
-        headline="The Standard of Excellence"
-        subtitle="Contact our Logistics Director to initiate the curation of your bespoke arrival."
-        primaryCTA={{ label: "Schedule Consultation", href: "/contact" }}
-        secondaryCTA={{
-          label: "Request Logistics Dossier",
-          href: "/contact",
-        }}
+        headline="Ready for Your Arrival?"
+        subtitle="Contact our delivery team to schedule a white-glove handover at your convenience."
+        primaryCTA={{ label: "Schedule Delivery", href: "/contact" }}
+        secondaryCTA={{ label: "Contact Us", href: "/contact" }}
       />
     </>
   );

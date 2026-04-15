@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
-import { gsap } from "@/lib/gsap";
+import { useCallback } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useIsTouchDevice } from "@/lib/hooks/useIsTouchDevice";
 import { cn } from "@/lib/utils";
 
@@ -16,68 +16,46 @@ export default function MagneticButton({
   className,
   children,
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLDivElement>(null);
   const isTouch = useIsTouchDevice();
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!ref.current) return;
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 200, damping: 15 });
+  const springY = useSpring(y, { stiffness: 200, damping: 15 });
 
-      const rect = ref.current.getBoundingClientRect();
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
       const deltaX = (e.clientX - centerX) * strength;
       const deltaY = (e.clientY - centerY) * strength;
 
-      // Clamp translation to max ~10px
       const maxOffset = 10;
-      const clampedX = Math.max(-maxOffset, Math.min(maxOffset, deltaX));
-      const clampedY = Math.max(-maxOffset, Math.min(maxOffset, deltaY));
-
-      gsap.to(ref.current, {
-        x: clampedX,
-        y: clampedY,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+      x.set(Math.max(-maxOffset, Math.min(maxOffset, deltaX)));
+      y.set(Math.max(-maxOffset, Math.min(maxOffset, deltaY)));
     },
-    [strength]
+    [strength, x, y]
   );
 
   const handleMouseLeave = useCallback(() => {
-    if (!ref.current) return;
+    x.set(0);
+    y.set(0);
+  }, [x, y]);
 
-    gsap.to(ref.current, {
-      x: 0,
-      y: 0,
-      duration: 0.6,
-      ease: "elastic.out(1, 0.3)",
-    });
-  }, []);
-
-  useEffect(() => {
-    if (isTouch || !ref.current) return;
-
-    const element = ref.current;
-    element.addEventListener("mousemove", handleMouseMove);
-    element.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      element.removeEventListener("mousemove", handleMouseMove);
-      element.removeEventListener("mouseleave", handleMouseLeave);
-      gsap.killTweensOf(element);
-    };
-  }, [isTouch, handleMouseMove, handleMouseLeave]);
-
-  // On touch devices, render children without wrapper div
   if (isTouch) {
     return <>{children}</>;
   }
 
   return (
-    <div ref={ref} className={cn(className)}>
+    <motion.div
+      className={cn(className)}
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }

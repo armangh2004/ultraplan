@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useIsTouchDevice } from "@/lib/hooks/useIsTouchDevice";
-import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { useReducedMotion } from "framer-motion";
 
 export default function CustomCursor() {
   const isTouch = useIsTouchDevice();

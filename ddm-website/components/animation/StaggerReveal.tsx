@@ -27,10 +27,12 @@ export default function StaggerReveal({
   const yOffset = direction === "up" ? distance : -distance;
 
   const itemVariants = {
-    hidden: { opacity: 0, y: yOffset },
+    hidden: { opacity: 0, y: yOffset, filter: "blur(6px)", scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
+      filter: "blur(0px)",
+      scale: 1,
       transition: {
         duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1.0] as [number, number, number, number],

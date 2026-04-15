@@ -2,11 +2,21 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const variantStyles = {
-  primary:
-    "bg-primary text-on-primary hover:brightness-110 active:scale-[0.98]",
-  secondary:
-    "border border-outline-variant/30 text-on-surface hover:bg-surface-container",
-  tertiary: "text-primary hover:underline",
+  primary: [
+    "bg-primary text-on-primary",
+    "hover:shadow-[0_0_20px_rgba(212,175,55,0.2),0_0_40px_rgba(212,175,55,0.1)]",
+    "hover:brightness-110",
+    "active:scale-[0.97] active:shadow-none",
+    "transition-all duration-300",
+  ].join(" "),
+  secondary: [
+    "border border-outline-variant/30 text-on-surface",
+    "hover:border-primary/40 hover:text-primary",
+    "hover:shadow-[0_0_15px_rgba(212,175,55,0.08)]",
+    "active:scale-[0.97]",
+    "transition-all duration-300",
+  ].join(" "),
+  tertiary: "text-primary hover:underline transition-colors duration-300",
 } as const;
 
 const sizeStyles = {
@@ -46,7 +56,8 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "uppercase text-[10px] tracking-widest font-bold transition-all inline-block text-center",
+    "uppercase text-[10px] tracking-widest font-bold inline-block text-center",
+    "hover:scale-[1.02]",
     variantStyles[variant],
     sizeStyles[size],
     className

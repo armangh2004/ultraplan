@@ -4,11 +4,12 @@ import Link from "next/link";
 
 import ScrollReveal from "@/components/animation/ScrollReveal";
 import StaggerReveal from "@/components/animation/StaggerReveal";
-import TextSplit from "@/components/animation/TextSplit";
 import NumberCounter from "@/components/animation/NumberCounter";
 import Button from "@/components/ui/Button";
 import CTASection from "@/components/sections/CTASection";
 import HeroLambo from "@/components/sections/HeroLambo";
+import HeroFadeIn from "@/components/animation/HeroFadeIn";
+import HeroContent from "@/components/sections/HeroContent";
 
 export const metadata: Metadata = {
   title: "Dream Drive Motors | Curated Automotive Excellence",
@@ -104,92 +105,21 @@ export default function HomePage() {
   return (
     <>
       {/* ─── Hero Section ─── */}
-      <header className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+      <HeroFadeIn className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
         {/* Lambo background — cinematic reveal */}
         <HeroLambo />
 
         {/* Hero Content — sits on top of the lambo */}
-        <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 pt-32 pb-8 text-center">
-          {/* Pulsing badge */}
-          <ScrollReveal>
-            <div className="inline-flex items-center gap-2 border border-primary/40 px-5 py-2 mb-10 text-[10px] tracking-[0.25em] uppercase text-primary/90">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Baldwin Park, CA · Est. 2026
-            </div>
-          </ScrollReveal>
-
-          <TextSplit
-            as="h1"
-            className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6"
-            splitBy="words"
-            staggerDelay={0.08}
-            duration={1}
-          >
-            Drive Your Ambition.
-          </TextSplit>
-
-          <ScrollReveal delay={0.3}>
-            <p className="font-body text-lg md:text-xl text-white/50 mb-12 max-w-[580px] mx-auto leading-relaxed font-light">
-              Premium auto leasing and sales made simple. Flexible financing,
-              transparent process, and the keys to your dream car.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.4}>
-            <div className="flex gap-5 flex-wrap justify-center">
-              <Button href="/leasing" variant="primary" size="md">
-                Explore Leasing
-              </Button>
-              <Link
-                href="/apply"
-                className="inline-flex items-center px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white/70 border border-white/20 hover:border-primary/60 hover:text-primary transition-all duration-500"
-              >
-                Apply for Credit
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          {/* Hero Stats */}
-          <ScrollReveal delay={0.5}>
-            <div className="flex gap-12 mt-16 justify-center flex-wrap">
-              <div>
-                <div className="font-headline text-3xl text-primary font-bold">
-                  500+
-                </div>
-                <div className="text-[10px] tracking-[0.15em] uppercase text-white/40 mt-1">
-                  Happy Customers
-                </div>
-              </div>
-              <div className="w-px bg-white/[0.06]" />
-              <div>
-                <div className="font-headline text-3xl text-primary font-bold">
-                  All
-                </div>
-                <div className="text-[10px] tracking-[0.15em] uppercase text-white/40 mt-1">
-                  Credit Types Welcome
-                </div>
-              </div>
-              <div className="w-px bg-white/[0.06]" />
-              <div>
-                <div className="font-headline text-3xl text-primary font-bold">
-                  Fast
-                </div>
-                <div className="text-[10px] tracking-[0.15em] uppercase text-white/40 mt-1">
-                  Same-Day Approval
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
+        <HeroContent />
 
         {/* Bottom gradient fade */}
         <div className="absolute bottom-0 left-0 right-0 h-48 z-[2] bg-gradient-to-t from-black to-transparent" />
-      </header>
+      </HeroFadeIn>
 
       {/* ─── About DDM — 65% text left / 35% image right ─── */}
       <section className="py-16 md:py-24 bg-black relative overflow-hidden">
         {/* Decorative gold line accent */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
@@ -223,10 +153,13 @@ export default function HomePage() {
               </ScrollReveal>
 
               {/* Stats Row */}
-              <StaggerReveal className="grid grid-cols-3 gap-8 border-t border-white/[0.06] pt-10">
+              <StaggerReveal className="grid grid-cols-3 gap-6 pt-10">
                 {STATS.map((stat) => (
-                  <div key={stat.label}>
-                    <div className="font-headline text-4xl lg:text-5xl text-on-surface mb-2 tracking-tight">
+                  <div
+                    key={stat.label}
+                    className="border border-white/[0.05] bg-white/[0.015] rounded-sm p-5"
+                  >
+                    <div className="font-headline text-4xl lg:text-5xl text-primary mb-2 tracking-tight">
                       <NumberCounter
                         end={stat.end}
                         suffix={stat.suffix || ""}
@@ -252,13 +185,13 @@ export default function HomePage() {
                   className="object-cover object-[18%_40%]"
                   sizes="(max-width: 1024px) 100vw, 42vw"
                 />
-                {/* Seamless edge fade — heavier bottom to hide floor */}
+                {/* Seamless edge fade — all edges blend into black background */}
                 <div className="absolute inset-0 pointer-events-none"
                   style={{
                     background: [
-                      "linear-gradient(to bottom, black 0%, transparent 8%, transparent 60%, rgba(0,0,0,0.6) 80%, black 95%)",
-                      "linear-gradient(to right, black 0%, transparent 12%, transparent 85%, black 100%)",
-                      "linear-gradient(to top, black 0%, transparent 35%)",
+                      "linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 12%, rgba(0,0,0,0.5) 25%, transparent 40%, transparent 55%, rgba(0,0,0,0.5) 75%, black 100%)",
+                      "linear-gradient(to top, black 0%, transparent 25%)",
+                      "linear-gradient(to right, black 0%, transparent 15%, transparent 80%, black 100%)",
                     ].join(", "),
                   }}
                 />
@@ -271,7 +204,7 @@ export default function HomePage() {
       {/* ─── Curated Selection — image left / text right ─── */}
       <section className="py-16 md:py-24 bg-black relative">
         {/* Decorative gold line accent */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
@@ -339,7 +272,7 @@ export default function HomePage() {
       {/* ─── Elite Service — text left / image right ─── */}
       <section className="py-16 md:py-24 bg-black relative overflow-hidden">
         {/* Decorative gold line accent */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         {/* Subtle ambient glow */}
         <div
@@ -366,12 +299,15 @@ export default function HomePage() {
                 </h2>
               </ScrollReveal>
 
-              <StaggerReveal className="space-y-10">
+              <StaggerReveal className="space-y-5" staggerDelay={0.15}>
                 {DDM_FEATURES.map((feature) => (
-                  <div key={feature.title} className="flex gap-6 group">
-                    <div className="w-12 h-12 rounded-sm bg-white/[0.02] flex items-center justify-center flex-shrink-0 border border-primary/15 group-hover:border-primary/40 transition-colors duration-500">
+                  <div
+                    key={feature.title}
+                    className="flex gap-6 group p-6 rounded-sm border border-white/[0.04] bg-white/[0.015] hover:border-primary/20 hover:bg-white/[0.03] transition-all duration-500"
+                  >
+                    <div className="w-12 h-12 rounded-sm bg-primary/[0.06] flex items-center justify-center flex-shrink-0 border border-primary/15 group-hover:border-primary/40 group-hover:shadow-gold-sm transition-all duration-500">
                       <span
-                        className="material-symbols-outlined text-primary"
+                        className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform duration-500"
                         style={{
                           fontVariationSettings: "'FILL' 1",
                         }}
@@ -380,7 +316,7 @@ export default function HomePage() {
                       </span>
                     </div>
                     <div>
-                      <h4 className="font-headline text-xl md:text-2xl mb-2 text-on-surface">
+                      <h4 className="font-headline text-xl md:text-2xl mb-2 text-on-surface group-hover:text-primary transition-colors duration-500">
                         {feature.title}
                       </h4>
                       <p className="text-white/40 text-sm leading-relaxed max-w-[440px]">
@@ -422,7 +358,7 @@ export default function HomePage() {
       {/* ─── Services ─── */}
       <section className="py-16 md:py-24 bg-black relative">
         {/* Decorative gold line accent */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <ScrollReveal>
@@ -437,71 +373,70 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] overflow-hidden">
-              {HOMEPAGE_SERVICES.map((service) => (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  className="bg-black p-10 md:p-12 transition-all duration-700 group block relative overflow-hidden min-h-[320px]"
-                >
-                  {/* Hover background image — much more visible */}
-                  <div className="absolute inset-0 z-0">
-                    <Image
-                      src={service.image}
-                      alt=""
-                      fill
-                      className="object-cover opacity-0 group-hover:opacity-[0.55] scale-[1.15] group-hover:scale-100 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      quality={90}
-                    />
-                    {/* Gradient overlay — keeps text readable while image is visible */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                      style={{
-                        background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.3) 100%)",
-                      }}
-                    />
-                    {/* Gold tint on the bottom edge */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-                      style={{
-                        background: "linear-gradient(to top, rgba(212,175,55,0.08) 0%, transparent 40%)",
-                      }}
-                    />
-                  </div>
+          <StaggerReveal
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            staggerDelay={0.1}
+          >
+            {HOMEPAGE_SERVICES.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="bg-surface/40 border border-white/[0.05] p-10 md:p-12 transition-all duration-700 group block relative overflow-hidden min-h-[320px] hover:border-primary/15 hover:shadow-gold-sm"
+              >
+                {/* Hover background image */}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src={service.image}
+                    alt=""
+                    fill
+                    className="object-cover opacity-0 group-hover:opacity-[0.55] scale-[1.15] group-hover:scale-100 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    quality={90}
+                  />
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{
+                      background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.3) 100%)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+                    style={{
+                      background: "linear-gradient(to top, rgba(212,175,55,0.08) 0%, transparent 40%)",
+                    }}
+                  />
+                </div>
 
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <div className="w-10 h-10 rounded-sm bg-white/[0.03] flex items-center justify-center mb-8 border border-primary/10 group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-700">
-                      <span
-                        className="material-symbols-outlined text-primary text-lg"
-                        style={{
-                          fontVariationSettings: "'FILL' 1",
-                        }}
-                      >
-                        {service.icon}
-                      </span>
-                    </div>
-                    <h3 className="font-headline text-2xl md:text-3xl mb-3">
-                      <span className="serif-italic text-on-surface group-hover:text-primary transition-colors duration-500">
-                        {service.title}
-                      </span>
-                    </h3>
-                    <p className="text-white/35 text-sm leading-relaxed mb-8 group-hover:text-white/60 transition-colors duration-500">
-                      {service.description}
-                    </p>
-                    <span className="inline-flex items-center text-primary/50 group-hover:text-primary font-bold text-[10px] uppercase tracking-widest gap-2 group-hover:gap-4 transition-all duration-500">
-                      Learn More{" "}
-                      <span className="material-symbols-outlined text-sm">
-                        arrow_forward
-                      </span>
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="w-10 h-10 rounded-sm bg-primary/[0.05] flex items-center justify-center mb-8 border border-primary/10 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:shadow-gold-sm transition-all duration-700">
+                    <span
+                      className="material-symbols-outlined text-primary text-lg group-hover:scale-110 transition-transform duration-500"
+                      style={{
+                        fontVariationSettings: "'FILL' 1",
+                      }}
+                    >
+                      {service.icon}
                     </span>
                   </div>
-                </Link>
-              ))}
-            </div>
-          </ScrollReveal>
+                  <h3 className="font-headline text-2xl md:text-3xl mb-3">
+                    <span className="serif-italic text-on-surface group-hover:text-primary transition-colors duration-500">
+                      {service.title}
+                    </span>
+                  </h3>
+                  <p className="text-white/35 text-sm leading-relaxed mb-8 group-hover:text-white/60 transition-colors duration-500">
+                    {service.description}
+                  </p>
+                  <span className="inline-flex items-center text-primary/50 group-hover:text-primary font-bold text-[10px] uppercase tracking-widest gap-2 group-hover:gap-4 transition-all duration-500">
+                    Learn More{" "}
+                    <span className="material-symbols-outlined text-sm">
+                      arrow_forward
+                    </span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </StaggerReveal>
         </div>
       </section>
 

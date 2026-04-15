@@ -1,190 +1,219 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import Image from "next/image";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
-import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import {
+  motion,
+  animate,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
 import { useIsTouchDevice } from "@/lib/hooks/useIsTouchDevice";
 
 const LAMBO_SRC = "/images/garage/lambo-aventador.jpg";
 
-/**
- * Full-bleed hero background: the Lambo sits behind all hero text.
- * Cinematic reveal on load, parallax on scroll, mouse-tilt.
- * Rendered as position:absolute inside the hero <header>.
- */
+function lerp(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
 export default function HeroLambo() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const perspectiveRef = useRef<HTMLDivElement>(null);
   const imageWrapRef = useRef<HTMLDivElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
   const flareLeftRef = useRef<HTMLDivElement>(null);
   const flareRightRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
   const isTouch = useIsTouchDevice();
+  const [entranceComplete, setEntranceComplete] = useState(false);
 
   // ─── Mouse tilt ───
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateY = useSpring(
+    useTransform(mouseX, [-1, 1], [-1.5, 1.5]),
+    { stiffness: 150, damping: 20 }
+  );
+  const rotateX = useSpring(
+    useTransform(mouseY, [-1, 1], [1, -1]),
+    { stiffness: 150, damping: 20 }
+  );
+
   const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (isTouch || !perspectiveRef.current) return;
-      const rect = perspectiveRef.current.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = (e.clientX - cx) / (rect.width / 2);
-      const dy = (e.clientY - cy) / (rect.height / 2);
-      gsap.to(perspectiveRef.current, {
-        rotateY: dx * 1.5,
-        rotateX: -dy * 1,
-        duration: 0.6,
-        ease: "power2.out",
-        overwrite: "auto",
-      });
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (isTouch) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      mouseX.set((e.clientX - rect.left - rect.width / 2) / (rect.width / 2));
+      mouseY.set((e.clientY - rect.top - rect.height / 2) / (rect.height / 2));
     },
-    [isTouch]
+    [isTouch, mouseX, mouseY]
   );
 
   const handleMouseLeave = useCallback(() => {
-    if (!perspectiveRef.current) return;
-    gsap.to(perspectiveRef.current, {
-      rotateY: 0,
-      rotateX: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    });
-  }, []);
+    mouseX.set(0);
+    mouseY.set(0);
+  }, [mouseX, mouseY]);
 
+  // ─── Scroll parallax ───
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const scrollY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const scrollScale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+  const scrollBrightness = useTransform(scrollYProgress, [0, 1], [0.35, 0.15]);
+
+  // Apply scroll-driven brightness to the inner image div after entrance
+  useMotionValueEvent(scrollBrightness, "change", (latest) => {
+    if (entranceComplete && imageWrapRef.current) {
+      imageWrapRef.current.style.filter = `brightness(${latest})`;
+    }
+  });
+
+  // ─── Entrance animation ───
   useEffect(() => {
-    const container = containerRef.current;
     const imageWrap = imageWrapRef.current;
     const mask = maskRef.current;
     const flareL = flareLeftRef.current;
     const flareR = flareRightRef.current;
-    if (!container || !imageWrap || !mask || !flareL || !flareR) return;
+    if (!imageWrap || !mask || !flareL || !flareR) return;
 
     if (reducedMotion) {
-      gsap.set(imageWrap, { filter: "brightness(0.35)" });
-      gsap.set(mask, { opacity: 0 });
+      imageWrap.style.filter = "brightness(0.35)";
+      imageWrap.style.transform = "scale(1)";
+      mask.style.opacity = "0";
+      setEntranceComplete(true);
       return;
     }
 
-    // ─── Initial: total darkness ───
-    gsap.set(imageWrap, { filter: "brightness(0)", scale: 1.06 });
-    gsap.set(mask, { opacity: 1 });
-    gsap.set(flareL, { opacity: 0, scale: 0.3 });
-    gsap.set(flareR, { opacity: 0, scale: 0.3 });
+    // Initial: total darkness
+    imageWrap.style.filter = "brightness(0)";
+    imageWrap.style.transform = "scale(1.06)";
+    mask.style.opacity = "1";
+    flareL.style.opacity = "0";
+    flareL.style.transform = "translate(-50%, -50%) scale(0.3)";
+    flareR.style.opacity = "0";
+    flareR.style.transform = "translate(50%, -50%) scale(0.3)";
 
-    // ─── Phase 1: Entrance (~1.8s) — fires immediately since it's above the fold ───
-    const entrance = gsap.timeline({ delay: 0.3 });
+    const controls: Array<{ stop: () => void }> = [];
+    const d = 0.3;
 
-    // Headlight flares bloom
-    entrance.to(flareL, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }, 0);
-    entrance.to(flareR, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }, 0.06);
+    // Flare L bloom
+    controls.push(animate(0, 1, {
+      duration: 0.35, ease: [0.33, 1, 0.68, 1], delay: d,
+      onUpdate: (t) => {
+        flareL.style.opacity = String(t);
+        flareL.style.transform = `translate(-50%, -50%) scale(${lerp(0.3, 1, t)})`;
+      },
+    }));
 
-    // Spotlight sweep: radial hole moves left → center → full
-    entrance.to(mask, {
-      "--spot-x": "50%",
-      "--spot-size": "60%",
-      duration: 0.5,
-      ease: "power2.inOut",
-    }, 0.3);
+    // Flare R bloom
+    controls.push(animate(0, 1, {
+      duration: 0.35, ease: [0.33, 1, 0.68, 1], delay: d + 0.06,
+      onUpdate: (t) => {
+        flareR.style.opacity = String(t);
+        flareR.style.transform = `translate(50%, -50%) scale(${lerp(0.3, 1, t)})`;
+      },
+    }));
 
-    // Image brightens (but stays subdued so text is readable)
-    entrance.to(imageWrap, {
-      filter: "brightness(0.25)",
-      scale: 1.03,
-      duration: 0.6,
-      ease: "power2.out",
-    }, 0.35);
+    // Spotlight sweep
+    controls.push(animate(0, 1, {
+      duration: 0.5, ease: [0.33, 0, 0.67, 1], delay: d + 0.3,
+      onUpdate: (t) => {
+        mask.style.setProperty("--spot-x", `${lerp(15, 50, t)}%`);
+        mask.style.setProperty("--spot-size", `${lerp(20, 60, t)}%`);
+      },
+    }));
 
-    // Spotlight expands to full, mask disappears
-    entrance.to(mask, {
-      "--spot-x": "50%",
-      "--spot-size": "250%",
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.inOut",
-    }, 0.8);
+    // Image brightens + scale
+    controls.push(animate(0, 1, {
+      duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: d + 0.35,
+      onUpdate: (t) => {
+        imageWrap.style.filter = `brightness(${lerp(0, 0.25, t)})`;
+        imageWrap.style.transform = `scale(${lerp(1.06, 1.03, t)})`;
+      },
+    }));
 
-    // Final brightness — stays dim enough for text readability
-    entrance.to(imageWrap, {
-      filter: "brightness(0.35)",
-      scale: 1,
-      duration: 0.7,
-      ease: "power2.out",
-    }, 0.85);
+    // Spotlight expand + mask fade
+    controls.push(animate(0, 1, {
+      duration: 0.6, ease: [0.33, 0, 0.67, 1], delay: d + 0.8,
+      onUpdate: (t) => {
+        mask.style.setProperty("--spot-size", `${lerp(60, 250, t)}%`);
+        mask.style.opacity = String(1 - t);
+      },
+    }));
+
+    // Final brightness + scale settle
+    controls.push(animate(0, 1, {
+      duration: 0.7, ease: [0.33, 1, 0.68, 1], delay: d + 0.85,
+      onUpdate: (t) => {
+        imageWrap.style.filter = `brightness(${lerp(0.25, 0.35, t)})`;
+        imageWrap.style.transform = `scale(${lerp(1.03, 1, t)})`;
+      },
+    }));
 
     // Flares fade out
-    entrance.to([flareL, flareR], {
-      opacity: 0,
-      scale: 1.8,
-      duration: 0.5,
-      ease: "power2.in",
-    }, 1.1);
-
-    // ─── Phase 2: Scroll parallax ───
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "bottom top",
-        scrub: 0.5,
+    controls.push(animate(0, 1, {
+      duration: 0.5, ease: [0.55, 0, 1, 0.68], delay: d + 1.1,
+      onUpdate: (t) => {
+        const op = String(1 - t);
+        const sc = lerp(1, 1.8, t);
+        flareL.style.opacity = op;
+        flareL.style.transform = `translate(-50%, -50%) scale(${sc})`;
+        flareR.style.opacity = op;
+        flareR.style.transform = `translate(50%, -50%) scale(${sc})`;
       },
-    });
+    }));
 
-    // Car drifts slower (parallax) and fades slightly
-    scrollTl.to(imageWrap, {
-      y: 120,
-      scale: 0.96,
-      filter: "brightness(0.15)",
-      duration: 1,
-      ease: "none",
-    }, 0);
-
-    // ─── Mouse tilt ───
-    if (!isTouch && container) {
-      container.addEventListener("mousemove", handleMouseMove);
-      container.addEventListener("mouseleave", handleMouseLeave);
-    }
+    const timeout = setTimeout(() => setEntranceComplete(true), (d + 1.6) * 1000);
 
     return () => {
-      entrance.kill();
-      scrollTl.kill();
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === container) st.kill();
-      });
-      if (!isTouch && container) {
-        container.removeEventListener("mousemove", handleMouseMove);
-        container.removeEventListener("mouseleave", handleMouseLeave);
-      }
+      controls.forEach((c) => c.stop());
+      clearTimeout(timeout);
     };
-  }, [reducedMotion, isTouch, handleMouseMove, handleMouseLeave]);
+  }, [reducedMotion]);
 
   return (
     <div
       ref={containerRef}
       className="absolute inset-0 z-0 overflow-hidden"
       style={{ perspective: "1200px" }}
+      onMouseMove={!isTouch ? handleMouseMove : undefined}
+      onMouseLeave={!isTouch ? handleMouseLeave : undefined}
     >
-      <div
-        ref={perspectiveRef}
+      <motion.div
         className="absolute inset-0 will-change-transform"
-        style={{ transformStyle: "preserve-3d" }}
+        style={{
+          transformStyle: "preserve-3d",
+          rotateX: isTouch ? 0 : rotateX,
+          rotateY: isTouch ? 0 : rotateY,
+        }}
       >
-        {/* Car image — fills the entire hero */}
-        <div
-          ref={imageWrapRef}
-          className="absolute inset-0 will-change-[filter,transform]"
+        {/* Scroll parallax wrapper — only applies y/scale AFTER entrance */}
+        <motion.div
+          className="absolute inset-0"
+          style={entranceComplete ? { y: scrollY, scale: scrollScale } : {}}
         >
-          <Image
-            src={LAMBO_SRC}
-            alt="Lamborghini Aventador"
-            fill
-            priority
-            className="object-cover object-[center_60%]"
-            sizes="100vw"
-            quality={90}
-          />
-        </div>
+          {/* Image wrapper — entrance animation targets this via ref */}
+          <div
+            ref={imageWrapRef}
+            className="absolute inset-0 will-change-[filter,transform]"
+          >
+            <Image
+              src={LAMBO_SRC}
+              alt="Lamborghini Aventador"
+              fill
+              priority
+              className="object-cover object-[center_60%]"
+              sizes="100vw"
+              quality={90}
+            />
+          </div>
+        </motion.div>
 
         {/* Spotlight mask */}
         <div
@@ -203,13 +232,9 @@ export default function HeroLambo() {
           ref={flareLeftRef}
           className="absolute pointer-events-none"
           style={{
-            top: "50%",
-            left: "30%",
-            width: "100px",
-            height: "50px",
+            top: "50%", left: "30%", width: "100px", height: "50px",
             transform: "translate(-50%, -50%)",
-            background:
-              "radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,240,200,0.3) 40%, rgba(212,175,55,0.08) 70%, transparent 100%)",
+            background: "radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,240,200,0.3) 40%, rgba(212,175,55,0.08) 70%, transparent 100%)",
             filter: "blur(8px)",
           }}
         />
@@ -219,19 +244,15 @@ export default function HeroLambo() {
           ref={flareRightRef}
           className="absolute pointer-events-none"
           style={{
-            top: "50%",
-            right: "28%",
-            width: "100px",
-            height: "50px",
+            top: "50%", right: "28%", width: "100px", height: "50px",
             transform: "translate(50%, -50%)",
-            background:
-              "radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,240,200,0.3) 40%, rgba(212,175,55,0.08) 70%, transparent 100%)",
+            background: "radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,240,200,0.3) 40%, rgba(212,175,55,0.08) 70%, transparent 100%)",
             filter: "blur(8px)",
           }}
         />
-      </div>
+      </motion.div>
 
-      {/* Dark overlay gradient for text readability — stronger at top where text is */}
+      {/* Dark overlay gradient */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{

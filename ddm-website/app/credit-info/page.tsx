@@ -23,16 +23,16 @@ export default function CreditInfoPage() {
       <section className="px-6 md:px-12 pt-40 mb-16 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal>
-            <span className="font-label text-primary uppercase tracking-[0.5em] text-[9px] block mb-6">
+            <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
               Financial Distinction
             </span>
-            <h1 className="font-headline text-7xl md:text-8xl italic leading-[0.95] text-on-surface mb-10">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-10">
               Secure Credit <br />
               <span className="not-italic font-extralight opacity-40">
                 Application
               </span>
             </h1>
-            <p className="font-body text-on-surface-variant text-lg max-w-md leading-relaxed mb-12">
+            <p className="font-body text-white/50 text-lg max-w-md leading-relaxed mb-12">
               A bespoke financing journey designed for the discerning individual.
               Absolute discretion, accelerated processing, and terms as refined
               as the vehicles we curate.
@@ -64,7 +64,7 @@ export default function CreditInfoPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" className="relative">
-            <div className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 border border-white/5 relative">
+            <div className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 border border-white/[0.06] relative">
               <Image
                 src={HERO_IMG}
                 alt="Luxury car interior"
@@ -89,6 +89,7 @@ export default function CreditInfoPage() {
 
       {/* Form Section */}
       <section className="px-6 md:px-12 py-16 md:py-24 relative bg-black">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
         {/* Watermark */}
         <MonogramOverlay
           text="ELITE"
@@ -98,10 +99,10 @@ export default function CreditInfoPage() {
 
         <ScrollReveal className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-24">
-            <h2 className="font-headline text-5xl mb-6 italic">
+            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
               Personal Credentials
             </h2>
-            <p className="font-label text-[10px] uppercase tracking-[0.5em] text-primary">
+            <p className="font-label text-[10px] uppercase tracking-[0.4em] text-primary">
               Step 01 of 03 &mdash; Identity Verification
             </p>
           </div>
@@ -158,7 +159,7 @@ export default function CreditInfoPage() {
                   <h3 className="font-headline text-3xl italic mb-3">
                     Tailored Structures
                   </h3>
-                  <p className="font-body text-sm text-on-surface-variant opacity-80">
+                  <p className="font-body text-sm text-white/50">
                     Selection of bespoke lease and finance paths available upon
                     identity confirmation.
                   </p>
@@ -202,10 +203,11 @@ export default function CreditInfoPage() {
       </section>
 
       {/* Features Bento Grid */}
-      <section className="px-6 md:px-12 py-16 md:py-24 max-w-7xl mx-auto">
+      <section className="px-6 md:px-12 py-16 md:py-24 max-w-7xl mx-auto relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
         <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Unrivaled Privacy (2-col) */}
-          <div className="md:col-span-2 bg-black p-16 border border-white/5 flex flex-col justify-between group hover:border-primary/30 transition-all duration-500">
+          <div className="md:col-span-2 bg-white/[0.015] p-16 border border-white/[0.06] flex flex-col justify-between group hover:border-primary/30 transition-all duration-500">
             <div>
               <span className="material-symbols-outlined text-5xl text-primary mb-12 block">
                 verified
@@ -213,7 +215,7 @@ export default function CreditInfoPage() {
               <h3 className="font-headline text-5xl mb-8 leading-tight italic">
                 Unrivaled Privacy
               </h3>
-              <p className="font-body text-on-surface-variant leading-relaxed max-w-xl text-lg">
+              <p className="font-body text-white/50 leading-relaxed max-w-xl text-lg">
                 We handle only the essential data required for your application.
                 All records are purged following successful completion of your
                 acquisition, unless otherwise requested by your estate.
@@ -230,7 +232,7 @@ export default function CreditInfoPage() {
           </div>
 
           {/* 24/7 Concierge */}
-          <div className="bg-black p-16 border border-white/5 relative overflow-hidden flex flex-col justify-between">
+          <div className="bg-white/[0.015] p-16 border border-white/[0.06] relative overflow-hidden flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-5xl text-primary mb-12 block">
                 support_agent
@@ -238,7 +240,7 @@ export default function CreditInfoPage() {
               <h3 className="font-headline text-4xl mb-8 italic">
                 24/7 Global Concierge
               </h3>
-              <p className="font-body text-base text-on-surface-variant leading-relaxed">
+              <p className="font-body text-base text-white/50 leading-relaxed">
                 Dedicated financial advisors available for immediate consultation
                 at any hour, regardless of your time zone.
               </p>
@@ -251,8 +253,8 @@ export default function CreditInfoPage() {
           </div>
 
           {/* Prestige Perks */}
-          <div className="bg-black p-16 border border-white/5">
-            <h4 className="font-label text-[10px] uppercase tracking-[0.5em] mb-12 text-primary">
+          <div className="bg-white/[0.015] p-16 border border-white/[0.06]">
+            <h4 className="font-label text-[10px] uppercase tracking-[0.4em] mb-12 text-primary">
               Prestige Perks
             </h4>
             <ul className="space-y-8 font-body text-base">
@@ -280,7 +282,7 @@ export default function CreditInfoPage() {
           </div>
 
           {/* Cinematic Banner */}
-          <div className="md:col-span-2 relative border border-white/5 overflow-hidden aspect-[21/9]">
+          <div className="md:col-span-2 relative border border-white/[0.06] overflow-hidden aspect-[21/9]">
             <Image
               src={BANNER_IMG}
               alt="Cinematic abstract"
