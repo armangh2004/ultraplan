@@ -404,8 +404,13 @@ export default function CreditApplicationForm() {
           <button
             key={section.id}
             type="button"
-            onClick={() => setActiveSection(section.id)}
-            className="flex items-center gap-0 group cursor-pointer shrink-0"
+            onClick={() => {
+              // Allow going back freely, but block skipping ahead
+              if (section.id <= activeSection) {
+                setActiveSection(section.id);
+              }
+            }}
+            className={`flex items-center gap-0 group shrink-0 ${section.id <= activeSection ? "cursor-pointer" : "cursor-not-allowed"}`}
           >
             {/* Connector line (before) */}
             {idx > 0 && (
@@ -468,6 +473,37 @@ export default function CreditApplicationForm() {
     </div>
   );
 
+  /* ── Per-section required fields ─────────────────────────────────── */
+  const SECTION_REQUIRED: Record<number, (keyof FormData)[]> = {
+    1: ["firstName", "lastName", "email", "cellPhone", "dateOfBirth", "ssn", "driverLicense", "driverLicenseState"],
+    2: ["addressLine1", "city", "state", "zipCode"],
+    3: ["employerName", "annualIncome"],
+  };
+
+  /* Validate current section and return true if all required fields pass */
+  function validateCurrentSection(): boolean {
+    const requiredKeys = SECTION_REQUIRED[activeSection] || [];
+    const newErrors: Record<string, string | null> = {};
+    const newTouched: Record<string, boolean> = {};
+
+    for (const key of requiredKeys) {
+      newTouched[key] = true;
+      newErrors[key] = validateField(key, form[key] as string);
+    }
+
+    setTouched((prev) => ({ ...prev, ...newTouched }));
+    setErrors((prev) => ({ ...prev, ...newErrors }));
+
+    return !requiredKeys.some((key) => newErrors[key]);
+  }
+
+  /* Advance to next section only if current section validates */
+  function handleContinue() {
+    if (validateCurrentSection()) {
+      setActiveSection((s) => s + 1);
+    }
+  }
+
   /* ── Navigation buttons ─────────────────────────────────────────── */
   const SectionNav = () => (
     <div className="flex items-center justify-between pt-12 mt-12 border-t border-white/5">
@@ -488,7 +524,7 @@ export default function CreditApplicationForm() {
       {activeSection < 4 ? (
         <button
           type="button"
-          onClick={() => setActiveSection((s) => s + 1)}
+          onClick={handleContinue}
           className="flex items-center gap-3 font-label text-[11px] uppercase tracking-[0.25em] text-primary hover:text-primary/80 transition-colors group"
         >
           Continue
