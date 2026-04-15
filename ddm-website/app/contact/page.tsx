@@ -47,7 +47,7 @@ export default function ContactPage() {
             <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
               Get in Touch
             </span>
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
+            <h1 className="font-headline text-3xl sm:text-4xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
               Contact{" "}
               <span className="serif-italic text-primary">Us</span>
             </h1>
@@ -64,7 +64,7 @@ export default function ContactPage() {
       <section className="bg-black py-16 md:py-24 px-6 md:px-12 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24">
           {/* Left: Contact details */}
           <div className="lg:col-span-4">
             <StaggerReveal className="space-y-6" staggerDelay={0.1}>

@@ -40,7 +40,7 @@ export default function LeaseCalculator() {
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       {/* Left Side: Inputs */}
       <div className="lg:col-span-7 space-y-16">
         {/* Vehicle Selection */}
@@ -53,7 +53,7 @@ export default function LeaseCalculator() {
               className="flex items-center gap-8 p-6 bg-surface border border-outline/20 group hover:border-primary/40 transition-all cursor-pointer"
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <div className="w-32 h-20 bg-background overflow-hidden relative">
+              <div className="w-20 h-14 sm:w-32 sm:h-20 bg-background overflow-hidden relative">
                 <img
                   src={selectedVehicle.images.hero}
                   alt={`${selectedVehicle.year} ${selectedVehicle.make} ${selectedVehicle.model}`}
@@ -120,7 +120,7 @@ export default function LeaseCalculator() {
               <label className="font-label uppercase text-[10px] tracking-[0.4em] text-primary/80 font-bold">
                 Down Payment
               </label>
-              <span className="font-headline text-4xl text-primary">
+              <span className="font-headline text-2xl sm:text-4xl text-primary">
                 {formatCurrency(downPayment)}
               </span>
             </div>
@@ -168,12 +168,12 @@ export default function LeaseCalculator() {
             <label className="font-label uppercase text-[10px] tracking-[0.4em] text-primary/80 font-bold">
               Annual Mileage
             </label>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               {MILEAGE_OPTIONS.map((option) => (
                 <div
                   key={option.value}
                   onClick={() => setAnnualMileage(option.value)}
-                  className={`p-8 bg-surface cursor-pointer text-center group transition-all ${
+                  className={`p-5 sm:p-8 bg-surface cursor-pointer text-center group transition-all ${
                     annualMileage === option.value
                       ? "border border-primary"
                       : "border border-outline/20 hover:border-primary/40"
@@ -202,7 +202,7 @@ export default function LeaseCalculator() {
       <div className="lg:col-span-5 lg:sticky top-40">
         <GlassCard
           className="border border-outline/20 shadow-[0_40px_80px_rgba(0,0,0,0.5)]"
-          padding="p-12"
+          padding="p-6 sm:p-8 lg:p-12"
         >
           <div className="text-center space-y-12">
             <div className="inline-block px-6 py-2 border border-primary/30 text-primary text-[9px] uppercase tracking-[0.4em] font-bold">
@@ -210,7 +210,7 @@ export default function LeaseCalculator() {
             </div>
 
             <div>
-              <span className="font-headline text-8xl lg:text-9xl font-bold text-on-surface tracking-tighter serif-italic">
+              <span className="font-headline text-5xl sm:text-7xl lg:text-9xl font-bold text-on-surface tracking-tighter serif-italic">
                 {formatCurrency(result.monthly)}
               </span>
               <span className="font-headline text-2xl text-on-surface/40 ml-4 font-light italic">

@@ -44,7 +44,7 @@ export default function CalculatorPage() {
           </span>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h1 className="font-headline text-7xl md:text-[100px] font-extralight text-on-surface leading-[0.9] mb-10">
+          <h1 className="font-headline text-4xl sm:text-5xl md:text-[100px] font-extralight text-on-surface leading-[0.9] mb-10">
             Bespoke Lease <br />
             <span className="serif-italic text-primary">Strategy</span>
           </h1>
@@ -66,7 +66,7 @@ export default function CalculatorPage() {
       {/* Related Opportunities */}
       <section className="px-6 md:px-12 pb-32 max-w-[1440px] mx-auto">
         <ScrollReveal>
-          <h3 className="font-headline text-6xl font-extralight mb-20 text-on-surface">
+          <h3 className="font-headline text-3xl md:text-5xl lg:text-6xl font-extralight mb-20 text-on-surface">
             Related{" "}
             <span className="serif-italic text-primary">Opportunities</span>
           </h3>

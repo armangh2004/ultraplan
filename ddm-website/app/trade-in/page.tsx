@@ -40,7 +40,7 @@ export default function TradeInPage() {
             <span className="font-label text-[10px] uppercase tracking-[0.4em] text-primary/80 block mb-6">
               Concierge Trade-In Service
             </span>
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-8">
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-8">
               The Perfect <br />
               <span className="text-primary serif-italic">Transition.</span>
             </h1>
@@ -49,9 +49,9 @@ export default function TradeInPage() {
               itself. Premium valuations for your current vehicle, seamlessly
               applied to your next chapter with DDM.
             </p>
-            <div className="flex items-center gap-12 flex-wrap justify-center">
+            <div className="flex items-center gap-6 md:gap-12 flex-wrap justify-center">
               <div>
-                <span className="text-primary font-headline text-3xl serif-italic">
+                <span className="text-primary font-headline text-2xl sm:text-3xl serif-italic">
                   Maximum Value
                 </span>
                 <span className="font-label text-[10px] uppercase tracking-widest text-white/30 block mt-1">
@@ -60,7 +60,7 @@ export default function TradeInPage() {
               </div>
               <div className="w-px h-10 bg-white/10 hidden md:block" />
               <div>
-                <span className="text-primary font-headline text-3xl serif-italic">
+                <span className="text-primary font-headline text-2xl sm:text-3xl serif-italic">
                   24h
                 </span>
                 <span className="font-label text-[10px] uppercase tracking-widest text-white/30 block mt-1">

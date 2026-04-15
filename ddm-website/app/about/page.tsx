@@ -24,7 +24,7 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-16">
+            <h1 className="font-headline text-3xl sm:text-4xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-16">
               The Atelier: <br />
               <span className="serif-italic">Bespoke Excellence</span>
             </h1>
@@ -36,7 +36,7 @@ export default function AboutPage() {
       {/* ─── Hero Image ─── */}
       <section className="w-full px-6 md:px-12 max-w-screen-2xl mx-auto mb-16">
         <ScrollReveal>
-          <div className="aspect-[21/9] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out border border-white/[0.04]">
+          <div className="aspect-[16/9] md:aspect-[21/9] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out border border-white/[0.04]">
             <img
               src={HERO_IMG}
               alt="The Dream Drive Collection"
@@ -48,7 +48,7 @@ export default function AboutPage() {
 
       {/* ─── Editorial About Section ─── */}
       <section className="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-x-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-16 md:gap-x-12">
           {/* Left Column */}
           <div className="md:col-span-4">
             <ScrollReveal>
@@ -86,7 +86,7 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
-              <div className="pt-12 grid grid-cols-2 gap-8 border-t border-white/[0.06]">
+              <div className="pt-12 grid grid-cols-2 gap-4 md:gap-8 border-t border-white/[0.06]">
                 <div>
                   <p className="font-headline text-2xl text-primary">
                     Private Gallery

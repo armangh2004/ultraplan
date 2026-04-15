@@ -67,7 +67,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[60] bg-background"
+          className="fixed inset-0 z-[60] bg-background flex flex-col"
           variants={menuVariants}
           initial="closed"
           animate="open"
@@ -87,7 +87,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </div>
 
           {/* Nav links */}
-          <nav aria-label="Mobile navigation" className="flex flex-col gap-6 px-10 mt-12">
+          <nav aria-label="Mobile navigation" className="flex flex-col gap-6 px-10 mt-12 flex-1">
             {NAV_LINKS.map((link, i) => {
               const isActive =
                 link.href === "/"
@@ -120,7 +120,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {/* Business info at bottom */}
           <motion.div
-            className="absolute bottom-12 left-10 flex flex-col gap-2"
+            className="mt-auto pb-12 px-10 flex flex-col gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.4 }}

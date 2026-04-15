@@ -122,7 +122,7 @@ export default function HomePage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left — Text (65%) */}
             <div className="lg:col-span-7">
               <ScrollReveal>
@@ -153,13 +153,13 @@ export default function HomePage() {
               </ScrollReveal>
 
               {/* Stats Row */}
-              <StaggerReveal className="grid grid-cols-3 gap-6 pt-10">
+              <StaggerReveal className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-10">
                 {STATS.map((stat) => (
                   <div
                     key={stat.label}
                     className="border border-white/[0.05] bg-white/[0.015] rounded-sm p-5"
                   >
-                    <div className="font-headline text-4xl lg:text-5xl text-primary mb-2 tracking-tight">
+                    <div className="font-headline text-3xl sm:text-4xl lg:text-5xl text-primary mb-2 tracking-tight">
                       <NumberCounter
                         end={stat.end}
                         suffix={stat.suffix || ""}
@@ -176,7 +176,7 @@ export default function HomePage() {
 
             {/* Right — Porsche Image (35%) with seamless blending */}
             <ScrollReveal direction="right" className="lg:col-span-5">
-              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
+              <div className="relative w-full h-[260px] md:h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src={ABOUT_IMG}
                   alt="Red Porsche 911 GT3 RS"
@@ -207,10 +207,10 @@ export default function HomePage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left — Ferrari Image with seamless blending */}
             <ScrollReveal direction="left" className="lg:col-span-5 order-2 lg:order-1">
-              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
+              <div className="relative w-full h-[260px] md:h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src={CURATED_IMG}
                   alt="Ferrari in dark showroom"
@@ -284,7 +284,7 @@ export default function HomePage() {
         />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left — Content */}
             <div className="lg:col-span-7">
               <ScrollReveal>
@@ -303,7 +303,7 @@ export default function HomePage() {
                 {DDM_FEATURES.map((feature) => (
                   <div
                     key={feature.title}
-                    className="flex gap-6 group p-6 rounded-sm border border-white/[0.04] bg-white/[0.015] hover:border-primary/20 hover:bg-white/[0.03] transition-all duration-500"
+                    className="flex gap-4 md:gap-6 group p-4 md:p-6 rounded-sm border border-white/[0.04] bg-white/[0.015] hover:border-primary/20 hover:bg-white/[0.03] transition-all duration-500"
                   >
                     <div className="w-12 h-12 rounded-sm bg-primary/[0.06] flex items-center justify-center flex-shrink-0 border border-primary/15 group-hover:border-primary/40 group-hover:shadow-gold-sm transition-all duration-500">
                       <span
@@ -330,7 +330,7 @@ export default function HomePage() {
 
             {/* Right — Pagani with seamless blending */}
             <ScrollReveal direction="right" className="lg:col-span-5">
-              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
+              <div className="relative w-full h-[260px] md:h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src={ELITE_IMG}
                   alt="Pagani Huayra"
@@ -381,7 +381,7 @@ export default function HomePage() {
               <Link
                 key={service.href}
                 href={service.href}
-                className="bg-surface/40 border border-white/[0.05] p-10 md:p-12 transition-all duration-700 group block relative overflow-hidden min-h-[320px] hover:border-primary/15 hover:shadow-gold-sm"
+                className="bg-surface/40 border border-white/[0.05] p-6 md:p-10 lg:p-12 transition-all duration-700 group block relative overflow-hidden min-h-[280px] md:min-h-[320px] hover:border-primary/15 hover:shadow-gold-sm"
               >
                 {/* Hover background image */}
                 <div className="absolute inset-0 z-0">

@@ -67,7 +67,7 @@ export default function CTASection({
 
       <div className="max-w-screen-2xl mx-auto flex flex-col items-center text-center relative z-10">
         <ScrollReveal>
-          <h2 className="font-headline text-5xl md:text-7xl mb-10 tracking-tighter">
+          <h2 className="font-headline text-3xl sm:text-4xl md:text-7xl mb-10 tracking-tighter">
             {headline}
           </h2>
         </ScrollReveal>
@@ -79,7 +79,7 @@ export default function CTASection({
           </ScrollReveal>
         )}
         <ScrollReveal delay={0.25}>
-          <div className="flex flex-col sm:flex-row gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             <Button variant="primary" size="lg" href={primaryCTA.href}>
               {primaryCTA.label}
             </Button>

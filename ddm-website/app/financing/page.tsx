@@ -27,7 +27,7 @@ export default function FinancingPage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative h-[85vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/garage/mecy.jpg"
@@ -45,7 +45,7 @@ export default function FinancingPage() {
           <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
             Bespoke Capital Solutions
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-8">
+          <h1 className="font-headline text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-8">
             Financial <br />
             <span className="text-primary serif-italic">Engineering.</span>
           </h1>
@@ -60,7 +60,7 @@ export default function FinancingPage() {
       {/* ── Key Stats ───────────────────────────────────────────── */}
       <section className="py-14 bg-black border-y border-white/[0.04]">
         <StaggerReveal
-          className="max-w-screen-xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-0 md:divide-x divide-white/[0.06]"
+          className="max-w-screen-xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/[0.06]"
           staggerDelay={0.12}
         >
           <div className="md:px-8 text-center">
@@ -106,7 +106,7 @@ export default function FinancingPage() {
           <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
             The Process
           </span>
-          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-headline italic text-on-surface">
             How Financing Works
           </h2>
         </ScrollReveal>
@@ -137,7 +137,7 @@ export default function FinancingPage() {
           ].map((step) => (
             <div
               key={step.num}
-              className="relative p-10 md:p-12 rounded-sm border border-white/[0.06] hover:border-primary/15 transition-all duration-500 group bg-white/[0.015] h-full flex flex-col"
+              className="relative p-6 md:p-10 lg:p-12 rounded-sm border border-white/[0.06] hover:border-primary/15 transition-all duration-500 group bg-white/[0.015] h-full flex flex-col"
             >
               <span className="absolute top-8 right-8 font-headline italic text-6xl text-white/[0.04] group-hover:text-primary/10 transition-colors duration-500 select-none">
                 {step.num}
@@ -166,7 +166,7 @@ export default function FinancingPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             <div className="lg:col-span-7">
               <ScrollReveal>
                 <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
@@ -218,7 +218,7 @@ export default function FinancingPage() {
             </div>
 
             <ScrollReveal direction="right" className="lg:col-span-5">
-              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
+              <div className="relative w-full h-[260px] md:h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src="/images/garage/porsche-headlights.jpg"
                   alt="Porsche headlights detail"
@@ -245,7 +245,7 @@ export default function FinancingPage() {
           <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
             Why DDM Financing
           </span>
-          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-headline italic text-on-surface">
             Built for You
           </h2>
         </ScrollReveal>

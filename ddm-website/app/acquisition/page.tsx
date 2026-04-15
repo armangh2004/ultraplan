@@ -47,7 +47,7 @@ export default function AcquisitionPage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6 md:px-12 overflow-hidden">
+      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/garage/gt3rs-showroom.jpg"
@@ -66,7 +66,7 @@ export default function AcquisitionPage() {
           <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
             Dream Drive Motors
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
+          <h1 className="font-headline text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
             Sell Your Car
           </h1>
           <p className="font-body text-lg md:text-xl text-white/50 max-w-[580px] mx-auto leading-relaxed font-light">

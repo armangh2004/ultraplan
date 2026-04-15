@@ -40,7 +40,7 @@ export default function ApplyPage() {
           <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
             Financial Excellence
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
+          <h1 className="font-headline text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6">
             Secure Credit <br />
             <span className="serif-italic text-primary">Application</span>
           </h1>

@@ -22,7 +22,7 @@ export default function LeasingPage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative h-[85vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/garage/supercar-showroom.jpg"
@@ -40,7 +40,7 @@ export default function LeasingPage() {
           <span className="font-label text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-6 block">
             The Bespoke Program
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-8">
+          <h1 className="font-headline text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-8">
             Bespoke Auto{" "}
             <span className="text-primary serif-italic">Leasing</span>
           </h1>
@@ -63,7 +63,7 @@ export default function LeasingPage() {
           <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
             Why Lease with DDM
           </span>
-          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-headline italic text-on-surface">
             The DDM Advantage
           </h2>
         </ScrollReveal>
@@ -122,7 +122,7 @@ export default function LeasingPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 section-divider" />
 
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             <div className="lg:col-span-7">
               <ScrollReveal>
                 <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
@@ -148,9 +148,9 @@ export default function LeasingPage() {
                 </p>
               </ScrollReveal>
 
-              <StaggerReveal className="grid grid-cols-3 gap-6 mb-10" staggerDelay={0.1}>
+              <StaggerReveal className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-10" staggerDelay={0.1}>
                 <div className="border border-white/[0.05] bg-white/[0.015] rounded-sm p-5">
-                  <div className="font-headline text-3xl lg:text-4xl text-primary mb-1 tracking-tight">
+                  <div className="font-headline text-2xl sm:text-3xl lg:text-4xl text-primary mb-1 tracking-tight">
                     <NumberCounter end={12} />-<NumberCounter end={60} />
                   </div>
                   <span className="font-label text-[9px] tracking-[0.25em] uppercase text-white/35">
@@ -158,7 +158,7 @@ export default function LeasingPage() {
                   </span>
                 </div>
                 <div className="border border-white/[0.05] bg-white/[0.015] rounded-sm p-5">
-                  <div className="font-headline text-3xl lg:text-4xl text-primary mb-1 tracking-tight">
+                  <div className="font-headline text-2xl sm:text-3xl lg:text-4xl text-primary mb-1 tracking-tight">
                     $0
                   </div>
                   <span className="font-label text-[9px] tracking-[0.25em] uppercase text-white/35">
@@ -166,7 +166,7 @@ export default function LeasingPage() {
                   </span>
                 </div>
                 <div className="border border-white/[0.05] bg-white/[0.015] rounded-sm p-5">
-                  <div className="font-headline text-3xl lg:text-4xl text-primary mb-1 tracking-tight">
+                  <div className="font-headline text-2xl sm:text-3xl lg:text-4xl text-primary mb-1 tracking-tight">
                     <NumberCounter end={100} />%
                   </div>
                   <span className="font-label text-[9px] tracking-[0.25em] uppercase text-white/35">
@@ -183,7 +183,7 @@ export default function LeasingPage() {
             </div>
 
             <ScrollReveal direction="right" className="lg:col-span-5">
-              <div className="relative w-full h-[380px] lg:h-[500px] overflow-hidden">
+              <div className="relative w-full h-[260px] md:h-[380px] lg:h-[500px] overflow-hidden">
                 <Image
                   src="/images/garage/red.jpg"
                   alt="Ferrari SF90 Spider in studio"
@@ -210,7 +210,7 @@ export default function LeasingPage() {
           <span className="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-6 block">
             The Process
           </span>
-          <h2 className="text-5xl md:text-6xl font-headline italic text-on-surface">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-headline italic text-on-surface">
             How It Works
           </h2>
         </ScrollReveal>
@@ -241,7 +241,7 @@ export default function LeasingPage() {
           ].map((step) => (
             <div
               key={step.num}
-              className="relative p-10 md:p-12 rounded-sm border border-white/[0.06] hover:border-primary/15 transition-all duration-500 group bg-white/[0.015] h-full flex flex-col"
+              className="relative p-6 md:p-10 lg:p-12 rounded-sm border border-white/[0.06] hover:border-primary/15 transition-all duration-500 group bg-white/[0.015] h-full flex flex-col"
             >
               <span className="absolute top-8 right-8 font-headline italic text-6xl text-white/[0.04] group-hover:text-primary/10 transition-colors duration-500 select-none">
                 {step.num}

@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 py-20">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-16">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
           {/* Left: Logo, tagline, social */}
           <ScrollReveal className="flex flex-col gap-6">
             <Link href="/" aria-label="Dream Drive Motors - Home">
@@ -41,7 +41,7 @@ export default function Footer() {
 
           {/* Right: 3-column grid */}
           <StaggerReveal
-            className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-16"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 lg:gap-16"
             staggerDelay={0.12}
           >
             {/* Contact */}
@@ -119,7 +119,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-        <div className="border-t border-white/[0.04] py-10 text-center">
+        <div className="border-t border-white/[0.04] py-10 text-center" style={{ paddingBottom: "max(2.5rem, env(safe-area-inset-bottom))" }}>
           <p className="text-white/25 text-[10px] tracking-[0.4em] uppercase">
             &copy; {new Date().getFullYear()} {BUSINESS_INFO.name}. All rights
             reserved.

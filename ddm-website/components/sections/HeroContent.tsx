@@ -26,7 +26,7 @@ export default function HeroContent() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <div ref={ref} className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 pt-32 pb-8 text-center">
+    <div ref={ref} className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-8 text-center">
       <motion.div
         style={prefersReduced ? {} : { y: contentY, opacity: contentOpacity }}
       >
@@ -46,7 +46,7 @@ export default function HeroContent() {
 
         <TextSplit
           as="h1"
-          className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6"
+          className="font-headline text-4xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-on-surface mb-6"
           splitBy="words"
           staggerDelay={0.08}
           duration={1}
@@ -77,7 +77,7 @@ export default function HeroContent() {
 
         {/* Hero Stats — Glass card treatment */}
         <ScrollReveal delay={0.5}>
-          <div className="mt-16 inline-flex items-center gap-8 md:gap-12 px-8 py-5 border border-white/[0.06] bg-white/[0.02] backdrop-blur-md rounded-sm flex-wrap justify-center">
+          <div className="mt-16 inline-flex items-center gap-4 md:gap-8 lg:gap-12 px-4 md:px-8 py-5 border border-white/[0.06] bg-white/[0.02] backdrop-blur-md rounded-sm flex-wrap justify-center">
             <div>
               <div className="font-headline text-3xl text-primary font-bold">
                 500+
@@ -86,7 +86,7 @@ export default function HeroContent() {
                 Happy Customers
               </div>
             </div>
-            <div className="w-px h-10 bg-primary/15" />
+            <div className="w-px h-10 bg-primary/15 hidden md:block" />
             <div>
               <div className="font-headline text-3xl text-primary font-bold">
                 All
@@ -95,7 +95,7 @@ export default function HeroContent() {
                 Credit Types Welcome
               </div>
             </div>
-            <div className="w-px h-10 bg-primary/15" />
+            <div className="w-px h-10 bg-primary/15 hidden md:block" />
             <div>
               <div className="font-headline text-3xl text-primary font-bold">
                 Fast
