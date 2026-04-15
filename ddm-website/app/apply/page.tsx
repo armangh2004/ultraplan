@@ -21,7 +21,7 @@ export default function ApplyPage() {
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="relative min-h-[70vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 hidden md:block">
           <Image
             src="/images/garage/911showroom.jpg"
             alt="Classic Porsche 911 showroom"
@@ -30,7 +30,7 @@ export default function ApplyPage() {
             sizes="100vw"
             quality={100}
             unoptimized
-            className="object-cover object-center hidden md:block"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />

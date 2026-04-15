@@ -48,7 +48,7 @@ export default function AcquisitionPage() {
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 hidden md:block">
           <Image
             src="/images/garage/gt3rs-showroom.jpg"
             alt="Porsche GT3 RS in showroom"
@@ -56,7 +56,7 @@ export default function AcquisitionPage() {
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover hidden md:block"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />

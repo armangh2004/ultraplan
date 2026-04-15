@@ -23,7 +23,7 @@ export default function LeasingPage() {
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-center justify-center px-6 md:px-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 hidden md:block">
           <Image
             src="/images/garage/supercar-showroom.jpg"
             alt="Luxury sports car in minimalist gallery"
@@ -31,7 +31,7 @@ export default function LeasingPage() {
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover opacity-40 hidden md:block"
+            className="object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         </div>
