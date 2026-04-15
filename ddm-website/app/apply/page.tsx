@@ -30,7 +30,7 @@ export default function ApplyPage() {
             sizes="100vw"
             quality={100}
             unoptimized
-            className="object-cover object-center"
+            className="object-cover object-center hidden md:block"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />

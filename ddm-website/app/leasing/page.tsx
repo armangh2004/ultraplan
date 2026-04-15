@@ -31,7 +31,7 @@ export default function LeasingPage() {
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover opacity-40"
+            className="object-cover opacity-40 hidden md:block"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         </div>

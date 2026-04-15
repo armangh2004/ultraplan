@@ -56,7 +56,7 @@ export default function AcquisitionPage() {
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover"
+            className="object-cover hidden md:block"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />

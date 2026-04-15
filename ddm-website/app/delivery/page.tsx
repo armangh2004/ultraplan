@@ -83,7 +83,7 @@ export default function DeliveryPage() {
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover object-[center_40%]"
+            className="object-cover object-[center_40%] hidden md:block"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         </div>

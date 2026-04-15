@@ -180,7 +180,7 @@ export default function HeroLambo() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 z-0 overflow-hidden"
+      className="absolute inset-0 z-0 overflow-hidden hidden md:block"
       style={{ perspective: "1200px" }}
       onMouseMove={!isTouch ? handleMouseMove : undefined}
       onMouseLeave={!isTouch ? handleMouseLeave : undefined}

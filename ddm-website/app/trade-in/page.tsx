@@ -29,7 +29,7 @@ export default function TradeInPage() {
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover object-[center_40%]"
+            className="object-cover object-[center_40%] hidden md:block"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
