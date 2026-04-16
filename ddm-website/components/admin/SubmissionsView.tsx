@@ -45,6 +45,78 @@ const COLUMNS: Record<SubmissionType, { key: string; label: string }[]> = {
   ],
 }
 
+const CSV_COLUMNS: Record<SubmissionType, { key: string; label: string }[]> = {
+  contacts: [
+    { key: 'created_at', label: 'Date' },
+    { key: 'first_name', label: 'First Name' },
+    { key: 'last_name', label: 'Last Name' },
+    { key: 'email', label: 'Email' },
+    { key: 'phone', label: 'Phone' },
+    { key: 'interest', label: 'Interest' },
+    { key: 'message', label: 'Message' },
+    { key: 'status', label: 'Status' },
+    { key: 'admin_notes', label: 'Admin Notes' },
+  ],
+  'trade-ins': [
+    { key: 'created_at', label: 'Date' },
+    { key: 'full_name', label: 'Full Name' },
+    { key: 'email', label: 'Email' },
+    { key: 'phone', label: 'Phone' },
+    { key: 'vehicle', label: 'Vehicle' },
+    { key: 'mileage', label: 'Mileage' },
+    { key: 'vin', label: 'VIN' },
+    { key: 'desired_vehicle', label: 'Desired Vehicle' },
+    { key: 'purchase_timeline', label: 'Timeline' },
+    { key: 'status', label: 'Status' },
+    { key: 'admin_notes', label: 'Admin Notes' },
+  ],
+  'sell-cars': [
+    { key: 'created_at', label: 'Date' },
+    { key: 'full_name', label: 'Full Name' },
+    { key: 'email', label: 'Email' },
+    { key: 'phone', label: 'Phone' },
+    { key: 'vehicle', label: 'Vehicle' },
+    { key: 'mileage', label: 'Mileage' },
+    { key: 'vin', label: 'VIN' },
+    { key: 'description', label: 'Description' },
+    { key: 'status', label: 'Status' },
+    { key: 'admin_notes', label: 'Admin Notes' },
+  ],
+  'credit-apps': [
+    { key: 'created_at', label: 'Date' },
+    { key: 'first_name', label: 'First Name' },
+    { key: 'last_name', label: 'Last Name' },
+    { key: 'email', label: 'Email' },
+    { key: 'phone', label: 'Phone' },
+    { key: 'date_of_birth', label: 'DOB' },
+    { key: 'address_line1', label: 'Address' },
+    { key: 'city', label: 'City' },
+    { key: 'state', label: 'State' },
+    { key: 'zip', label: 'Zip' },
+    { key: 'employer', label: 'Employer' },
+    { key: 'annual_income', label: 'Annual Income' },
+    { key: 'buyer_type', label: 'Buyer Type' },
+    { key: 'financing_type', label: 'Financing Type' },
+    { key: 'status', label: 'Status' },
+    { key: 'admin_notes', label: 'Admin Notes' },
+  ],
+}
+
+function generateCSV(data: Record<string, unknown>[], columns: { key: string; label: string }[]): string {
+  const header = columns.map((c) => c.label).join(',')
+  const rows = data.map((row) =>
+    columns
+      .map((c) => {
+        const val = String(row[c.key] ?? '')
+        return val.includes(',') || val.includes('"') || val.includes('\n')
+          ? `"${val.replace(/"/g, '""')}"`
+          : val
+      })
+      .join(',')
+  )
+  return [header, ...rows].join('\n')
+}
+
 function transformRow(row: Record<string, unknown>, type: SubmissionType): Record<string, unknown> {
   const transformed = { ...row }
 
@@ -68,6 +140,29 @@ function transformRow(row: Record<string, unknown>, type: SubmissionType): Recor
   return transformed
 }
 
+function transformRowForCSV(row: Record<string, unknown>, type: SubmissionType): Record<string, unknown> {
+  const transformed = { ...row }
+
+  // Format date for CSV
+  if (typeof transformed.created_at === 'string') {
+    transformed.created_at = new Date(transformed.created_at as string).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
+  }
+
+  // Build computed vehicle field for CSV
+  if (type === 'trade-ins' || type === 'sell-cars') {
+    const year = row.vehicle_year ?? ''
+    const make = row.vehicle_make ?? ''
+    const model = row.vehicle_model ?? ''
+    transformed.vehicle = `${year} ${make} ${model}`.trim() || ''
+  }
+
+  return transformed
+}
+
 export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
   const router = useRouter()
   const [data, setData] = useState<Record<string, unknown>[]>([])
@@ -78,6 +173,7 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
   const [search, setSearch] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [loading, setLoading] = useState(true)
+  const [exporting, setExporting] = useState(false)
 
   // Debounce search input
   useEffect(() => {
@@ -113,13 +209,67 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
     fetchData()
   }, [fetchData])
 
-  function handleStatusChange(newStatus: string) {
+  function handleStatusFilterChange(newStatus: string) {
     setStatus(newStatus)
     setPage(1)
   }
 
   function handleRowClick(row: Record<string, unknown>) {
     router.push(`/admin/${type}/${row.id}`)
+  }
+
+  async function handleRowStatusChange(id: string, newStatus: string) {
+    try {
+      const res = await fetch(`/api/admin/submissions/${id}?type=${type}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      })
+      if (res.ok) {
+        // Update the local data immediately for snappy UX
+        setData((prev) =>
+          prev.map((row) => (row.id === id ? { ...row, status: newStatus } : row))
+        )
+      }
+    } catch {
+      // Status update failed silently
+    }
+  }
+
+  async function handleExportCSV() {
+    setExporting(true)
+    try {
+      // Fetch all submissions matching current filters
+      const params = new URLSearchParams({ type, page: '1', pageSize: '10000' })
+      if (status !== 'all') params.set('status', status)
+      if (debouncedSearch) params.set('search', debouncedSearch)
+
+      const res = await fetch(`/api/admin/submissions?${params}`)
+      if (!res.ok) throw new Error('Failed to fetch')
+      const json = await res.json()
+      const allData: Record<string, unknown>[] = json.data || []
+
+      // Transform rows for CSV
+      const csvColumns = CSV_COLUMNS[type]
+      const csvRows = allData.map((row) => transformRowForCSV(row, type))
+      const csv = generateCSV(csvRows, csvColumns)
+
+      // Trigger download
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      const dateStr = new Date().toISOString().split('T')[0]
+      link.href = url
+      link.download = `ddm-${type}-${dateStr}.csv`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    } catch {
+      // Export failed silently
+    } finally {
+      setExporting(false)
+    }
   }
 
   const totalPages = Math.max(1, Math.ceil(total / pageSize))
@@ -134,7 +284,7 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <select
           value={status}
-          onChange={(e) => handleStatusChange(e.target.value)}
+          onChange={(e) => handleStatusFilterChange(e.target.value)}
           className="bg-surface-container-high text-on-surface border border-outline-variant rounded px-3 py-2 text-sm font-body min-h-[44px] focus:border-primary focus:outline-none"
         >
           {STATUS_OPTIONS.map((opt) => (
@@ -151,6 +301,16 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
           onChange={(e) => setSearch(e.target.value)}
           className="flex-1 bg-surface-container-high text-on-surface border border-outline-variant rounded px-3 py-2 text-sm font-body min-h-[44px] focus:border-primary focus:outline-none placeholder:text-on-surface-variant"
         />
+
+        <button
+          type="button"
+          onClick={handleExportCSV}
+          disabled={exporting || loading}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/10 text-white/70 font-body text-sm min-h-[44px] hover:bg-white/5 hover:text-white/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+        >
+          <span className="material-symbols-outlined text-sm">download</span>
+          {exporting ? 'Exporting...' : 'Export CSV'}
+        </button>
       </div>
 
       {loading ? (
@@ -162,6 +322,10 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
             columns={columns}
             data={transformedData}
             onRowClick={handleRowClick}
+            onStatusChange={(row, newStatus) =>
+              handleRowStatusChange(row.id as string, newStatus)
+            }
+            type={type}
           />
 
           {/* Mobile card list */}
@@ -177,6 +341,9 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
                   submission={row}
                   type={type}
                   onClick={() => handleRowClick(row)}
+                  onStatusChange={(newStatus) =>
+                    handleRowStatusChange(row.id as string, newStatus)
+                  }
                 />
               ))
             )}

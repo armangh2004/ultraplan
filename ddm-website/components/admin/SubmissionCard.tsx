@@ -6,6 +6,7 @@ interface SubmissionCardProps {
   submission: Record<string, unknown>;
   type: string;
   onClick: () => void;
+  onStatusChange?: (newStatus: string) => void;
 }
 
 function getName(submission: Record<string, unknown>, type: string): string {
@@ -27,7 +28,7 @@ function formatDate(value: unknown): string {
   });
 }
 
-export default function SubmissionCard({ submission, type, onClick }: SubmissionCardProps) {
+export default function SubmissionCard({ submission, type, onClick, onStatusChange }: SubmissionCardProps) {
   const name = getName(submission, type);
   const status = typeof submission.status === 'string' ? submission.status : 'new';
   const email = typeof submission.email === 'string' ? submission.email : '';
@@ -43,12 +44,27 @@ export default function SubmissionCard({ submission, type, onClick }: Submission
         <span className="font-headline text-on-surface text-base truncate">
           {name}
         </span>
-        <StatusBadge status={status} />
+        <span onClick={(e) => e.stopPropagation()}>
+          <StatusBadge
+            status={status}
+            onStatusChange={onStatusChange}
+          />
+        </span>
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="font-body text-on-surface-variant text-sm truncate">
-          {email}
+        <span className="font-body text-sm truncate">
+          {email ? (
+            <a
+              href={`mailto:${email}`}
+              onClick={(e) => e.stopPropagation()}
+              className="text-white hover:text-[#D4AF37] transition-colors underline-offset-2 hover:underline"
+            >
+              {email}
+            </a>
+          ) : (
+            <span className="text-on-surface-variant">&mdash;</span>
+          )}
         </span>
         <span className="font-body text-on-surface-variant text-xs shrink-0 ml-2">
           {date}

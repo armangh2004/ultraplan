@@ -10,7 +10,8 @@ const TABLE_MAP: Record<string, string> = {
   'sell-cars': 'sell_car_submissions',
   'credit-apps': 'credit_applications',
 }
-const PAGE_SIZE = 25
+const DEFAULT_PAGE_SIZE = 25
+const MAX_PAGE_SIZE = 10000
 
 export async function GET(request: Request) {
   if (!(await isAuthenticated())) {
@@ -22,13 +23,17 @@ export async function GET(request: Request) {
   const status = url.searchParams.get('status')
   const search = url.searchParams.get('search')
   const page = parseInt(url.searchParams.get('page') || '1', 10)
+  const pageSizeParam = url.searchParams.get('pageSize')
+  const pageSize = pageSizeParam
+    ? Math.min(Math.max(1, parseInt(pageSizeParam, 10) || DEFAULT_PAGE_SIZE), MAX_PAGE_SIZE)
+    : DEFAULT_PAGE_SIZE
 
   if (!VALID_TYPES.includes(type as typeof VALID_TYPES[number])) {
     return Response.json({ error: 'Invalid type' }, { status: 400 })
   }
 
   const table = TABLE_MAP[type]
-  const offset = (page - 1) * PAGE_SIZE
+  const offset = (page - 1) * pageSize
 
   let query = supabase.from(table).select('*', { count: 'exact' })
 
@@ -48,7 +53,7 @@ export async function GET(request: Request) {
     }
   }
 
-  query = query.order('created_at', { ascending: false }).range(offset, offset + PAGE_SIZE - 1)
+  query = query.order('created_at', { ascending: false }).range(offset, offset + pageSize - 1)
 
   const { data, count, error } = await query
 
@@ -61,6 +66,6 @@ export async function GET(request: Request) {
     data: data || [],
     total: count || 0,
     page,
-    pageSize: PAGE_SIZE,
+    pageSize,
   })
 }

@@ -44,14 +44,26 @@ function formatValue(value: unknown): string {
   return String(value)
 }
 
-function Field({ label, value }: { label: string; value: unknown }) {
+function Field({ label, value, linkType }: { label: string; value: unknown; linkType?: 'email' | 'phone' }) {
+  const displayValue = formatValue(value)
+  const hasLink = linkType && typeof value === 'string' && value !== ''
+
   return (
     <div className="flex flex-col gap-1">
       <span className="font-body text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold">
         {label}
       </span>
       <span className="font-body text-sm text-white whitespace-pre-wrap break-words">
-        {formatValue(value)}
+        {hasLink ? (
+          <a
+            href={linkType === 'email' ? `mailto:${value}` : `tel:${value}`}
+            className="text-white hover:text-[#D4AF37] transition-colors underline-offset-2 hover:underline"
+          >
+            {displayValue}
+          </a>
+        ) : (
+          displayValue
+        )}
       </span>
     </div>
   )
@@ -208,8 +220,8 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
           <Section title="Personal Information">
             <Field label="First Name" value={data.first_name} />
             <Field label="Last Name" value={data.last_name} />
-            <Field label="Email" value={data.email} />
-            <Field label="Phone" value={data.phone} />
+            <Field label="Email" value={data.email} linkType="email" />
+            <Field label="Phone" value={data.phone} linkType="phone" />
           </Section>
           <Section title="Inquiry">
             <Field label="Interest" value={data.interest} />
@@ -224,8 +236,8 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
         <>
           <Section title="Personal Information">
             <Field label="Full Name" value={data.full_name} />
-            <Field label="Phone" value={data.phone} />
-            <Field label="Email" value={data.email} />
+            <Field label="Phone" value={data.phone} linkType="phone" />
+            <Field label="Email" value={data.email} linkType="email" />
           </Section>
           <Section title="Current Vehicle">
             <Field label="Year" value={data.vehicle_year} />
@@ -267,8 +279,8 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
         <>
           <Section title="Personal Information">
             <Field label="Full Name" value={data.full_name} />
-            <Field label="Phone" value={data.phone} />
-            <Field label="Email" value={data.email} />
+            <Field label="Phone" value={data.phone} linkType="phone" />
+            <Field label="Email" value={data.email} linkType="email" />
           </Section>
           <Section title="Vehicle">
             <Field label="Year" value={data.vehicle_year} />
@@ -297,8 +309,8 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
           <Section title="Personal Information">
             <Field label="First Name" value={data.first_name} />
             <Field label="Last Name" value={data.last_name} />
-            <Field label="Email" value={data.email} />
-            <Field label="Phone" value={data.phone} />
+            <Field label="Email" value={data.email} linkType="email" />
+            <Field label="Phone" value={data.phone} linkType="phone" />
             <Field label="Date of Birth" value={data.date_of_birth} />
           </Section>
 
@@ -354,7 +366,7 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
           <Section title="Employment">
             <Field label="Employer" value={data.employer} />
             <Field label="Job Title" value={data.job_title} />
-            <Field label="Phone" value={data.employer_phone} />
+            <Field label="Phone" value={data.employer_phone} linkType="phone" />
             <Field label="Address" value={data.employer_address} />
             <Field label="City" value={data.employer_city} />
             <Field label="State" value={data.employer_state} />

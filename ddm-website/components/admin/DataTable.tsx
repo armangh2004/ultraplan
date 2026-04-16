@@ -12,10 +12,25 @@ interface DataTableProps {
   columns: Column[];
   data: Record<string, unknown>[];
   onRowClick: (row: Record<string, unknown>) => void;
+  onStatusChange?: (row: Record<string, unknown>, newStatus: string) => void;
+  type?: string;
 }
 
-function formatCell(key: string, value: unknown): React.ReactNode {
+function formatCell(
+  key: string,
+  value: unknown,
+  row: Record<string, unknown>,
+  onStatusChange?: (row: Record<string, unknown>, newStatus: string) => void
+): React.ReactNode {
   if (key === 'status' && typeof value === 'string') {
+    if (onStatusChange) {
+      return (
+        <StatusBadge
+          status={value}
+          onStatusChange={(newStatus) => onStatusChange(row, newStatus)}
+        />
+      );
+    }
     return <StatusBadge status={value} />;
   }
 
@@ -27,11 +42,35 @@ function formatCell(key: string, value: unknown): React.ReactNode {
     });
   }
 
+  if (key === 'email' && typeof value === 'string' && value) {
+    return (
+      <a
+        href={`mailto:${value}`}
+        onClick={(e) => e.stopPropagation()}
+        className="text-white hover:text-[#D4AF37] transition-colors underline-offset-2 hover:underline"
+      >
+        {value}
+      </a>
+    );
+  }
+
+  if (key === 'phone' && typeof value === 'string' && value) {
+    return (
+      <a
+        href={`tel:${value}`}
+        onClick={(e) => e.stopPropagation()}
+        className="text-white hover:text-[#D4AF37] transition-colors underline-offset-2 hover:underline"
+      >
+        {value}
+      </a>
+    );
+  }
+
   if (value == null) return '\u2014';
   return String(value);
 }
 
-export default function DataTable({ columns, data, onRowClick }: DataTableProps) {
+export default function DataTable({ columns, data, onRowClick, onStatusChange }: DataTableProps) {
   const [sortKey, setSortKey] = useState<string | null>(null);
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
 
@@ -100,8 +139,13 @@ export default function DataTable({ columns, data, onRowClick }: DataTableProps)
                 <td
                   key={col.key}
                   className="font-body text-sm text-on-surface px-4 py-3"
+                  onClick={
+                    col.key === 'status' && onStatusChange
+                      ? (e) => e.stopPropagation()
+                      : undefined
+                  }
                 >
-                  {formatCell(col.key, row[col.key])}
+                  {formatCell(col.key, row[col.key], row, onStatusChange)}
                 </td>
               ))}
             </tr>
