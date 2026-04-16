@@ -7,12 +7,53 @@ interface PhotoGalleryProps {
   urls: string[];
 }
 
+async function downloadFile(url: string, filename: string) {
+  const res = await fetch(url);
+  const blob = await res.blob();
+  const blobUrl = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = blobUrl;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(blobUrl);
+}
+
 export default function PhotoGallery({ urls }: PhotoGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [loadedSet, setLoadedSet] = useState<Set<number>>(new Set());
+  const [downloading, setDownloading] = useState(false);
+  const [downloadingAll, setDownloadingAll] = useState(false);
 
   function markLoaded(index: number) {
     setLoadedSet((prev) => new Set(prev).add(index));
+  }
+
+  async function handleDownload(url: string, index: number) {
+    setDownloading(true);
+    try {
+      await downloadFile(url, `photo-${index + 1}.jpg`);
+    } catch {
+      // Fallback: open in new tab
+      window.open(url, '_blank');
+    } finally {
+      setDownloading(false);
+    }
+  }
+
+  async function handleDownloadAll() {
+    setDownloadingAll(true);
+    try {
+      for (let i = 0; i < urls.length; i++) {
+        await downloadFile(urls[i], `photo-${i + 1}.jpg`);
+      }
+    } catch {
+      // If batch download fails, open all in new tabs
+      urls.forEach((url) => window.open(url, '_blank'));
+    } finally {
+      setDownloadingAll(false);
+    }
   }
 
   if (urls.length === 0) {
@@ -24,19 +65,6 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
     );
   }
 
-  function downloadAll() {
-    urls.forEach((url, i) => {
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `photo-${i + 1}.jpg`;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    });
-  }
-
   return (
     <>
       {/* Download all button */}
@@ -44,11 +72,12 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
         <div className="flex justify-end mb-2">
           <button
             type="button"
-            onClick={downloadAll}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm text-white/70 border border-white/10 rounded hover:text-white hover:border-white/30 transition-colors min-h-[44px]"
+            onClick={handleDownloadAll}
+            disabled={downloadingAll}
+            className="flex items-center gap-1 px-3 py-1.5 text-sm text-white/70 border border-white/10 rounded hover:text-white hover:border-white/30 transition-colors min-h-[44px] disabled:opacity-50"
           >
             <span className="material-symbols-outlined text-[18px]">download</span>
-            Download All ({urls.length})
+            {downloadingAll ? 'Downloading...' : `Download All (${urls.length})`}
           </button>
         </div>
       )}
@@ -57,7 +86,7 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
         {urls.map((url, i) => (
           <button
-            key={i}
+            key={url}
             type="button"
             onClick={() => setSelectedIndex(i)}
             className="relative aspect-square bg-surface-container-high rounded overflow-hidden border border-white/10 hover:border-primary/40 transition-colors min-h-[44px]"
@@ -76,6 +105,7 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="object-cover"
               onLoad={() => markLoaded(i)}
+              unoptimized
             />
           </button>
         ))}
@@ -126,16 +156,19 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
             </button>
           )}
 
+          {/* Lightbox image — key forces re-mount when index changes */}
           <div
             className="relative max-w-4xl max-h-[80vh] w-full h-full"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
+              key={urls[selectedIndex]}
               src={urls[selectedIndex]}
               alt={`Photo ${selectedIndex + 1}`}
               fill
               sizes="90vw"
               className="object-contain"
+              unoptimized
             />
           </div>
 
@@ -143,17 +176,18 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
             <span className="text-on-surface-variant text-sm font-body">
               {selectedIndex + 1} / {urls.length}
             </span>
-            <a
-              href={urls[selectedIndex]}
-              download={`photo-${selectedIndex + 1}.jpg`}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1 px-3 py-1.5 text-sm bg-[#D4AF37] text-black rounded hover:bg-[#c4a030] transition-colors min-h-[44px]"
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDownload(urls[selectedIndex], selectedIndex);
+              }}
+              disabled={downloading}
+              className="flex items-center gap-1 px-3 py-1.5 text-sm bg-[#D4AF37] text-black rounded hover:bg-[#c4a030] transition-colors min-h-[44px] disabled:opacity-50"
             >
               <span className="material-symbols-outlined text-[18px]">download</span>
-              Download
-            </a>
+              {downloading ? 'Saving...' : 'Download'}
+            </button>
           </div>
         </div>
       )}
