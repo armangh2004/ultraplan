@@ -29,7 +29,7 @@ export function validateMinLength(
 
 /**
  * Validate a Vehicle Identification Number (VIN).
- * Checks: 17 characters, no I/O/Q, valid check digit (position 9).
+ * Checks: 17 characters, no I/O/Q, valid character set.
  */
 export function validateVIN(value: string): string | null {
   if (!value.trim()) return null; // optional field — only validate if provided
@@ -37,27 +37,6 @@ export function validateVIN(value: string): string | null {
   if (vin.length !== 17) return "VIN must be exactly 17 characters";
   if (/[IOQ]/.test(vin)) return "VIN cannot contain I, O, or Q";
   if (!/^[A-HJ-NPR-Z0-9]{17}$/.test(vin)) return "VIN contains invalid characters";
-
-  // Check digit validation (position 9, index 8)
-  const transliteration: Record<string, number> = {
-    A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8,
-    J: 1, K: 2, L: 3, M: 4, N: 5, P: 7, R: 9,
-    S: 2, T: 3, U: 4, V: 5, W: 6, X: 7, Y: 8, Z: 9,
-  };
-  const weights = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2];
-
-  let sum = 0;
-  for (let i = 0; i < 17; i++) {
-    const char = vin[i];
-    const val = /\d/.test(char) ? parseInt(char, 10) : transliteration[char];
-    if (val === undefined) return "VIN contains invalid characters";
-    sum += val * weights[i];
-  }
-
-  const remainder = sum % 11;
-  const checkDigit = remainder === 10 ? "X" : String(remainder);
-
-  if (vin[8] !== checkDigit) return "VIN check digit is invalid — please verify your VIN";
   return null;
 }
 
