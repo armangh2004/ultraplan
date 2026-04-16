@@ -2,11 +2,6 @@ import type { Metadata } from "next";
 import { Newsreader, Manrope } from "next/font/google";
 import "./globals.css";
 
-import SmoothScroll from "@/components/interactive/SmoothScroll";
-import CustomCursor from "@/components/interactive/CustomCursor";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-
 const newsreader = Newsreader({
   subsets: ["latin"],
   variable: "--font-headline",
@@ -76,12 +71,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <SmoothScroll>
-          <CustomCursor />
-          <Navbar />
-          <main id="main-content">{children}</main>
-          <Footer />
-        </SmoothScroll>
+        {children}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
