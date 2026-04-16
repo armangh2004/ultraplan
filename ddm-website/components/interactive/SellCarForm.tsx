@@ -50,6 +50,9 @@ export default function SellCarForm() {
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [hp, setHp] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -114,7 +117,7 @@ export default function SellCarForm() {
   }
 
   /* ── submit ── */
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     const requiredFields = [
@@ -146,23 +149,83 @@ export default function SellCarForm() {
     const hasErrors = Object.values(newErrors).some((err) => err !== null);
     if (hasErrors) return;
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFullName("");
-      setPhone("");
-      setEmail("");
-      setYear("");
-      setMake("");
-      setModel("");
-      setMileage("");
-      setPayoff("");
-      setVin("");
-      setDescription("");
-      setFiles([]);
-      setErrors({});
-      setTouched({});
-    }, 3000);
+    setIsSubmitting(true);
+    setApiError(null);
+    try {
+      // Upload photos via presigned URLs
+      const photoUrls: string[] = [];
+      for (const file of files) {
+        const urlRes = await fetch('/api/upload-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename: file.name, contentType: file.type }),
+        });
+        const urlData = await urlRes.json();
+        if (!urlRes.ok) throw new Error('Failed to upload photo');
+
+        await fetch(urlData.uploadUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': file.type },
+          body: file,
+        });
+        photoUrls.push(urlData.path);
+      }
+
+      const res = await fetch('/api/sell-car', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fullName, phone, email, year, make, model, mileage, vin, payoff, description, photoUrls, _hp: hp }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  /* ── success state ── */
+  if (submitted) {
+    return (
+      <div className="text-center py-20">
+        <span
+          className="material-symbols-outlined text-[#D4AF37] text-6xl mb-6"
+          style={{ fontVariationSettings: "'FILL' 1" }}
+        >
+          check_circle
+        </span>
+        <h3 className="font-headline text-3xl mb-4 text-white">
+          Vehicle Information Received
+        </h3>
+        <p className="text-white/50 mb-8 max-w-md mx-auto">
+          Thank you, {fullName}. Our acquisition team will review your vehicle
+          details and contact you within 24 hours.
+        </p>
+        <button
+          onClick={() => {
+            setSubmitted(false);
+            setFullName("");
+            setPhone("");
+            setEmail("");
+            setYear("");
+            setMake("");
+            setModel("");
+            setMileage("");
+            setPayoff("");
+            setVin("");
+            setDescription("");
+            setFiles([]);
+            setErrors({});
+            setTouched({});
+          }}
+          className="text-[#D4AF37] font-label text-[10px] uppercase tracking-widest border-b border-[#D4AF37]/40 pb-1 hover:border-[#D4AF37] transition-colors"
+        >
+          Submit Another Vehicle
+        </button>
+      </div>
+    );
   }
 
   /* ── helpers: is a field valid (touched + no error + has content) ── */
@@ -469,23 +532,18 @@ export default function SellCarForm() {
         )}
       </div>
 
+      {/* Honeypot */}
+      <input type="text" name="_hp" value={hp} onChange={e => setHp(e.target.value)} className="absolute opacity-0 h-0 w-0 pointer-events-none" tabIndex={-1} autoComplete="off" />
+
       {/* Submit */}
       <div className="pt-4">
+        {apiError && <p className="text-red-400 text-sm mb-4">{apiError}</p>}
         <button
           type="submit"
-          disabled={submitted}
-          className="w-full bg-[#D4AF37] text-black py-5 font-label text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-[#e5c548] transition-all disabled:opacity-80 cursor-pointer"
+          disabled={isSubmitting}
+          className="w-full bg-[#D4AF37] text-black py-5 font-label text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-[#e5c548] transition-all disabled:opacity-60 cursor-pointer"
         >
-          {submitted ? (
-            <span className="flex items-center justify-center gap-3">
-              <span className="material-symbols-outlined text-lg">
-                check_circle
-              </span>
-              Submission Received
-            </span>
-          ) : (
-            "Submit Vehicle Information"
-          )}
+          {isSubmitting ? 'Submitting...' : 'Submit Vehicle Information'}
         </button>
         <p className="mt-6 text-[0.55rem] text-white/30 text-center tracking-[0.3em] uppercase font-bold flex items-center justify-center gap-2">
           <span className="material-symbols-outlined text-xs text-[#D4AF37]/60">

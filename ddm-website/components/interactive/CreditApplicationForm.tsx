@@ -222,6 +222,9 @@ export default function CreditApplicationForm() {
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [hp, setHp] = useState('');
 
   /* Helper — update a single field */
   function set<K extends keyof FormData>(key: K, value: FormData[K]) {
@@ -350,11 +353,26 @@ export default function CreditApplicationForm() {
   }
 
   /* ── Submit ─────────────────────────────────────────────────────── */
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!validate()) return;
 
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setApiError(null);
+    try {
+      const res = await fetch('/api/credit-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, _hp: hp }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   /* ── Success state ──────────────────────────────────────────────── */
@@ -967,14 +985,19 @@ export default function CreditApplicationForm() {
             </p>
           </div>
 
+          {/* Honeypot */}
+          <input type="text" name="_hp" value={hp} onChange={e => setHp(e.target.value)} className="absolute opacity-0 h-0 w-0 pointer-events-none" tabIndex={-1} autoComplete="off" />
+
           {/* Submit */}
           <div className="flex flex-col items-center pt-6">
+            {apiError && <p className="text-red-400 text-sm mb-4">{apiError}</p>}
             <button
               type="submit"
-              className="group relative bg-primary text-on-primary px-20 py-5 font-label uppercase tracking-[0.3em] text-[11px] font-bold transition-all hover:brightness-110 hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] overflow-hidden"
+              disabled={isSubmitting}
+              className="group relative bg-primary text-on-primary px-20 py-5 font-label uppercase tracking-[0.3em] text-[11px] font-bold transition-all hover:brightness-110 hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] overflow-hidden disabled:opacity-60"
             >
               <span className="relative z-10 flex items-center gap-5">
-                Submit Application
+                {isSubmitting ? 'Submitting...' : 'Submit Application'}
                 <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-2">
                   arrow_forward
                 </span>

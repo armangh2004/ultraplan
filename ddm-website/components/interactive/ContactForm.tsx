@@ -28,6 +28,9 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [hp, setHp] = useState('');
 
   function update(field: string, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -48,7 +51,7 @@ export default function ContactForm() {
     [form],
   );
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const newErrors: Record<string, string | null> = {
       firstName: validateRequired(form.firstName, "First name"),
@@ -61,7 +64,23 @@ export default function ContactForm() {
     setErrors(newErrors);
     setTouched({ firstName: true, lastName: true, email: true, phone: true, message: true });
     if (Object.values(newErrors).some((e) => e !== null)) return;
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    setApiError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, _hp: hp }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -146,14 +165,19 @@ export default function ContactForm() {
         />
       </Field>
 
+      {/* Honeypot */}
+      <input type="text" name="_hp" value={hp} onChange={e => setHp(e.target.value)} className="absolute opacity-0 h-0 w-0 pointer-events-none" tabIndex={-1} autoComplete="off" />
+
       {/* Submit */}
       <div className="pt-4">
+        {apiError && <p className="text-red-400 text-sm mb-4">{apiError}</p>}
         <button
           type="submit"
-          className="group w-full bg-primary text-on-primary py-5 font-label text-[11px] font-bold uppercase tracking-[0.3em] transition-all hover:brightness-110 hover:shadow-[0_0_40px_rgba(212,175,55,0.15)]"
+          disabled={isSubmitting}
+          className="group w-full bg-primary text-on-primary py-5 font-label text-[11px] font-bold uppercase tracking-[0.3em] transition-all hover:brightness-110 hover:shadow-[0_0_40px_rgba(212,175,55,0.15)] disabled:opacity-60"
         >
           <span className="flex items-center justify-center gap-3">
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
             <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">
               arrow_forward
             </span>

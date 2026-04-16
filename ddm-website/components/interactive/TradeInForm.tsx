@@ -36,6 +36,9 @@ export default function TradeInForm() {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [hp, setHp] = useState('');
 
   /* ── helpers ─────────────────────────────────── */
 
@@ -66,7 +69,7 @@ export default function TradeInForm() {
 
   /* ── submit ──────────────────────────────────── */
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     // Touch every required field so inline errors show
@@ -92,7 +95,42 @@ export default function TradeInForm() {
 
     setErrors(newErrors);
     if (Object.values(newErrors).some((e) => e !== null)) return;
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    setApiError(null);
+    try {
+      // Upload photos via presigned URLs
+      const photoUrls: string[] = [];
+      for (const file of files) {
+        const urlRes = await fetch('/api/upload-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename: file.name, contentType: file.type }),
+        });
+        const urlData = await urlRes.json();
+        if (!urlRes.ok) throw new Error('Failed to upload photo');
+
+        await fetch(urlData.uploadUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': file.type },
+          body: file,
+        });
+        photoUrls.push(urlData.path);
+      }
+
+      const res = await fetch('/api/trade-in', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, photoUrls, _hp: hp }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   /* ── success state ───────────────────────────── */
@@ -468,14 +506,19 @@ export default function TradeInForm() {
         </div>
       </div>
 
+      {/* Honeypot */}
+      <input type="text" name="_hp" value={hp} onChange={e => setHp(e.target.value)} className="absolute opacity-0 h-0 w-0 pointer-events-none" tabIndex={-1} autoComplete="off" />
+
       {/* Submit */}
       <div className="flex flex-col items-center pt-4">
+        {apiError && <p className="text-red-400 text-sm mb-4">{apiError}</p>}
         <button
           type="submit"
-          className="group bg-primary text-on-primary px-16 py-5 font-label uppercase tracking-[0.3em] text-[11px] font-bold transition-all hover:brightness-110 hover:shadow-[0_0_40px_rgba(212,175,55,0.15)]"
+          disabled={isSubmitting}
+          className="group bg-primary text-on-primary px-16 py-5 font-label uppercase tracking-[0.3em] text-[11px] font-bold transition-all hover:brightness-110 hover:shadow-[0_0_40px_rgba(212,175,55,0.15)] disabled:opacity-60"
         >
           <span className="flex items-center gap-4">
-            Submit Trade-In Request
+            {isSubmitting ? 'Submitting...' : 'Submit Trade-In Request'}
             <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">
               arrow_forward
             </span>
