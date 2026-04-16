@@ -24,8 +24,35 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
     );
   }
 
+  function downloadAll() {
+    urls.forEach((url, i) => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `photo-${i + 1}.jpg`;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
+
   return (
     <>
+      {/* Download all button */}
+      {urls.length > 1 && (
+        <div className="flex justify-end mb-2">
+          <button
+            type="button"
+            onClick={downloadAll}
+            className="flex items-center gap-1 px-3 py-1.5 text-sm text-white/70 border border-white/10 rounded hover:text-white hover:border-white/30 transition-colors min-h-[44px]"
+          >
+            <span className="material-symbols-outlined text-[18px]">download</span>
+            Download All ({urls.length})
+          </button>
+        </div>
+      )}
+
       {/* Thumbnail grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
         {urls.map((url, i) => (
@@ -112,8 +139,21 @@ export default function PhotoGallery({ urls }: PhotoGalleryProps) {
             />
           </div>
 
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-on-surface-variant text-sm font-body">
-            {selectedIndex + 1} / {urls.length}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4">
+            <span className="text-on-surface-variant text-sm font-body">
+              {selectedIndex + 1} / {urls.length}
+            </span>
+            <a
+              href={urls[selectedIndex]}
+              download={`photo-${selectedIndex + 1}.jpg`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1 px-3 py-1.5 text-sm bg-[#D4AF37] text-black rounded hover:bg-[#c4a030] transition-colors min-h-[44px]"
+            >
+              <span className="material-symbols-outlined text-[18px]">download</span>
+              Download
+            </a>
           </div>
         </div>
       )}
