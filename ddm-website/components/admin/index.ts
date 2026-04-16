@@ -6,3 +6,5 @@ export { default as SubmissionCard } from './SubmissionCard';
 export { default as AdminNotes } from './AdminNotes';
 export { default as MobileNav } from './MobileNav';
 export { default as PhotoGallery } from './PhotoGallery';
+export { default as LogoutButton } from './LogoutButton';
+export { default as SubmissionsView } from './SubmissionsView';
