@@ -313,7 +313,7 @@ export default function CreditApplicationForm() {
     /* Section 3 */
     e.employerName = validateRequired(form.employerName, "Employer Name");
     e.jobTitle = validateRequired(form.jobTitle, "Title / Position");
-    e.employerPhone = validatePhone(form.employerPhone);
+    e.employerPhone = form.employerPhone.trim() ? validatePhone(form.employerPhone) : null;
     e.employerAddress = validateRequired(form.employerAddress, "Employer Address");
     e.employerCity = validateRequired(form.employerCity, "City");
     e.employerState = validateRequired(form.employerState, "State");
@@ -978,7 +978,7 @@ export default function CreditApplicationForm() {
           {/* Consent / disclaimer */}
           <div className="border-t border-white/5 pt-10 mb-10">
             <p className="font-body text-[12px] text-on-surface-variant/50 leading-relaxed max-w-2xl">
-              By submitting this application, you authorize Direct Motors to obtain
+              By submitting this application, you authorize Dream Drive Motors to obtain
               your credit report from one or more consumer reporting agencies in
               connection with your application for credit. You certify that the
               information provided is true and complete.
