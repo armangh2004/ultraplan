@@ -10,7 +10,7 @@ interface SubmissionCardProps {
 }
 
 function getName(submission: Record<string, unknown>, type: string): string {
-  if (type === 'contact' && typeof submission.full_name === 'string') {
+  if ((type === 'trade-ins' || type === 'sell-cars') && typeof submission.full_name === 'string') {
     return submission.full_name;
   }
 

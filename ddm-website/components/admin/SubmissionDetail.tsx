@@ -246,9 +246,9 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
             <Field label="Mileage" value={data.mileage} />
             <Field label="VIN" value={data.vin} />
           </Section>
-          {(data.payoff_amount || data.payoff_info) && (
+          {data.payoff_info && (
             <Section title="Financial">
-              <Field label="Payoff Info" value={data.payoff_amount ?? data.payoff_info} />
+              <Field label="Payoff Info" value={data.payoff_info} />
             </Section>
           )}
           {data.condition && (
@@ -258,10 +258,10 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
               </div>
             </Section>
           )}
-          {(data.desired_vehicle || data.category || data.purchase_timeline) && (
+          {(data.desired_vehicle || data.category_of_interest || data.purchase_timeline) && (
             <Section title="Preferences">
               <Field label="Desired Vehicle" value={data.desired_vehicle} />
-              <Field label="Category" value={data.category} />
+              <Field label="Category" value={data.category_of_interest} />
               <Field label="Purchase Timeline" value={data.purchase_timeline} />
             </Section>
           )}
@@ -289,9 +289,9 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
             <Field label="Mileage" value={data.mileage} />
             <Field label="VIN" value={data.vin} />
           </Section>
-          {(data.payoff_amount || data.payoff_info) && (
+          {data.payoff_info && (
             <Section title="Financial">
-              <Field label="Payoff Info" value={data.payoff_amount ?? data.payoff_info} />
+              <Field label="Payoff Info" value={data.payoff_info} />
             </Section>
           )}
           {data.description && (
@@ -348,8 +348,8 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
           </Section>
 
           <Section title="License">
-            <Field label="License Number" value={data.license_number} />
-            <Field label="License State" value={data.license_state} />
+            <Field label="License Number" value={data.drivers_license_number} />
+            <Field label="License State" value={data.drivers_license_state} />
           </Section>
 
           <Section title="Address">
@@ -357,14 +357,14 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
             <Field label="Address Line 2" value={data.address_line2} />
             <Field label="City" value={data.city} />
             <Field label="State" value={data.state} />
-            <Field label="ZIP Code" value={data.zip} />
+            <Field label="ZIP Code" value={data.zip_code} />
             <Field label="Housing Status" value={data.housing_status} />
             <Field label="Monthly Payment" value={data.monthly_payment} />
             <Field label="Time at Residence" value={data.time_at_residence} />
           </Section>
 
           <Section title="Employment">
-            <Field label="Employer" value={data.employer} />
+            <Field label="Employer" value={data.employer_name} />
             <Field label="Job Title" value={data.job_title} />
             <Field label="Phone" value={data.employer_phone} linkType="phone" />
             <Field label="Address" value={data.employer_address} />
@@ -372,7 +372,8 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
             <Field label="State" value={data.employer_state} />
             <Field label="ZIP Code" value={data.employer_zip} />
             <Field label="Annual Income" value={data.annual_income} />
-            <Field label="Time at Job" value={data.time_at_job} />
+            <Field label="Years at Job" value={data.years_at_job} />
+            <Field label="Months at Job" value={data.months_at_job} />
           </Section>
 
           <Section title="Financing">
