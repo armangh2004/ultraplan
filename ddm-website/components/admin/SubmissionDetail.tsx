@@ -89,6 +89,7 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
   const [ssnRevealed, setSsnRevealed] = useState(false)
   const [ssnLoading, setSsnLoading] = useState(false)
   const [revealedSSN, setRevealedSSN] = useState<string | null>(null)
+  const [downloadingPDF, setDownloadingPDF] = useState(false)
 
   const fetchSubmission = useCallback(async () => {
     setLoading(true)
@@ -140,6 +141,22 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
     })
     if (!res.ok) throw new Error('Failed to save notes')
     setData((prev) => (prev ? { ...prev, admin_notes: notes } : prev))
+  }
+
+  async function handleDownloadPDF() {
+    if (!data) return
+    setDownloadingPDF(true)
+    try {
+      const res = await fetch(`/api/admin/submissions/${id}?type=credit-apps&revealSSN=true`)
+      if (!res.ok) throw new Error('Failed to fetch')
+      const json = await res.json()
+      const { generateCreditAppPDF } = await import('@/lib/creditAppPDF')
+      generateCreditAppPDF([json.data])
+    } catch {
+      // PDF generation failed silently
+    } finally {
+      setDownloadingPDF(false)
+    }
   }
 
   async function handleRevealSSN() {
@@ -211,7 +228,20 @@ export default function SubmissionDetail({ type, id }: SubmissionDetailProps) {
             {formatDate(data.created_at)}
           </span>
         </div>
-        <StatusBadge status={status} onStatusChange={handleStatusChange} />
+        <div className="flex items-center gap-3 flex-wrap">
+          {type === 'credit-apps' && (
+            <button
+              type="button"
+              onClick={handleDownloadPDF}
+              disabled={downloadingPDF || loading}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#D4AF37]/30 text-[#D4AF37]/80 font-body text-sm min-h-[44px] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <span className="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+              {downloadingPDF ? 'Generating PDF...' : 'Download PDF'}
+            </button>
+          )}
+          <StatusBadge status={status} onStatusChange={handleStatusChange} />
+        </div>
       </div>
 
       {/* Data sections by type */}

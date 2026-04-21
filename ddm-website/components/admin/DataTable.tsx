@@ -14,6 +14,9 @@ interface DataTableProps {
   onRowClick: (row: Record<string, unknown>) => void;
   onStatusChange?: (row: Record<string, unknown>, newStatus: string) => void;
   type?: string;
+  selectedIds?: Set<string>;
+  onToggleSelect?: (id: string) => void;
+  onToggleAll?: (ids: string[]) => void;
 }
 
 function formatCell(
@@ -70,7 +73,15 @@ function formatCell(
   return String(value);
 }
 
-export default function DataTable({ columns, data, onRowClick, onStatusChange }: DataTableProps) {
+export default function DataTable({
+  columns,
+  data,
+  onRowClick,
+  onStatusChange,
+  selectedIds,
+  onToggleSelect,
+  onToggleAll,
+}: DataTableProps) {
   const [sortKey, setSortKey] = useState<string | null>(null);
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
 
@@ -105,11 +116,32 @@ export default function DataTable({ columns, data, onRowClick, onStatusChange }:
     });
   }, [data, sortKey, sortDir]);
 
+  const showCheckboxes = selectedIds !== undefined && onToggleSelect !== undefined;
+  const allOnPageSelected =
+    sorted.length > 0 && sorted.every((r) => selectedIds?.has(r.id as string));
+  const someOnPageSelected =
+    !allOnPageSelected && sorted.some((r) => selectedIds?.has(r.id as string));
+
   return (
     <div className="hidden md:block overflow-x-auto">
       <table className="w-full text-left">
         <thead>
           <tr className="border-b border-white/10">
+            {showCheckboxes && (
+              <th className="px-4 py-3 w-10">
+                <input
+                  type="checkbox"
+                  checked={allOnPageSelected}
+                  ref={(el) => {
+                    if (el) el.indeterminate = someOnPageSelected;
+                  }}
+                  onChange={() => onToggleAll?.(sorted.map((r) => r.id as string))}
+                  onClick={(e) => e.stopPropagation()}
+                  className="w-4 h-4 accent-[#D4AF37] cursor-pointer"
+                  aria-label="Select all on page"
+                />
+              </th>
+            )}
             {columns.map((col) => (
               <th
                 key={col.key}
@@ -133,8 +165,30 @@ export default function DataTable({ columns, data, onRowClick, onStatusChange }:
             <tr
               key={(row.id as string | number) ?? i}
               onClick={() => onRowClick(row)}
-              className="border-b border-white/5 hover:bg-surface-container-high/50 cursor-pointer transition-colors"
+              className={`border-b border-white/5 cursor-pointer transition-colors ${
+                selectedIds?.has(row.id as string)
+                  ? 'bg-[#D4AF37]/5 hover:bg-[#D4AF37]/10'
+                  : 'hover:bg-surface-container-high/50'
+              }`}
             >
+              {showCheckboxes && (
+                <td
+                  className="px-4 py-3"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleSelect?.(row.id as string);
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedIds?.has(row.id as string) ?? false}
+                    onChange={() => onToggleSelect?.(row.id as string)}
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-4 h-4 accent-[#D4AF37] cursor-pointer"
+                    aria-label={`Select row ${row.id}`}
+                  />
+                </td>
+              )}
               {columns.map((col) => (
                 <td
                   key={col.key}
@@ -153,7 +207,7 @@ export default function DataTable({ columns, data, onRowClick, onStatusChange }:
           {sorted.length === 0 && (
             <tr>
               <td
-                colSpan={columns.length}
+                colSpan={columns.length + (showCheckboxes ? 1 : 0)}
                 className="text-center text-on-surface-variant font-body text-sm py-12"
               >
                 No submissions yet.

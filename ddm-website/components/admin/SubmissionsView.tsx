@@ -174,6 +174,8 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [exporting, setExporting] = useState(false)
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [downloadingPDF, setDownloadingPDF] = useState(false)
 
   // Debounce search input
   useEffect(() => {
@@ -233,6 +235,52 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
       }
     } catch {
       // Status update failed silently
+    }
+  }
+
+  function handleToggleSelect(id: string) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  function handleToggleAll(ids: string[]) {
+    const allSelected = ids.every((id) => selectedIds.has(id))
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (allSelected) {
+        ids.forEach((id) => next.delete(id))
+      } else {
+        ids.forEach((id) => next.add(id))
+      }
+      return next
+    })
+  }
+
+  async function handleDownloadPDF() {
+    if (selectedIds.size === 0 || type !== 'credit-apps') return
+    setDownloadingPDF(true)
+    try {
+      const ids = Array.from(selectedIds)
+      const results = await Promise.all(
+        ids.map(async (id) => {
+          const res = await fetch(`/api/admin/submissions/${id}?type=credit-apps&revealSSN=true`)
+          if (!res.ok) return null
+          const json = await res.json()
+          return json.data as Record<string, unknown>
+        })
+      )
+      const validApps = results.filter(Boolean) as Record<string, unknown>[]
+      if (validApps.length === 0) return
+      const { generateCreditAppPDF } = await import('@/lib/creditAppPDF')
+      generateCreditAppPDF(validApps)
+    } catch {
+      // PDF generation failed silently
+    } finally {
+      setDownloadingPDF(false)
     }
   }
 
@@ -302,6 +350,22 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
           className="flex-1 bg-surface-container-high text-on-surface border border-outline-variant rounded px-3 py-2 text-sm font-body min-h-[44px] focus:border-primary focus:outline-none placeholder:text-on-surface-variant"
         />
 
+        {type === 'credit-apps' && (
+          <button
+            type="button"
+            onClick={handleDownloadPDF}
+            disabled={selectedIds.size === 0 || downloadingPDF || loading}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#D4AF37]/30 text-[#D4AF37]/80 font-body text-sm min-h-[44px] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+          >
+            <span className="material-symbols-outlined text-sm">picture_as_pdf</span>
+            {downloadingPDF
+              ? 'Generating...'
+              : selectedIds.size > 0
+              ? `Download PDF (${selectedIds.size})`
+              : 'Download PDF'}
+          </button>
+        )}
+
         <button
           type="button"
           onClick={handleExportCSV}
@@ -326,6 +390,9 @@ export default function SubmissionsView({ type, title }: SubmissionsViewProps) {
               handleRowStatusChange(row.id as string, newStatus)
             }
             type={type}
+            selectedIds={type === 'credit-apps' ? selectedIds : undefined}
+            onToggleSelect={type === 'credit-apps' ? handleToggleSelect : undefined}
+            onToggleAll={type === 'credit-apps' ? handleToggleAll : undefined}
           />
 
           {/* Mobile card list */}
