@@ -1,0 +1,35 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Every 2 days at 00:17 UTC. Supabase free tier pauses projects after
+    # 7 consecutive days without database activity; a 2-day cadence tolerates
+    # two consecutive missed runs. Minute 17 avoids GitHub's congested
+    # top-of-hour scheduling window.
+    - cron: '17 0 */2 * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update keep_alive.last_ping via Supabase REST API
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          now="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          status="$(curl -sS -o response.txt -w '%{http_code}' \
+            -X PATCH "$SUPABASE_URL/rest/v1/keep_alive?id=eq.1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            -d "{\"last_ping\": \"$now\"}")"
+          echo "HTTP status: $status"
+          echo "Response body:"
+          cat response.txt || true
+          case "$status" in
+            2*) echo "Keep-alive OK — last_ping set to $now" ;;
+            *)  echo "::error::Keep-alive ping failed with HTTP $status"; exit 1 ;;
+          esac
