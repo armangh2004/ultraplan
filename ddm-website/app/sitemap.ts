@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dreamdrivemotors1.com';
+  const baseUrl = 'https://www.dreamdrivemotors1.com';
 
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily', priority: 1 },

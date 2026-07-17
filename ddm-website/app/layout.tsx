@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Dream Drive Motors | Curated Automotive Excellence",
     description:
       "Premium pre-owned luxury vehicles. Bespoke leasing, financing, and concierge services in Baldwin Park, CA.",
-    url: "https://dreamdrivemotors1.com",
+    url: "https://www.dreamdrivemotors1.com",
   },
 };
 
@@ -46,7 +46,7 @@ const structuredData = {
   },
   telephone: "626-257-4368",
   email: "dreamdrivemotors1@gmail.com",
-  url: "https://dreamdrivemotors1.com",
+  url: "https://www.dreamdrivemotors1.com",
 };
 
 export default function RootLayout({
